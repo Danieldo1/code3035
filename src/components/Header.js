@@ -17,7 +17,7 @@ const status=session.status
       <Link href={''}>Rent</Link>
       {status==='authenticated' &&( 
         <>
-         <Link href={'/admin'} className='bg-red-500 text-white px-4 py-2 rounded-full'>Admin</Link>
+         <Link href={'/profile'} className='bg-red-500 text-white px-4 py-2 rounded-full'>Admin</Link>
          <button onClick={()=>signOut()} className='bg-red-500 text-white px-4 py-2 rounded-full'>Log Out</button>
         </>
       )}

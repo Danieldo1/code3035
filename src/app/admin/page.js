@@ -11,7 +11,7 @@ const AdminPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLogging(true)
-       await signIn('credentials',{email, password})
+       await signIn('credentials',{email, password,callbackUrl:'/'})
         setLogging(false)
     }
   return (

@@ -38,10 +38,10 @@ const LoginPage = () => {
                 <div className="w-1/2 h-px bg-gray-400"></div>
             </div>
             <div className='gap-4'>
-                <button disabled={created} className='bg-red-500 text-white px-4 py-2 rounded-full w-full flex gap-2 justify-center text-center items-center disabled:bg-gray-700 disabled:cursor-not-allowed'>
+                {/* <button disabled={created} className='bg-red-500 text-white px-4 py-2 rounded-full w-full flex gap-2 justify-center text-center items-center disabled:bg-gray-700 disabled:cursor-not-allowed'>
                 <Image src="/google.svg" alt="google image" width={20} height={20} className=''/>
                     Google
-                </button>
+                </button> */}
             </div>
         </form>
     </div>

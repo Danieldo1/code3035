@@ -19,6 +19,10 @@ return false
 
 }
         }
+    },
+    name: {
+        type: String,
+        
     }
 },{timestamps: true});
 

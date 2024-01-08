@@ -2,9 +2,12 @@ import mongoose from "mongoose";
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
 import {User} from "@/models/User";
+import { MongoDBAdapter } from "@auth/mongodb-adapter"
+import clientPromise from "@/libs/MongoConnect";
 
-const handler = NextAuth({
+export const authOptions = {
   secret: process.env.SECRET,
+   adapter: MongoDBAdapter(clientPromise),
   providers:[
     CredentialsProvider({
       name: "Credentials",
@@ -29,6 +32,11 @@ const handler = NextAuth({
       }
     })
   ],
-})
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60 // 30 days
+  }
+}
+const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
