@@ -2,29 +2,32 @@
 
 import React, { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
-import { redirect } from 'next/dist/server/api-utils'
 import Image from 'next/image'
 import { Upload } from 'lucide-react'
+import {redirect} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const ProfilePage = () => {
     const session = useSession()
     const {status} = session.status
     const [name, setName] = useState('')
 
+    const router = useRouter()
+
 useEffect(() => {
 if(status === 'authenticated'){
     setName(session.data?.user.name)
 }
 }, [status,session])
+
+
    if(status === 'loading'){
     return <div className='text-3xl font-bold text-center'>Loading...</div>
    }
-    if(status === 'unauthenticated'){
-      return  redirect('/admin')
+    if(status === "unauthenticated" || status === 'loading'){
+       router.push('/admin')
     }
-    if(status === 'authenticated'){
-        
-    }
+ 
     const userImage = session.data?.user.image
 
     const handleProfileUpdate = async (e) => {
@@ -55,7 +58,7 @@ if(status === 'authenticated'){
                 </div>
               </div>
               <form className='grow' onSubmit={handleProfileUpdate}>
-                <input type='text' placeholder='Name'  value={} onChange={(e) => setName(e.target.value)} className='border p-2 border-gray-300 bg-gray-200 block w-full my-4 rounded-lg disabled:bg-gray-700'/>
+                <input type='text' placeholder={session.data?.user.name} value={session.data?.user?.name} onChange={(e) => setName(e.target.value)} className='border p-2 border-gray-300 bg-gray-200 block w-full my-4 rounded-lg disabled:bg-gray-700'/>
                 <input type='email' disabled value={session.data?.user.email} placeholder='Email' className='border p-2 border-gray-300 bg-gray-200 block w-full my-4 rounded-lg disabled:bg-gray-600 disabled:text-white disabled:cursor-not-allowed'/>
                 <button type='submit' className='bg-red-500 text-white px-4 py-2 rounded-full w-full'>Update</button>
               </form>
