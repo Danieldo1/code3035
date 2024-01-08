@@ -1,28 +1,31 @@
+import mongoose from "mongoose";
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
+import {User} from "@/models/User";
 
 const handler = NextAuth({
+  secret: process.env.SECRET,
   providers:[
     CredentialsProvider({
       name: "Credentials",
-
+      id: "credentials",
       credentials: {
         username: { label: "Email", type: "email", placeholder: "johndoe@email.com" },
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
-  
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user
-        } else {
-          // If you return null then an error will be displayed advising the user to check their details.
-          return null
-  
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
-        }
+          // const { username, password } = credentials
+          const email = credentials?.username
+          const password = credentials?.password
+        mongoose.connect(process.env.MONGODB_URL)
+        const user= await User.findOne({email})
+          if(user && user.password === password) {
+            console.log(user)
+            return user
+          } else {
+            return null
+          }
+
       }
     })
   ],
