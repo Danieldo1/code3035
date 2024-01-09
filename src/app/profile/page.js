@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import Tabs from '../../components/Tabs'
 import ImageUpload from '../../components/ImageUpload'
+import { Loader2 } from 'lucide-react'
 
 const ProfilePage = () => {
     const session = useSession()
@@ -36,7 +37,7 @@ if(status === 'authenticated'){
 
 
    if(status === 'loading'){
-    return <div className='text-3xl font-bold text-center'>Loading...</div>
+    <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
    }
     if(status === "unauthenticated" ){
        redirect('/admin')

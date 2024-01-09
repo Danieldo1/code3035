@@ -4,6 +4,7 @@ import Tabs from '@/components/Tabs'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useProfile } from '../../components/useProfile'
+import { Loader2 } from 'lucide-react'
 
 const CategoriesPage = () => {
 const [categories, setCategories] = useState('')
@@ -22,7 +23,7 @@ const fetchCategories = async () => {
 
 const {loading,isAdmin} = useProfile()
 
-if(loading) return <div className='text-3xl font-bold text-center'>Loading...</div>
+if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
 if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
 
 
