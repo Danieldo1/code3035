@@ -7,6 +7,7 @@ import { Upload } from 'lucide-react'
 import {redirect} from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
+import Tabs from '../../components/Tabs'
 
 const ProfilePage = () => {
     const session = useSession()
@@ -14,6 +15,7 @@ const ProfilePage = () => {
     const status = session.status
     const [userName, setUserName] = useState('')
     const [userImage, setUserImage] = useState('')
+    const [isAdmin, setIsAdmin] = useState(false)
 
 
     const router = useRouter()
@@ -26,6 +28,7 @@ if(status === 'authenticated'){
     console.log(data)
     setUserName(data.name)
     setUserImage(data.image)
+    setIsAdmin(data.admin)
    })
   })
 }
@@ -53,6 +56,7 @@ if(status === 'authenticated'){
         if(response.ok){
             toast.success('Profile Updated')
         }
+        router.refresh()
     }
 
 
@@ -75,6 +79,8 @@ if(status === 'authenticated'){
       }
   return (
     <section className='mt-4'>
+
+    <Tabs isAdmin={isAdmin} />
         <h1 className='text-3xl font-bold text-center'>Profile</h1>
 
         <div className='max-w-md mx-auto my-10 items-center justify-center'>
