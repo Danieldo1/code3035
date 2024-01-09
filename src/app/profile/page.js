@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
-import Image from 'next/image'
-import { Upload } from 'lucide-react'
+
 import {redirect} from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import Tabs from '../../components/Tabs'
+import ImageUpload from '../../components/ImageUpload'
 
 const ProfilePage = () => {
     const session = useSession()
@@ -61,22 +61,7 @@ if(status === 'authenticated'){
 
 
 
-    const handleFile = async (e) => {
-      const files = e.target.files
-      if(files?.length === 1){
-        const data= new FormData
-        data.set('file', files[0])
-        toast('Uploading Image')
-       const res= await fetch('/api/upload', {
-          method: 'POST',
-          body: data,
-      
-        })
-        toast.success('Image Uploaded')
-        const link= await res.json()
-        setUserImage(link)
-      }
-      }
+   
   return (
     <section className='mt-4'>
 
@@ -89,14 +74,7 @@ if(status === 'authenticated'){
                 <div className='bg-gray-500 p-6 rounded-lg flex flex-col text-center justify-center'>
                 
              
-                {userImage && (
-
-                <Image src={userImage} alt="user image" width={64} height={64} className='rounded-full mx-auto'/>
-                )}
-                    <label className='bg-red-500 p-2 cursor-pointer text-white items-center text-center flex justify-center rounded-full'>
-                    <Upload className='w-6 h-6 items-center justify-center' />
-                    <input type='file' className='hidden' onChange={handleFile} />
-                    </label>
+               <ImageUpload setLink={setUserImage} link={userImage}/>
                 </div>
               </div>
    
