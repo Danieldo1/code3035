@@ -68,7 +68,7 @@ const handleSubmit = async (e) => {
         <form className='max-w-sm mx-auto my-10' onSubmit={handleSubmit}>
             <div className='flex gap-2 items-end'>
                 <div>
-                    <label > 
+                    <label  > 
                         {editedCategories ? 'Update Category': 'Create Category'}
                         {editedCategories && (
                             <>: <b>{editedCategories.name}</b></>
@@ -87,7 +87,7 @@ const handleSubmit = async (e) => {
         </form>
 
             <div>
-                <h2>Edit Category:</h2>
+                <h2 className='text-2xl font-bold'>Edit Category:</h2>
                 {createdCategories?.length >0 && createdCategories?.map(c => (
                     <button key={c._id} onClick={() => {setEditedCategories(c);setCategories(c.name)}} className='bg-gray-200 w-full p-6 mb-4 rounded-lg flex gap-2 cursor-pointer' > 
                         <p>{c.name}</p>

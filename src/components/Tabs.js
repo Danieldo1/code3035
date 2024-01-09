@@ -13,7 +13,7 @@ const Tabs = ({isAdmin}) => {
         {isAdmin && (
           <>
           <Link   className={path === '/categories' ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'}href='/categories'><Layers2/></Link>
-          <Link   className={path === '/menu' ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'}href='/menu'><Utensils/></Link>
+          <Link   className={/menu/.test(path) ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'}href='/menu'><Utensils/></Link>
           <Link className={path === '/orders' ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'}  href='/orders'><Truck/></Link>
           <Link  className={path === '/users' ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'} href='/users'><Users/></Link>
 
