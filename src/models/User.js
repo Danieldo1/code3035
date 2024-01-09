@@ -1,6 +1,6 @@
-const { Schema, models,model } = require("mongoose");
+// const { Schema, models,model } = require("mongoose");
 
-// import {model, Schema, models} from 'mongoose'
+ import {model, Schema, models} from 'mongoose'
 
 
 const UserSchema = new Schema({
@@ -22,7 +22,10 @@ return false
     },
     name: {
         type: String,
-        
+        default:'Admin'
+    },
+    image: {
+        type: String,
     }
 },{timestamps: true});
 

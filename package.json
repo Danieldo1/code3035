@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^2.0.12",
+    "@aws-sdk/client-s3": "^3.485.0",
     "lucide": "^0.307.0",
     "lucide-react": "^0.307.0",
     "mongodb": "^6.3.0",
@@ -17,7 +18,10 @@
     "next": "14.0.4",
     "next-auth": "^4.24.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
+    "uniqid": "^5.4.0",
+    "uniqueid": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

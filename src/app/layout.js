@@ -3,7 +3,7 @@ import './globals.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {AppProvider} from '../components/AppContext'
-
+import {Toaster} from 'react-hot-toast'
 
 const rubik = Rubik({ subsets: ['latin'],weight: ['300','400','500','600','700'] })
 
@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
       <body className={rubik.className}>
         <main className='max-w-6xl mx-auto px-4 bg-[#fdfdfd]'>
      <AppProvider>
+      <Toaster />
         <Header/>
         {children}
         <Footer/>

@@ -1,21 +1,26 @@
 import mongoose from 'mongoose'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import { User } from '@/models/User'
+import { User } from '../../../models/User'
 
 
 export async function PUT(req) {
     mongoose.connect(process.env.MONGODB_URL)
-    const session = await getServerSession(authOptions)
     const data= await req.json()
+    const session = await getServerSession(authOptions)
     const email = session?.user?.email
-    console.log({session,data,email})
+    
 
-    if('name' in data) {
-          await  User.updateOne({email}, {name:data.name})
-       
-    }
+     await User.updateOne({email},data)
 
-  
+
     return Response.json(true)
+}
+
+export async function GET() {
+    mongoose.connect(process.env.MONGODB_URL)
+    const session = await getServerSession(authOptions)
+    
+    const email = session?.user?.email
+    return Response.json(await User.findOne({email}))
 }

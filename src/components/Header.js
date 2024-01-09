@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 const Header = () => {
   const session=useSession()
-  console.log(session)
+
 const status=session.status
   return (
     <header className='flex justify-between items-center p-4'>
