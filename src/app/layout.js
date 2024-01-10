@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 import {AppProvider} from '../components/AppContext'
 import {Toaster} from 'react-hot-toast'
 
-const rubik = Rubik({ subsets: ['latin'],weight: ['300','400','500','600','700'] })
+const rubik = Rubik({ subsets: ['latin'],weight: ['900','800','300','400','500','600','700'] })
 
 export const metadata = {
   title: 'CODE3035',
@@ -14,16 +14,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='h-full'>
-      <body className={rubik.className +'flex flex-col h-full'} >
-        <main className='flex flex-col flex-1 max-w-6xl max-h-screen mx-auto px-4 bg-[#fdfdfd]'>
+    <html lang="en" className='h-full scroll-smooth'>
+      <body className={rubik.className +'flex flex-col h-full bg-[#1B1918] text-white'} >
+        <main className='flex flex-col flex-1 max-w-6xl h-full mx-auto px-4 '>
      <AppProvider>
       <Toaster />
         <Header/>
             {children}
-          <Footer />
      </AppProvider>
         </main>
+          <Footer />
         </body>
     </html>
   )

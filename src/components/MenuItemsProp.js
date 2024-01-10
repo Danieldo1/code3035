@@ -13,7 +13,7 @@ const MenuItemsProp = ({props, setProps,name,buttonLabel}) => {
         })
     }
   return (
-                  <div className='bg-gray-200 p-2 mb-2 rounded-md flex flex-col my-2'>
+                  <div className='bg-gray-200 text-black p-2 mb-2 rounded-md flex flex-col my-2'>
                     <div className='flex justify-between py-5 items-center'>
                         <label className='font-bold'>
                             {name}

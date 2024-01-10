@@ -40,17 +40,17 @@ const MenuPage = () => {
               <div className='w-24 h-24 flex-col '>
                 {item.image.length ===0 ? (
                     <div className='w-full h-full flex justify-center items-center'>
-                      <ImageOff className='w-20 h-20' />
+                      <ImageOff className='w-20 h-20 text-black' />
                     </div>
                 ):  (<Image src={item.image} alt={item.name} width={100} height={100} className='rounded-lg' />)}
               </div>
               <div>
-                <h3 className='text-xl font-bold'>{item.name}</h3>
-                <p className='text-gray-500 line-clamp-1'>{item.description}</p>
+                <h3 className='text-xl font-bold text-black'>{item.name}</h3>
+                <p className='text-gray-500 font-semibold line-clamp-1'>{item.description}</p>
               </div>
             </div>
             <div>
-              <p className='text-xl font-semibold italic'>${item.price}</p>
+              <p className='text-xl font-semibold italic text-black'>${item.price}</p>
             </div>
           </Link>
         ))}

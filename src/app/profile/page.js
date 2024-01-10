@@ -67,7 +67,7 @@ if(status === 'authenticated'){
     <section className='mt-4'>
 
     <Tabs isAdmin={isAdmin} />
-        <h1 className='text-3xl font-bold text-center'>Profile</h1>
+        <h1 className='text-3xl font-bold text-center mt-2'>Profile</h1>
 
         <div className='max-w-md mx-auto my-10 items-center justify-center'>
             <div className='flex gap-4 items-center justify-center '>
@@ -78,7 +78,7 @@ if(status === 'authenticated'){
               </div>
    
               <form className='grow' onSubmit={handleProfileUpdate}>
-                <input type='text' placeholder={'Name'} value={userName} onChange={(e) => setUserName(e.target.value)} className='border p-2 border-gray-300 bg-gray-200 block w-full my-4 rounded-lg disabled:bg-gray-700'/>
+                <input type='text' placeholder={'Name'} value={userName} onChange={(e) => setUserName(e.target.value)} className='border p-2 border-gray-300 bg-gray-200 text-black block w-full my-4 rounded-lg disabled:bg-gray-700'/>
                 <input type='email' disabled value={session.data?.user.email} placeholder='Email' className='border p-2 border-gray-300 bg-gray-200 block w-full my-4 rounded-lg disabled:bg-gray-600 disabled:text-white disabled:cursor-not-allowed'/>
                 <button type='submit' className='bg-red-500 text-white px-4 py-2 rounded-full w-full'>Update</button>
               </form>

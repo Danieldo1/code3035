@@ -29,7 +29,7 @@ const ImageUpload = ({link,setLink}) => {
 )}
 {!link && (
     <div className=' justify-center items-center p-4 bg-gray-300 rounded-lg mx-auto'>
-      <ImagePlus className='w-28 h-28' />
+      <ImagePlus className='w-28 h-28 text-black' />
     </div>
 )}
     <label className='bg-blue-500 mt-2 p-2 cursor-pointer text-white items-center text-center flex justify-center rounded-full'>

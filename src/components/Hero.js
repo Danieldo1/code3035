@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Hero = () => {
   return (
-    <section className='grid' style={{gridTemplateColumns: '1.4fr 1.6fr'}}>
+    <section className='grid'>
         <div>
             <h1 className='text-5xl font-bold '>Experience new level of <br />Lounge Bar</h1>
             <p className='text-lg my-4 text-gray-500'>Start your journey with us</p>
@@ -12,9 +12,9 @@ const Hero = () => {
                 <button className='bg-red-500 text-white px-4 py-2 rounded-full'>Learn More</button>
             </div>
         </div>
-        <div className='relative'>
-            <Image src="/images/hero.png" alt="hero image" width={400} height={400}/>
-        </div>
+          <div className='relative hidden md:block'>
+              <Image src="/logo1.webp" alt="hero image" width={400} height={400}/>
+          </div>
     </section>
   )
 }

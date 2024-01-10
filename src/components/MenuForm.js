@@ -33,18 +33,18 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
                 <input type="text" 
                 value={name}
                 onChange={e =>setName(e.target.value) }
-                className='w-full mb-5 p-2 border border-gray-300 rounded-md' placeholder='Menu Item' />
+                className='w-full mb-5 p-2 border text-black border-gray-300 rounded-md' placeholder='Menu Item' />
             
                 <label >Description</label>
                 <input type="text" 
                 value={description}
                 onChange={e =>setDescription(e.target.value) }
-                className='mb-5 w-full p-2 border border-gray-300 rounded-md ' placeholder='Description' />
+                className='mb-5 w-full p-2 border border-gray-300 text-black rounded-md ' placeholder='Description' />
             
                 <label>Category</label>
-                <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} className='mb-5 w-full p-2 border border-gray-300 rounded-md '>
+                <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} className='mb-5 w-full p-2 border border-gray-300 text-black rounded-md '>
                   {category?.length >0 && category.map((c,i)=>(
-                    <option key={i} value={c._id}>{c.name}</option>
+                    <option key={i} value={c._id} >{c.name}</option>
                   )
                   )}
                 </select>
@@ -53,7 +53,7 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
                 <input type="text" 
                 value={price}
                 onChange={e =>setPrice(e.target.value) }
-                className='mb-5 w-full p-2 border border-gray-300 rounded-md ' placeholder='Price' />
+                className='mb-5 w-full p-2 border border-gray-300 text-black rounded-md ' placeholder='Price' />
 
                 <MenuItemsProp props={sizes} setProps={setSizes} name={'Sizes'} buttonLabel={'Add Size'} />
 

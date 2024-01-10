@@ -28,7 +28,7 @@ const UsersPage = () => {
 
         <div>
             {users.length >0 && users.map((user, index) => (
-                <div key={index} className='flex gap-4 justify-between items-center mt-5 border p-2 rounded-lg bg-slate-200 shadow-md'>
+                <div key={index} className='flex gap-4 justify-between items-center mt-5 border p-2 rounded-lg bg-slate-200 text-black shadow-md'>
                     <div className='flex justify-between items-center gap-5'>
                         <div className='w-24 h-24 flex-col '>
                             {user.image.length ===0 && (

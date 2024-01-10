@@ -91,6 +91,7 @@ const handleDelete = async (_id) => {
     <section className='mt-8 max-w-lg mx-auto'>
         <Tabs isAdmin={true}/>
 
+        <h2 className='text-3xl font-bold text-center mt-2'>Categories</h2>
         <form className='max-w-sm mx-auto my-10' onSubmit={handleSubmit}>
             <div className='flex gap-2 items-end'>
                 <div>
@@ -100,7 +101,7 @@ const handleDelete = async (_id) => {
                             <>: <b>{editedCategories.name}</b></>
                         )}
                     </label>
-                    <input type="text" value={categories} autoComplete='off' name="category" onChange={(e) => setCategories(e.target.value)} className='w-full p-2 border border-gray-300 rounded-md' placeholder='Category Name' />
+                    <input type="text" value={categories} autoComplete='off' name="category" onChange={(e) => setCategories(e.target.value)} className='w-full p-2 border border-gray-300 text-black bg-gray-200 rounded-md' placeholder='Category Name' />
                 </div>
 
                 <div className='flex gap-2'>
@@ -108,7 +109,7 @@ const handleDelete = async (_id) => {
                      {editedCategories ? 'Update': 'Create'}
                     </button>
                     <button type='button' 
-                    className='px-4 py-2 rounded-full bg-gray-200' 
+                    className='px-4 py-2 rounded-full bg-gray-200 text-black' 
                     onClick={() => {setEditedCategories(null);setCategories('')}}>Cancel</button>
                 </div>
             </div>
@@ -117,7 +118,7 @@ const handleDelete = async (_id) => {
             <div>
                 <h2 className='text-2xl mb-5 font-bold'>Existing Categories:</h2>
                 {createdCategories?.length >0 && createdCategories?.map(c => (
-                    <div key={c._id}  className='bg-gray-200 border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 ' > 
+                    <div key={c._id}  className='bg-gray-200 text-black border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 ' > 
                         <p className='font-bold'>{c.name}</p>
                         <div className='flex gap-4 justify-center items-center'>
                             <span onClick={() => {setEditedCategories(c);setCategories(c.name)}}>
