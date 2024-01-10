@@ -73,9 +73,7 @@ if(status === 'authenticated'){
             <div className='flex gap-4 items-center justify-center '>
               <div>
                 <div className='bg-gray-500 p-6 rounded-lg flex flex-col text-center justify-center'>
-                
-             
-               <ImageUpload setLink={setUserImage} link={userImage}/>
+                 <ImageUpload setLink={setUserImage} link={userImage}/>
                 </div>
               </div>
    

@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className='h-full'>
       <body className={rubik.className +'flex flex-col h-full'} >
-        <main className='flex flex-col flex-1 max-w-6xl h-[90%] mx-auto px-4 bg-[#fdfdfd]'>
+        <main className='flex flex-col flex-1 max-w-6xl max-h-screen mx-auto px-4 bg-[#fdfdfd]'>
      <AppProvider>
       <Toaster />
         <Header/>
