@@ -10,6 +10,7 @@ const UsersPage = () => {
 
     const {loading,isAdmin} = useProfile()
     const [users,setUsers] = useState([])
+    const [admin,setAdmin] = useState(users.admin || false)
 
     useEffect(() => {
         fetch('/api/users').then(response=>{response.json().then(data=>{
@@ -42,7 +43,8 @@ const UsersPage = () => {
                             <p>{user.email}</p>
                         </div>
                     </div>
-                    <div>
+                    <div className='flex justify-between items-center gap-5'>
+                  
                         {user.admin === true ? <p className='text-red-500'>Admin</p> : <p className='text-green-500'>User</p>}
                         <p>{user.role}</p>
                     </div>
