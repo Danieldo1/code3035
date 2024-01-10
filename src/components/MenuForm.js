@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import ImageUpload from '@/components/ImageUpload'
 import MenuItemsProp from './MenuItemsProp'
+import { CheckCheck  } from 'lucide-react'
 
 const MenuForm = ({handleFormSubmit,menuItem}) => {
     const [image, setImage] = useState(menuItem?.image || '')
@@ -14,7 +15,7 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
 
    
   return (
-    <form className='max-w-xl mx-auto my-10' 
+    <form className='max-w-xl mx-auto mt-10' 
     onSubmit={e=> handleFormSubmit(e, {image, name, description, price, _id:menuItem?._id, sizes, extras})}
     >
     <div className='flex gap-2 items-start'>
@@ -45,7 +46,10 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
                 <MenuItemsProp props={extras} setProps={setExtras} name={'Extras'} buttonLabel={'Add Extra'} />
             </div>
         </div>
-         <button type='submit' className='bg-red-500 text-white w-full px-4 py-2 rounded-full'> Save</button>
+         <button type='submit' className='bg-green-500 hover:text-black flex justify-center gap-2 mt-2 text-white w-full px-4 py-2 rounded-full'>
+         <CheckCheck />
+           Save
+          </button>
     </form>
   )
 }

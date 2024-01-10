@@ -25,14 +25,14 @@ const ImageUpload = ({link,setLink}) => {
     <>
  {link && (
 
-<Image src={link} alt="user image" width={64} height={64} className='rounded-full mx-auto'/>
+<Image src={link} alt="user image" width={200} height={200} className='rounded-lg mx-auto'/>
 )}
 {!link && (
     <div className=' justify-center items-center p-4 bg-gray-300 rounded-lg mx-auto'>
       <ImagePlus className='w-28 h-28' />
     </div>
 )}
-    <label className='bg-red-500 mt-2 p-2 cursor-pointer text-white items-center text-center flex justify-center rounded-full'>
+    <label className='bg-blue-500 mt-2 p-2 cursor-pointer text-white items-center text-center flex justify-center rounded-full'>
     <Upload className='w-6 h-6 items-center justify-center' />
     <input type='file' className='hidden' onChange={handleFile} />
     </label>

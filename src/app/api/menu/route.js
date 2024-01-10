@@ -20,3 +20,10 @@ export async function GET() {
     const menus = await Menu.find()
     return Response.json(menus)
 }
+
+export async function DELETE(req) {
+    mongoose.connect(process.env.MONGODB_URL)
+    const {_id} = await req.json()
+    await Menu.deleteOne({_id})
+    return Response.json(true)
+}

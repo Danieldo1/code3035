@@ -7,14 +7,17 @@ import Tabs  from '@/components/Tabs'
 import ImageUpload from '@/components/ImageUpload'
 import { toast } from 'react-hot-toast'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
-import { ChevronLeftCircle,Loader2 } from 'lucide-react'
+import { useParams, useRouter } from 'next/navigation'
+import { ChevronLeftCircle,Loader2,Trash2 } from 'lucide-react'
 import MenuForm from '@/components/MenuForm'
+
+
 
 const EditMenuPage = () => {
 
     const {id} = useParams();
     const [menuItem, setMenuItem] = useState(null)
+    const router= useRouter()
     
     useEffect(() => {
     fetch('/api/menu').then(response=>{response.json().then(data=>{
@@ -54,21 +57,50 @@ const EditMenuPage = () => {
         
     }
 
-
+const handleDeleteItem = async () => {
+    const deletePromise = new Promise( async(resolve, reject) => {
+      const response = await fetch('/api/menu?_id='+id, {
+            method: 'DELETE',
+            body: JSON.stringify({_id:id}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if(response.ok) 
+        resolve()
+        else
+        reject()
+    })
+    await toast.promise(deletePromise, {
+        loading: 'Deleting Menu Item',
+        success: 'Menu Item Deleted',
+        error: 'Error Deleting Menu Item'
+    })
+    router.push('/menu')
+}
 
   return (
     <section className='mt-8 '>
     <Tabs isAdmin={true}/>
 
-<div className='flex gap-4 justify-between items-center mt-5 text-center max-w-xl mx-auto'>
-<Link href='/menu' className='text-red-500 flex text-center'>
-<ChevronLeftCircle />
-Back
-</Link>
-    <h2 className='text-3xl  font-bold text-center'>Add New Menu Item</h2>
+<div className='flex gap-32  items-center mt-5 text-center max-w-xl mx-auto'>
+        <Link href='/menu' className='bg-gray-500 hover:bg-red-600 text-white p-2 rounded-lg flex justify-start gap-2 text-center'>
+            <ChevronLeftCircle />
+            Back
+        </Link>
+    <h2 className='text-3xl font-bold text-center justify-center'>Menu Item</h2>
 </div>
 <MenuForm menuItem={menuItem} handleFormSubmit={handleFormSubmit} />
-   
+   <div className='max-w-xl text-center mx-auto mt-5'>
+    <button 
+    onClick={() => {
+        handleDeleteItem()
+    }}
+    className='bg-red-500 flex justify-center gap-2 hover:text-black w-full text-white px-4 py-2 rounded-full'>
+        <Trash2 />
+        Delete
+    </button>
+   </div>
 </section>
   )
 }

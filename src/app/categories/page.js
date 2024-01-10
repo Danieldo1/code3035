@@ -4,7 +4,8 @@ import Tabs from '@/components/Tabs'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useProfile } from '../../components/useProfile'
-import { Loader2 } from 'lucide-react'
+import { Loader2,Pencil,Trash2  } from 'lucide-react'
+
 
 const CategoriesPage = () => {
 const [categories, setCategories] = useState('')
@@ -59,7 +60,31 @@ const handleSubmit = async (e) => {
    })
     
 }
+const handleDelete = async (_id) => {
+    const deletePromise = new Promise( async(resolve, reject) => {
+     const response=   await fetch('/api/categories?_id='+_id, {
+           method: 'DELETE',
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({_id})
+           
+       })
+        if(response.ok){
+            resolve()
+        }else{
+            reject()
+        }
+    })
 
+    
+    await toast.promise(deletePromise, {
+        loading: 'Deleting Category',
+        success: 'Category Deleted',
+        error: 'Error Deleting Category'
+    })
+    fetchCategories()
+}
 
   return (
     <section className='mt-8 max-w-lg mx-auto'>
@@ -77,21 +102,33 @@ const handleSubmit = async (e) => {
                     <input type="text" value={categories} name="category" onChange={(e) => setCategories(e.target.value)} className='w-full p-2 border border-gray-300 rounded-md' placeholder='Category Name' />
                 </div>
 
-                <div>
-                    <button type='submit' className='bg-red-500 text-white px-4 py-2 rounded-full'> {editedCategories ? 'Update': 'Create'}</button>
-              
+                <div className='flex gap-2'>
+                    <button type='submit' className='bg-red-500 text-white px-4 py-2 rounded-full'> 
+                     {editedCategories ? 'Update': 'Create'}
+                    </button>
+                    <button type='button' 
+                    className='px-4 py-2 rounded-full bg-gray-200' 
+                    onClick={() => {setEditedCategories(null);setCategories('')}}>Cancel</button>
                 </div>
-
             </div>
-            
         </form>
 
             <div>
-                <h2 className='text-2xl font-bold'>Edit Category:</h2>
+                <h2 className='text-2xl mb-5 font-bold'>Existing Categories:</h2>
                 {createdCategories?.length >0 && createdCategories?.map(c => (
-                    <button key={c._id} onClick={() => {setEditedCategories(c);setCategories(c.name)}} className='bg-gray-200 w-full p-6 mb-4 rounded-lg flex gap-2 cursor-pointer' > 
-                        <p>{c.name}</p>
-                    </button>
+                    <div key={c._id}  className='bg-gray-200 border shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 ' > 
+                        <p className='font-bold'>{c.name}</p>
+                        <div className='flex gap-4'>
+                            <span onClick={() => {setEditedCategories(c);setCategories(c.name)}}>
+                                <Pencil className='cursor-pointer hover:text-blue-500' />
+                            </span>
+                            <span
+                            onClick={() => handleDelete(c._id)}
+                            >
+                                <Trash2 className='cursor-pointer hover:text-red-500' />
+                            </span>
+                        </div>
+                    </div>
                 ))}
             </div>
 

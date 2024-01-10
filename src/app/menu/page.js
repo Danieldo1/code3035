@@ -40,9 +40,11 @@ const MenuPage = () => {
               <div className='w-24 h-24 flex-col '>
                <Image src={item.image} alt={item.name} width={100} height={100} className='rounded-lg' />
               </div>
-              <h3 className='text-xl font-bold'>{item.name}</h3>
+              <div>
+                <h3 className='text-xl font-bold'>{item.name}</h3>
+                <p className='text-gray-500 line-clamp-1'>{item.description}</p>
+              </div>
             </div>
-              <p className='text-gray-500'>{item.description}</p>
             <div>
               <p className='text-xl font-semibold italic'>${item.price}</p>
             </div>
