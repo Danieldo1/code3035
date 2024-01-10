@@ -50,13 +50,12 @@ const NewMenuItem = () => {
     <section className='mt-8 '>
         <Tabs isAdmin={true}/>
 
-<div className='flex gap-4 justify-between items-center mt-5 text-center max-w-xl mx-auto'>
-    <Link href='/menu' className='text-red-500 flex text-center'>
-    <ChevronLeftCircle />
-    Back
-    </Link>
-        <h2 className='text-3xl  font-bold text-center'>Add New Menu Item</h2>
-
+<div className='flex gap-4 justify-start items-center mt-5 text-center max-w-xl mx-auto'>
+        <Link href='/menu' className='bg-gray-500 hover:bg-red-600 text-white p-2 rounded-lg flex justify-start gap-2 text-center'>
+            <ChevronLeftCircle />
+            Back
+        </Link>
+        <h2 className='text-3xl ml-32 font-bold text-center'>Add New Menu Item</h2>
 </div>
 
 <MenuForm handleFormSubmit={handleFormSubmit}menuItem={null} />

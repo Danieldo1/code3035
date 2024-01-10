@@ -1,5 +1,7 @@
 import { Schema, model,models } from "mongoose";
 
+import mongoose from "mongoose";
+
 const ExtraPriceSchema = new Schema({
     name:String,
     price:Number
@@ -18,6 +20,9 @@ const MenuSchema = new Schema({
     description: {
         type: String,
         required: true
+    },
+    category: {
+        type: mongoose.Types.ObjectId,
     },
     price: {
         type: Number,

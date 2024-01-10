@@ -12,11 +12,17 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
     const [price, setPrice] = useState(menuItem?.price || '')
     const [sizes, setSizes] = useState(menuItem?.sizes || [])
     const [extras, setExtras] = useState(menuItem?.extras || [])
+    const [selectedCategory, setSelectedCategory] = useState(menuItem?.category || '')
+    const [category, setCategory] = useState([])
 
-   
+   useEffect(() => {
+     fetch('/api/categories').then(response=>{response.json().then(data=>{
+       setCategory(data)
+     })})
+   },[])
   return (
     <form className='max-w-xl mx-auto mt-10' 
-    onSubmit={e=> handleFormSubmit(e, {image, name, description, price, _id:menuItem?._id, sizes, extras})}
+    onSubmit={e=> handleFormSubmit(e, {image, name, description, price, _id:menuItem?._id, sizes, extras, category:selectedCategory})}
     >
     <div className='flex gap-2 items-start'>
             <div className='w-1/2 text-center'>
@@ -35,6 +41,14 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
                 onChange={e =>setDescription(e.target.value) }
                 className='mb-5 w-full p-2 border border-gray-300 rounded-md ' placeholder='Description' />
             
+                <label>Category</label>
+                <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} className='mb-5 w-full p-2 border border-gray-300 rounded-md '>
+                  {category?.length >0 && category.map((c,i)=>(
+                    <option key={i} value={c._id}>{c.name}</option>
+                  )
+                  )}
+                </select>
+
                 <label >Price</label>
                 <input type="text" 
                 value={price}

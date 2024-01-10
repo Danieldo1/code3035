@@ -6,7 +6,7 @@ import {useProfile} from '@/components/useProfile'
 import ImageUpload from '@/components/ImageUpload'
 import { toast } from 'react-hot-toast'
 import Link from 'next/link'
-import { PlusCircle,Loader2 } from 'lucide-react'
+import { PlusCircle,Loader2,ImageOff } from 'lucide-react'
 import Image from 'next/image'
 
 const MenuPage = () => {
@@ -25,7 +25,7 @@ const MenuPage = () => {
     if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
 
   return (
-    <section className='mt-8 max-w-md mx-auto'>
+    <section className='mt-8 mb-5 max-w-md mx-auto'>
         <Tabs isAdmin={true}/>
         <div className='flex gap-4 justify-center items-center mt-5'>
             <Link href='/menu/new' className='bg-red-500 text-white flex gap-2 px-4 py-2 rounded-full'>Add Menu Item 
@@ -38,7 +38,11 @@ const MenuPage = () => {
           <Link href={`/menu/edit/${item._id}`} key={index} className='flex gap-4  justify-between items-center mt-5 border p-2 rounded-lg bg-slate-200 shadow-md'>
             <div className='flex justify-between items-center gap-5'>
               <div className='w-24 h-24 flex-col '>
-               <Image src={item.image} alt={item.name} width={100} height={100} className='rounded-lg' />
+                {item.image.length ===0 ? (
+                    <div className='w-full h-full flex justify-center items-center'>
+                      <ImageOff className='w-20 h-20' />
+                    </div>
+                ):  (<Image src={item.image} alt={item.name} width={100} height={100} className='rounded-lg' />)}
               </div>
               <div>
                 <h3 className='text-xl font-bold'>{item.name}</h3>

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useProfile } from '../../components/useProfile'
 import { Loader2,Pencil,Trash2  } from 'lucide-react'
+import DeleteButton from '@/components/DeleteButton'
 
 
 const CategoriesPage = () => {
@@ -93,13 +94,13 @@ const handleDelete = async (_id) => {
         <form className='max-w-sm mx-auto my-10' onSubmit={handleSubmit}>
             <div className='flex gap-2 items-end'>
                 <div>
-                    <label  > 
+                    <label className='text-lg font-bold mb-2 '  > 
                         {editedCategories ? 'Update Category': 'Create Category'}
                         {editedCategories && (
                             <>: <b>{editedCategories.name}</b></>
                         )}
                     </label>
-                    <input type="text" value={categories} name="category" onChange={(e) => setCategories(e.target.value)} className='w-full p-2 border border-gray-300 rounded-md' placeholder='Category Name' />
+                    <input type="text" value={categories} autoComplete='off' name="category" onChange={(e) => setCategories(e.target.value)} className='w-full p-2 border border-gray-300 rounded-md' placeholder='Category Name' />
                 </div>
 
                 <div className='flex gap-2'>
@@ -116,16 +117,15 @@ const handleDelete = async (_id) => {
             <div>
                 <h2 className='text-2xl mb-5 font-bold'>Existing Categories:</h2>
                 {createdCategories?.length >0 && createdCategories?.map(c => (
-                    <div key={c._id}  className='bg-gray-200 border shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 ' > 
+                    <div key={c._id}  className='bg-gray-200 border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 ' > 
                         <p className='font-bold'>{c.name}</p>
-                        <div className='flex gap-4'>
+                        <div className='flex gap-4 justify-center items-center'>
                             <span onClick={() => {setEditedCategories(c);setCategories(c.name)}}>
                                 <Pencil className='cursor-pointer hover:text-blue-500' />
                             </span>
-                            <span
-                            onClick={() => handleDelete(c._id)}
-                            >
-                                <Trash2 className='cursor-pointer hover:text-red-500' />
+                            <span className=''>
+                                <DeleteButton label={''} onDelete={() => handleDelete(c._id)} />
+
                             </span>
                         </div>
                     </div>

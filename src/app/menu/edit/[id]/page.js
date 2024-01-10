@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import { ChevronLeftCircle,Loader2,Trash2 } from 'lucide-react'
 import MenuForm from '@/components/MenuForm'
+import DeleteButton from '@/components/DeleteButton'
 
 
 
@@ -92,14 +93,7 @@ const handleDeleteItem = async () => {
 </div>
 <MenuForm menuItem={menuItem} handleFormSubmit={handleFormSubmit} />
    <div className='max-w-xl text-center mx-auto mt-5'>
-    <button 
-    onClick={() => {
-        handleDeleteItem()
-    }}
-    className='bg-red-500 flex justify-center gap-2 hover:text-black w-full text-white px-4 py-2 rounded-full'>
-        <Trash2 />
-        Delete
-    </button>
+        <DeleteButton label={'Delete Menu Item'} onDelete={handleDeleteItem} />
    </div>
 </section>
   )
