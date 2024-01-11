@@ -39,12 +39,10 @@ const Header = () => {
             <Link href={'/'} className='font-bold text-3xl mb-4 active:text-green-300 hover:text-green-300 delay-150 duration-300 '>
               Home
             </Link>
-            <Link href={'/menu-page'} className='font-bold text-3xl mb-4 active:text-green-300 hover:text-green-300 delay-150 duration-300'>
-             Beverages Menu
+            <Link href={'/choose-menu'} className='font-bold text-3xl mb-4 active:text-green-300 hover:text-green-300 delay-150 duration-300'>
+             Menu
             </Link>
-            <Link href={'/shisha-page'} className='font-bold text-3xl mb-4 active:text-green-300 hover:text-green-300 delay-150 duration-300'>
-            Hookah  Menu
-            </Link>
+          
             {/* <Link href={''} className='font-bold text-3xl mb-4 active:text-green-300 hover:text-green-300 delay-150 duration-300'>
               Rent
             </Link> */}

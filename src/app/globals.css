@@ -2,3 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .category-section {
+    scroll-margin-top: 120px; /* Adjust this value to be the height of your fixed navbar plus some extra space */
+  }
+
+  .active-border {
+    position: absolute;
+    bottom: 0px;
+    height: 4px;
+    background-color: rgb(25, 25, 25);
+    width: 100%;
+    border-radius: 8px 8px 0px 0px;
+    
+  }

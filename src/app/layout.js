@@ -14,17 +14,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='h-full scroll-smooth'>
-      <body className={rubik.className +'flex flex-col h-full bg-[#1B1918] text-white'} >
-     <AppProvider>
-      <Toaster />
-        <Header/>
-        <main className='flex flex-col flex-1 max-w-6xl h-full mx-auto px-4 '>
-            {children}
+    <html lang="en" className='h-full scroll-smooth' suppressHydrationWarning={true}>
+    <body className={`flex flex-col min-h-screen bg-[#1B1918] text-white ${rubik.className}`}>
+      <AppProvider>
+        <Toaster />
+        <Header />
+        <main className='flex-1 w-full max-w-6xl mx-auto px-4'>
+          {children}
         </main>
-     </AppProvider>
-          <Footer />
-        </body>
-    </html>
+        <Footer />
+      </AppProvider>
+    </body>
+  </html>
   )
 }

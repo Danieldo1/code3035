@@ -42,6 +42,7 @@ const MenuItemsProp = ({props, setProps,name,buttonLabel}) => {
                                         return [...oldSizes]
                                     })
                                 }}
+                                required
                                 className='w-full p-2 border border-gray-300 rounded-md ' placeholder='Size' />
                             </div>
                             <div>
