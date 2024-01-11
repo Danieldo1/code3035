@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import ImageUpload from '@/components/ImageUpload'
 import MenuItemsProp from './MenuItemsProp'
 import { CheckCheck  } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 const MenuForm = ({handleFormSubmit,menuItem}) => {
     const [image, setImage] = useState(menuItem?.image || '')
@@ -14,12 +15,32 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
     const [extras, setExtras] = useState(menuItem?.extras || [])
     const [selectedCategory, setSelectedCategory] = useState(menuItem?.category || '')
     const [category, setCategory] = useState([])
+    const path = usePathname()
 
    useEffect(() => {
-     fetch('/api/categories').then(response=>{response.json().then(data=>{
-       setCategory(data)
-     })})
-   },[])
+   
+    let url = ''
+    // Determine which URL to use based on the path
+    if (/menu/.test(path)) {
+      url = '/api/categories';
+    } else if (/shisha/.test(path)) {
+      url = '/api/smoke-categories';
+    }
+  
+    // Only proceed if a URL has been set
+    if (url) {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          setCategory(data);
+        })
+        .catch(error => {
+          console.error('Error fetching data: ', error);
+        });
+    }
+  }, []);
+
+
   return (
     <form className='max-w-xl mx-auto mt-10' 
     onSubmit={e=> handleFormSubmit(e, {image, name, description, price, _id:menuItem?._id, sizes, extras, category:selectedCategory})}
