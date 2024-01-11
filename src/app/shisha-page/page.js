@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Loader2 } from 'lucide-react'
-const MenuPageMain = () => {
+
+const ShishaMainPage = () => {
     const [categories, setCategories] = useState([])
     const [menu, setMenu] = useState([])
     const [open, setOpen] = useState(false)
@@ -12,11 +13,11 @@ const MenuPageMain = () => {
 
     useEffect(() => {
         setLoading(true)
-        fetch('/api/categories').then(response=>{response.json().then(data=>{
+        fetch('/api/smoke-categories').then(response=>{response.json().then(data=>{
             setCategories(data)
         })
     })
-        fetch('/api/menu').then(response=>{response.json().then(data=>{
+        fetch('/api/smoke-menu').then(response=>{response.json().then(data=>{
             setMenu(data)
         })
     })
@@ -28,8 +29,8 @@ const MenuPageMain = () => {
     }
 
   return (
-    <section>
-    <h1 className='text-3xl font-bold text-center'>Beverages Menu</h1>
+      <section>
+    <h1 className='text-3xl font-bold text-center'>Hookah Menu</h1>
 
     {loading ? (
     
@@ -100,4 +101,4 @@ const MenuPageMain = () => {
   )
 }
 
-export default MenuPageMain
+export default ShishaMainPage

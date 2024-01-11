@@ -16,13 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className='h-full scroll-smooth'>
       <body className={rubik.className +'flex flex-col h-full bg-[#1B1918] text-white'} >
-        <main className='flex flex-col flex-1 max-w-6xl h-full mx-auto px-4 '>
      <AppProvider>
       <Toaster />
         <Header/>
+        <main className='flex flex-col flex-1 max-w-6xl h-full mx-auto px-4 '>
             {children}
-     </AppProvider>
         </main>
+     </AppProvider>
           <Footer />
         </body>
     </html>
