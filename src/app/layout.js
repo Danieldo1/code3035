@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='h-full scroll-smooth' suppressHydrationWarning={true}>
+    <html lang="en" className='h-full '  suppressHydrationWarning={true}>
     <body className={`flex flex-col min-h-screen bg-[#1B1918] text-white ${rubik.className}`}>
       <AppProvider>
         <Toaster />

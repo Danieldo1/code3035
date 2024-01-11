@@ -12,7 +12,7 @@ const MenuPageMain = () => {
     const [activeCategory, setActiveCategory] = useState(null);
 
     useEffect(() => {
-        setLoading(true)
+       loading 
         fetch('/api/categories').then(response=>{response.json().then(data=>{
             setCategories(data)
         })
@@ -24,10 +24,12 @@ const MenuPageMain = () => {
     setLoading(false)
     },[])
 
-  
+    const handleCategoryClick = (categoryId) => {
+      setActiveCategory(categoryId);
+    };
   return (
-    <section>
-    <h1 className='text-3xl font-bold text-center'>Beverages Menu</h1>
+    <section className='mt-10' >
+    <h1 className='text-5xl font-black tracking-wider text-center'>Beverages Menu</h1>
 
     {loading ? (
     
@@ -35,21 +37,24 @@ const MenuPageMain = () => {
     
     ):(
         <>
-           {categories.length > 0 && (
-                <div className='flex flex-row flex-wrap sticky top-[50px] z-20 bg-[#1B1918]' >
-                    {categories.map(c => (
-                    <div key={c._id} className='mt-10 mx-4'>
-                        <Link href={`#${c.name}`} scroll={true} >
-                        <button>
-                            <h2 >
-                            {c.name}
-                            </h2>
-                        </button>
-                        </Link>
-                    </div>
-                    ))}
-                </div>
-                )}
+          {categories.length > 0 && (
+  <div className='flex flex-row flex-wrap sticky top-[50px] z-20 bg-[#1B1918]'>
+    {categories.map((c) => (
+      <div key={c._id} className='mt-10 mx-4'>
+        <Link href={`#${c.name}`} scroll={true}>
+          <button onClick={() => setActiveCategory(c._id)}>
+            <h2 
+                  className={`${activeCategory === c._id ? 'underline text-green-300 decoration-wavy decoration-green-300 underline-offset-4 duration-500 transition delay-200' : ''}`}
+                  onClick={() => handleCategoryClick(c._id)}            
+            >
+              {c.name}
+            </h2>
+          </button>
+        </Link>
+      </div>
+    ))}
+  </div>
+)}
      
 
         {categories.length > 0 && (

@@ -1,20 +1,61 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
+import { Fade } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+
 
 const Hero = () => {
+
+  const fadeImages = [
+    {
+      url: '/shisha.webp',
+    },
+    {
+      url: '/bar.webp'
+    },
+  
+  ];
+
+
   return (
-    <section className='grid'>
-        <div>
-            <h1 className='text-5xl font-bold '>Experience new level of <br />Lounge Bar</h1>
-            <p className='text-lg my-4 text-gray-500'>Start your journey with us</p>
-            <div className='flex gap-4'>
-                <button className='bg-red-500 text-white px-4 py-2 rounded-full'>Get Started</button>
-                <button className='bg-red-500 text-white px-4 py-2 rounded-full'>Learn More</button>
-            </div>
+    <section className='mt-10'>
+ <div className="relative h-[300px] px-10">
+     
+      <div className='flex flex-col justify-center pt-20 items-center '>
+        <h1 className='text-3xl md:text-5xl font-bold '>Experience new level of <br />Lounge Bar</h1>
+        <p className='text-xl md:text-2xl my-4 text-gray-100'>Start your journey with us</p>
+        <div className='flex gap-4'>
+          <button className='bg-green-300 text-gray-900 font-bold px-4 py-2 rounded-full'>Get Started</button>
+          <button className='bg-green-300 text-gray-900 font-bold px-4 py-2 rounded-full'>Learn More</button>
         </div>
-          <div className='relative hidden md:block'>
-              <Image src="/logo1.webp" alt="hero image" width={400} height={400}/>
-          </div>
+      </div>
+
+      <div className="absolute inset-0 z-[-1] h-[350px] opacity-30 rounded-lg overflow-hidden">
+      <Fade>
+        {fadeImages.map((fadeImage, index) => (
+            <img  key={index} style={{ borderRadius: '0.5rem', objectFit: 'cover', objectPosition: 'center',}}  src={fadeImage.url}  />
+        ))}
+      </Fade>
+         </div>
+        {/* <div className="absolute inset-0 z-[-1] h-[350px] opacity-50 rounded-lg">
+          <Image
+            src="/shisha.webp" 
+            fill  
+            layout="fill"
+             objectFit="cover"
+              objectPosition="center"          
+            alt="Lounge Bar"
+            priority 
+            className='rounded-lg '
+          />
+        </div> */}
+     
+
+
+
+    </div>
     </section>
   )
 }

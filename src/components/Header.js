@@ -43,6 +43,10 @@ const Header = () => {
              Menu
             </Link>
           
+            <Link href={'/contact'} className='font-bold text-3xl mb-4 active:text-green-300 hover:text-green-300 delay-150 duration-300'>
+             Contact
+            </Link>
+          
             {/* <Link href={''} className='font-bold text-3xl mb-4 active:text-green-300 hover:text-green-300 delay-150 duration-300'>
               Rent
             </Link> */}
@@ -76,9 +80,8 @@ const Header = () => {
             <nav className='flex gap-4 md:gap-12 font-semibold items-center'>
               <Link href={'/'} className='font-bold text-xl  active:text-green-300 hover:text-green-300 delay-150 duration-300 '>Home</Link>
               <Link href={'/menu-page'} className='font-bold text-xl  active:text-green-300 hover:text-green-300 delay-150 duration-300'>Beverages Menu</Link>
-              <Link href={'/shisha-page'} className='font-bold text-xl  active:text-green-300 hover:text-green-300 delay-150 duration-300'>
-            Hookah  Menu
-            </Link>
+              <Link href={'/shisha-page'} className='font-bold text-xl  active:text-green-300 hover:text-green-300 delay-150 duration-300'> Hookah  Menu</Link>
+              <Link href={'/contact'} className='font-bold text-xl active:text-green-300 hover:text-green-300 delay-150 duration-300'>Contact</Link>
               {/* <Link href={''}>Rent</Link> */}
 
               {status === 'authenticated' && (
