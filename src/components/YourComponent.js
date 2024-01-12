@@ -29,8 +29,8 @@ const YourComponent = ({ categories,handleCategoryClick }) => {
 
       <div className='h-full overflow-y-auto mt-36 w-full justify-evenly'>
         {categories.map((c) => (
-            <Link href={`#${c.name}`} scroll={true} className='w-full justify-center items-center flex px-8  '>
-          <div key={c._id} className='w-full  hover:bg-gray-900 py-2 rounded-lg pl-8' onClick={() => {setActiveCategory(c._id); handleCategoryClick(c._id); togglePopup();}}>
+            <Link href={`#${c.name}`} scroll={true} key={c._id}  className='w-full justify-center items-center flex px-8  '>
+          <div className='w-full  hover:bg-gray-900 py-2 rounded-lg pl-8' onClick={() => {setActiveCategory(c._id); handleCategoryClick(c._id); togglePopup();}}>
               <button >
                 <h2 
                   className={`text-left uppercase  ${
