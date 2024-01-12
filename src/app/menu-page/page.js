@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Loader2,BetweenHorizontalStart } from 'lucide-react'
 import Link from 'next/link'
+import YourComponent from '@/components/YourComponent'
 
 
 const MenuPageMain = () => {
@@ -65,11 +66,14 @@ const MenuPageMain = () => {
 
    {categories.length > 0 && (
     <>
-      <div className='z-50 bg-[#1B1918] sticky top-[90px]'>
-      <BetweenHorizontalStart className='absolute left-0 ' />
+      {/* <div className='z-50 w-7 h-6  bg-[#1B1918] sticky top-[90px]'>
+      <BetweenHorizontalStart className='absolute  left-0 ' />
+    </div> */}
+    <div className='sticky top-[30px]  z-30'>
+      <YourComponent categories={categories} handleCategoryClick={handleCategoryClick} />
     </div>
-     <div className='flex pl-5 flex-row snap-mandatory snap-x flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
 
+     <div className='flex pl-5 overflow-hidden flex-row snap-mandatory snap-x flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
     {categories.map((c) => (
       <>
       <div key={c._id} className='pt-10 mx-4 ml-5   whitespace-nowrap '>

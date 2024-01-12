@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <header
-     className='flex justify-between items-center pt-4 px-4  fixed top-0 bg-[#1B1918] w-full z-50'
+     className='flex justify-between items-center pt-4 px-4  fixed top-0 bg-[#1B1918] w-full z-40'
     >
       <Link className='text-3xl font-bold' href="/">
         <Image src={'/logo1.webp'} alt="logo" width={150} height={200} />
