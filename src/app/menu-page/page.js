@@ -24,48 +24,71 @@ const MenuPageMain = () => {
     setLoading(false)
     },[])
 
+    useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, [categories]);
+  
+
+    const handleScroll = () => {
+      let currentCategory = null;
+      categories.forEach((c) => {
+        // Assuming you have a ref for your section
+        const section = document.getElementById(c.name);
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop + 110 < window.scrollY) {
+          currentCategory = c._id;
+        }
+      });
+      setActiveCategory(currentCategory);
+    };
+
+
     const handleCategoryClick = (categoryId) => {
       setActiveCategory(categoryId);
     };
+
+
   return (
     <section className='mt-10' >
     <h1 className='text-5xl font-black tracking-wider text-center'>Beverages Menu</h1>
-
+    <p className='text-lg text-gray-300 text-center px-5 mt-2'>Elevate your taste buds with our eclectic mix of classic and contemporary drinks. Each sip promises a blend of quality and creativity, perfect for any occasion.</p>
     {loading ? (
     
     <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
     
     ):(
         <>
-          {categories.length > 0 && (
-  <div className='flex flex-row flex-wrap sticky top-[50px] z-20 bg-[#1B1918]'>
-    {categories.map((c) => (
-      <div key={c._id} className='mt-10 mx-4'>
-        <Link href={`#${c.name}`} scroll={true}>
-          <button onClick={() => setActiveCategory(c._id)}>
-            <h2 
-                  className={`${activeCategory === c._id ? 'underline text-green-300 decoration-wavy decoration-green-300 underline-offset-4 duration-500 transition delay-200' : ''}`}
-                  onClick={() => handleCategoryClick(c._id)}            
-            >
-              {c.name}
-            </h2>
-          </button>
-        </Link>
-      </div>
-    ))}
-  </div>
-)}
+      {categories.length > 0 && (
+        <div className='flex flex-row flex-wrap sticky top-[50px] z-20 bg-[#1B1918]'>
+          {categories.map((c) => (
+            <div key={c._id} className='mt-10 mx-4 '>
+              <a href={`#${c.name}`} onClick={() => setActiveCategory(c._id)}>
+                <h2
+                  className={` ${
+                    activeCategory === c._id
+                      ? 'underline font-bold text-green-300 decoration-solid decoration-green-300 underline-offset-4 duration-500 transition delay-200'
+                      : ''
+                  }`}
+                >
+                  {c.name}
+                </h2>
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
      
 
         {categories.length > 0 && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
-          <div key={c._id} className='mt-10 mx-4'>
-          <button id={c.name}  className='items-center justify-center text-center mb-10 w-full category-section'>
-            <h2 className='text-center font-bold text-3xl '>
-              {c.name}
-            </h2>
-          </button>
+          <div  key={c._id} className='mt-10 mx-4'>
+         <div id={c.name} className='mx-4 category-section'>
+              <h2  className='text-center font-bold text-3xl'>{c.name}</h2>
+            </div>
           
                 <div className='flex flex-row flex-wrap flex-1  justify-stretch w-full '>
                     {menu.filter(item => item.category === c._id).map((item) => (

@@ -10,6 +10,7 @@ const Header = () => {
   const session=useSession()
   const status=session.status
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -28,9 +29,9 @@ const Header = () => {
         
         <div className='fixed top-0 left-0 pt-36 w-full h-full  bg-[#1B1918] text-center flex flex-col items-center z-50'>
           <button className='md:hidden ' onClick={toggleMenu}>
-            <X className='w-10 h-10 top-[30px] fixed  right-[30px] active:text-green-300 hover:text-green-300 delay-150 duration-300 '  />
+            <X className='w-10 h-10 top-[22px] fixed  right-[17px] active:text-green-300 hover:text-green-300 delay-150 duration-300 '  />
           </button>
-            <Link className='text-3xl font-bold fixed top-[15px] left-[28px]' href="/">
+            <Link className='text-3xl font-bold fixed top-[15px] left-[18px]' href="/">
               <Image src={'/logo1.webp'} alt="logo" width={150} height={200} />
             </Link>
 
