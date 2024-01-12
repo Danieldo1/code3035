@@ -25,7 +25,7 @@ const ShishaMenu = () => {
 
 
   return (
-    <section className='mt-8 mb-5 max-w-md mx-auto'>
+    <section className='mt-20 mb-5 max-w-md mx-auto'>
     <Tabs isAdmin={true}/>
     <div className='flex gap-4 justify-center items-center mt-5'>
         <Link href='/shisha/new' className='bg-red-500 text-white flex gap-2 px-4 py-2 rounded-full'>Add Menu Item 

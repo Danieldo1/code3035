@@ -86,7 +86,7 @@ const handleDelete = async (_id) => {
 }
 
   return (
-    <section className='mt-8 max-w-lg mx-auto'>
+    <section className='mt-20 max-w-lg mx-auto'>
         <Tabs isAdmin={true}/>
 
         <h2 className='text-3xl font-bold text-center mt-2'>Categories</h2>

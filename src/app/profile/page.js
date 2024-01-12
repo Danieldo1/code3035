@@ -64,7 +64,7 @@ if(status === 'authenticated'){
 
    
   return (
-    <section className='mt-4'>
+    <section className='mt-20'>
 
     <Tabs isAdmin={isAdmin} />
         <h1 className='text-3xl font-bold text-center mt-2'>Profile</h1>

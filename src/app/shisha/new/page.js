@@ -40,7 +40,7 @@ const NewShisha = () => {
 
     }
   return (
-    <section className='mt-8 '>
+    <section className='mt-20 '>
     <Tabs isAdmin={true}/>
 
 <div className='flex gap-4 justify-start items-center mt-5 text-center max-w-xl mx-auto'>
