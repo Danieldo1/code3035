@@ -73,7 +73,7 @@ const MenuPageMain = () => {
       <YourComponent categories={categories} handleCategoryClick={handleCategoryClick} />
     </div>
 
-     <div className='flex pl-5 overflow-hidden flex-row snap-mandatory snap-x flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
+     <div className='flex pl-5 overflow-hidden flex-row snap-x flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
     {categories.map((c) => (
       <>
       <div key={c._id} className='pt-10 mx-4 ml-5   whitespace-nowrap '>
