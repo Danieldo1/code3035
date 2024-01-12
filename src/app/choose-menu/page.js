@@ -4,7 +4,7 @@ import MenuPhotos from '@/components/MenuPhotos'
 
 const ChooseMenu = () => {
   return (
-    <section className='h-full mt-20 m-5 md:flex md:items-baseline md:gap-5'>
+    <section className='h-full  flex flex-col items-center justify-center md:flex md:items-baseline md:gap-5'>
         <MenuPhotos />
     </section>
   )
