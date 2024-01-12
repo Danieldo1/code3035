@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Loader2 } from 'lucide-react'
+import { Loader2,BetweenHorizontalStart } from 'lucide-react'
 import Link from 'next/link'
 
 
@@ -62,17 +62,24 @@ const MenuPageMain = () => {
     
     ):(
         <>
+
    {categories.length > 0 && (
-  <div className='flex flex-row snap-mandatory snap-x flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
+    <>
+      <div className='z-50 bg-[#1B1918] sticky top-[90px]'>
+      <BetweenHorizontalStart className='absolute left-0 ' />
+    </div>
+     <div className='flex pl-5 flex-row snap-mandatory snap-x flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
+
     {categories.map((c) => (
-      <div key={c._id} className='pt-10 mx-4 whitespace-nowrap'>
+      <>
+      <div key={c._id} className='pt-10 mx-4 ml-5   whitespace-nowrap '>
         <Link href={`#${c.name}`} scroll={true}>
           <button onClick={() => {setActiveCategory(c._id); handleCategoryClick(c._id)}}>
             <h2 
               className={`${
                 activeCategory === c._id
-                  ? 'underline snap-center font-bold text-green-300 decoration-solid decoration-green-300 underline-offset-4 duration-500 transition delay-200'
-                  : ''
+                ? 'underline snap-center  font-bold text-green-300 decoration-solid decoration-green-300 underline-offset-4 duration-500 transition delay-200'
+                : ''
               }`}
             >
               {c.name}
@@ -80,8 +87,12 @@ const MenuPageMain = () => {
           </button>
         </Link>
       </div>
+      
+      </>
     ))}
+   
   </div>
+  </>
 )}
      
 
