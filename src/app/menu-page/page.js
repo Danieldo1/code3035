@@ -65,8 +65,8 @@ const MenuPageMain = () => {
       {categories.length > 0 && (
         <div className='flex flex-row flex-wrap sticky top-[50px] z-20 bg-[#1B1918]'>
           {categories.map((c) => (
-            <div key={c._id} className='mt-10 mx-4 '>
-              <a href={`#${c.name}`} onClick={() => setActiveCategory(c._id)}>
+            <div key={c._id} className='mt-10 mx-4 ' >
+              <Link href={`#${c.name}`} onClick={() => {setActiveCategory(c._id)}}>
                 <h2
                   className={` ${
                     activeCategory === c._id
@@ -76,7 +76,7 @@ const MenuPageMain = () => {
                 >
                   {c.name}
                 </h2>
-              </a>
+              </Link>
             </div>
           ))}
         </div>
