@@ -12,7 +12,6 @@ const ShishaMainPage = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        loading
         fetch('/api/smoke-categories').then(response=>{response.json().then(data=>{
             setCategories(data)
         })
@@ -20,11 +19,24 @@ const ShishaMainPage = () => {
         fetch('/api/smoke-menu').then(response=>{response.json().then(data=>{
             setMenu(data)
         })
+        setLoading(false)
     })
-    setLoading(false)
-    },[])
+    },[loading])
 
+    
     useEffect(() => {
+      const handleScroll = () => {
+          let currentCategory = null;
+          categories.forEach((c) => {
+            // Assuming you have a ref for your section
+            const section = document.getElementById(c.name);
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop + 110 < window.scrollY) {
+              currentCategory = c._id;
+            }
+          });
+          setActiveCategory(currentCategory);
+        };
         window.addEventListener('scroll', handleScroll);
         return () => {
           window.removeEventListener('scroll', handleScroll);
@@ -32,18 +44,7 @@ const ShishaMainPage = () => {
       }, [categories]);
     
   
-      const handleScroll = () => {
-        let currentCategory = null;
-        categories.forEach((c) => {
-          // Assuming you have a ref for your section
-          const section = document.getElementById(c.name);
-          const sectionTop = section.getBoundingClientRect().top;
-          if (sectionTop + 110 < window.scrollY) {
-            currentCategory = c._id;
-          }
-        });
-        setActiveCategory(currentCategory);
-      };
+   
     const handleCategoryClick = (categoryId) => {
         setActiveCategory(categoryId);
       };

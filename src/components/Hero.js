@@ -35,7 +35,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-[-1] h-[350px] opacity-30 rounded-lg overflow-hidden">
       <Fade>
         {fadeImages.map((fadeImage, index) => (
-            <img  key={index} style={{ borderRadius: '0.5rem', objectFit: 'cover', objectPosition: 'center',}}  src={fadeImage.url}  />
+            <img  key={index} alt='Background Hero' style={{ borderRadius: '0.5rem', objectFit: 'cover', objectPosition: 'center',}}  src={fadeImage.url}  />
         ))}
       </Fade>
          </div>

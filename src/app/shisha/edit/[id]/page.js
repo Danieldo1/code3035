@@ -24,7 +24,7 @@ const ShishaEditId = () => {
         setMenuItem(items)
         })
      })
-    }, [])
+    }, [id])
 
     const {loading,isAdmin} = useProfile()
 

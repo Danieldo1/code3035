@@ -26,7 +26,7 @@ const EditMenuPage = () => {
         setMenuItem(items)
         })
      })
-    }, [])
+    }, [id])
     
     
     const {loading,isAdmin} = useProfile()

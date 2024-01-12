@@ -12,7 +12,6 @@ const MenuPageMain = () => {
     const [activeCategory, setActiveCategory] = useState(null);
 
     useEffect(() => {
-       loading 
         fetch('/api/categories').then(response=>{response.json().then(data=>{
             setCategories(data)
         })
@@ -20,30 +19,32 @@ const MenuPageMain = () => {
         fetch('/api/menu').then(response=>{response.json().then(data=>{
             setMenu(data)
         })
+        setLoading(false)
     })
-    setLoading(false)
-    },[])
+    },[loading])
+
 
     useEffect(() => {
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, [categories]);
+      const handleScroll = () => {
+          let currentCategory = null;
+          categories.forEach((c) => {
+            // Assuming you have a ref for your section
+            const section = document.getElementById(c.name);
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop + 110 < window.scrollY) {
+              currentCategory = c._id;
+            }
+          });
+          setActiveCategory(currentCategory);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, [categories]);
   
 
-    const handleScroll = () => {
-      let currentCategory = null;
-      categories.forEach((c) => {
-        // Assuming you have a ref for your section
-        const section = document.getElementById(c.name);
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop + 110 < window.scrollY) {
-          currentCategory = c._id;
-        }
-      });
-      setActiveCategory(currentCategory);
-    };
+    
 
 
     const handleCategoryClick = (categoryId) => {

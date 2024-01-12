@@ -38,7 +38,7 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
           console.error('Error fetching data: ', error);
         });
     }
-  }, []);
+  }, [path]);
 
 
   return (
