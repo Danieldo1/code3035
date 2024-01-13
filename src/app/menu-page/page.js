@@ -139,7 +139,7 @@ const MenuPageMain = () => {
       {categories.map(c => (
           <div id={c.name}  key={c._id} className='pt-10 mx-4'>
          <button className='items-center justify-center text-center pb-5 w-full '>
-              <h2   className='text-center  font-bold text-2xl'>{c.name}</h2>
+              <h2   className='text-center  font-bold text-xl'>{c.name}</h2>
             </button>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                     {menu.filter(item => item.category === c._id && item.available===true).map((item) => (
@@ -148,24 +148,24 @@ const MenuPageMain = () => {
                             <div className='flex justify-between items-center gap-5'>
                                 <div className=''>
                                     {/* <p>{item.available === true ? "Available" : "Not Available"}</p> */}
-                                    <h3 className='text-xl font-bold'>{item.name}</h3>
+                                    <h3 className='text-lg font-bold'>{item.name}</h3>
     
-                                    <p className='text-md text-gray-400'>{item.description}</p>
+                                    <p className='text-sm text-gray-400'>{item.description}</p>
                                     { item.sizes.map((size) => (
-                                        <p key={size._id} className='text-sm text-gray-400'> - {size.name}</p>
+                                        <p key={size._id} className='text-xs text-gray-400'> - {size.name}</p>
                                         ))}
                                     {item.extras.map((extra) => (
-                                        <p className='text-sm  text-gray-500 capitalize' key={extra._id}>{extra.name}</p>
+                                        <p className='text-xs  text-gray-500 capitalize' key={extra._id}>{extra.name}</p>
                                         ))}
                                 </div>
                             </div>
                             <div className='text-center'>
-                                <p className='text-xl font-bold '>{item.price}</p>
+                                <p className='text-lg font-bold '>{item.price}</p>
                                     {item.sizes.map((size) => (
-                                        <p className='text-sm mt-4 text-gray-500 ' key={size._id}>{size.price + item.price}€</p>
+                                        <p className='text-xs mt-4 text-gray-500 ' key={size._id}>{size.price + item.price}€</p>
                                         ))}
                                         {item.extras.map((extra) => (
-                                        <p className='text-sm mt-1 text-gray-500 capitalize' key={extra._id}>+ {extra.price}</p>
+                                        <p className='text-xs mt-1 text-gray-500 capitalize' key={extra._id}>+ {extra.price}</p>
                                         ))}
                             </div>
                         </div>
