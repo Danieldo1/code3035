@@ -141,14 +141,15 @@ const MenuPageMain = () => {
          <button className='items-center justify-center text-center pb-5 w-full '>
               <h2   className='text-center  font-bold text-2xl'>{c.name}</h2>
             </button>
-          
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
-                    {menu.filter(item => item.category === c._id).map((item) => (
-                        <>
+                    {menu.filter(item => item.category === c._id && item.available===true).map((item) => (
+                      <>
                         <div key={item._id} className='flex snap-center justify-between w-full  items-center gap-2   bg-[#1B1918]'>
                             <div className='flex justify-between items-center gap-5'>
                                 <div className=''>
+                                    {/* <p>{item.available === true ? "Available" : "Not Available"}</p> */}
                                     <h3 className='text-xl font-bold'>{item.name}</h3>
+    
                                     <p className='text-md text-gray-400'>{item.description}</p>
                                     { item.sizes.map((size) => (
                                         <p key={size._id} className='text-sm text-gray-400'> - {size.name}</p>

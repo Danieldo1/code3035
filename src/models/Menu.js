@@ -34,6 +34,10 @@ const MenuSchema = new Schema({
     extras: {
         type: [ExtraPriceSchema]
     },
+    available: {
+        type: Boolean,
+        default: true
+    }
 
 
 },{timestamps: true})

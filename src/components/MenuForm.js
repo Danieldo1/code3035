@@ -14,6 +14,7 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
     const [sizes, setSizes] = useState(menuItem?.sizes || [])
     const [extras, setExtras] = useState(menuItem?.extras || [])
     const [selectedCategory, setSelectedCategory] = useState(menuItem?.category || '')
+    const [available, setAvailable] = useState(menuItem?.available || null)
     const [category, setCategory] = useState([])
     const path = usePathname()
 
@@ -43,7 +44,7 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
 
   return (
     <form className='max-w-xl mx-auto mt-10' 
-    onSubmit={e=> handleFormSubmit(e, {image, name, description, price, _id:menuItem?._id, sizes, extras, category:selectedCategory})}
+    onSubmit={e=> handleFormSubmit(e, {image, name, description, price, _id:menuItem?._id, sizes, extras, category:selectedCategory, available})}
     >
     <div className='flex gap-2 items-start'>
             <div className='w-1/2 text-center'>
@@ -76,6 +77,16 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
                 onChange={e =>setPrice(e.target.value) }
                 className='mb-5 w-full p-2 border border-gray-300 text-black rounded-md ' placeholder='Price' />
 
+                  <div className='flex mb-5 gap-2'>
+                  <label>Available</label>
+                  <input type='checkbox' 
+                  onChange={e =>setAvailable(e.target.checked) }
+                  className=''
+                  value={available}
+                  checked={available}
+                  />
+
+                  </div>
                 <MenuItemsProp props={sizes} setProps={setSizes} name={'Sizes'} buttonLabel={'Add Size'} />
 
                 <MenuItemsProp props={extras} setProps={setExtras} name={'Extras'} buttonLabel={'Add Extra'} />
