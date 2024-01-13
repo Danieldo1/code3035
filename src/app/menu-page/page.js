@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { Loader2,BetweenHorizontalStart } from 'lucide-react'
 import Link from 'next/link'
 import YourComponent from '@/components/YourComponent'
+import { motion } from 'framer-motion';
+import StaggeredText from '@/components/StaggeredText'
 
 
 const MenuPageMain = () => {
@@ -52,23 +54,55 @@ const MenuPageMain = () => {
       setActiveCategory(categoryId);
     };
 
-
+    const text = "Beverages Menu";
+    const textSmall = "Elevate your taste buds with our eclectic mix of classic and contemporary drinks. Each sip promises a blend of quality and creativity, perfect for any occasion.";
+    
+    const letters = Array.from(text);
+  
+    // Define the initial and animate properties for each letter
+    const letterVariants = {
+      initial: { y: 20, opacity: 0 },
+      animate: i => ({
+        y: 0,
+        opacity: 1,
+        transition: {
+          delay: i * 0.05, 
+          ease: "easeOut"
+        },
+      }),
+    };
   return (
+
+    // Text up
     <section className='mt-20' >
-    <h1 className='text-5xl font-black tracking-wider text-center'>Beverages Menu</h1>
-    <p className='text-lg text-gray-300 text-center px-5 mt-2'>Elevate your taste buds with our eclectic mix of classic and contemporary drinks. Each sip promises a blend of quality and creativity, perfect for any occasion.</p>
+  <h1 className='text-4xl font-black tracking-wider text-center'>
+      {text.split("").map((letter, index) => (
+        <motion.span
+          key={index}
+          variants={letterVariants}
+          initial="initial"
+          animate="animate"
+          custom={index}
+          style={{ display: 'inline-block' }} 
+        >
+          {letter === " " ? "\u00A0" : letter}
+        </motion.span>
+      ))}
+    </h1>
+    <StaggeredText text={textSmall} />
+    
+    
+    
     {loading ? (
     
     <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
     
     ):(
         <>
-
+  {/* Categories top */}
    {categories.length > 0 && (
     <>
-      {/* <div className='z-50 w-7 h-6  bg-[#1B1918] sticky top-[90px]'>
-      <BetweenHorizontalStart className='absolute  left-0 ' />
-    </div> */}
+
     <div className='sticky top-[30px]  z-30'>
       <YourComponent categories={categories} handleCategoryClick={handleCategoryClick} />
     </div>
@@ -99,7 +133,7 @@ const MenuPageMain = () => {
   </>
 )}
      
-
+{/* Menu Display */}
         {categories.length > 0 && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
@@ -130,8 +164,8 @@ const MenuPageMain = () => {
                                         <p className='text-sm mt-4 text-gray-500 ' key={size._id}>{size.price + item.price}€</p>
                                         ))}
                                         {item.extras.map((extra) => (
-                                            <p className='text-sm mt-1 text-gray-500 capitalize' key={extra._id}>+ {extra.price}</p>
-                                            ))}
+                                        <p className='text-sm mt-1 text-gray-500 capitalize' key={extra._id}>+ {extra.price}</p>
+                                        ))}
                             </div>
                         </div>
                                             <div className='border border-white   mx-auto  my-2 w-full' />

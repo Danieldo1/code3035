@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 import { Menu,X,LogOut } from 'lucide-react';
 import Image from 'next/image'
+import { motion,AnimatePresence } from 'framer-motion';
 
 
 const Header = () => {
@@ -23,14 +24,19 @@ const Header = () => {
       <Link className='text-3xl font-bold' href="/">
         <Image src={'/logo1.webp'} alt="logo" width={150} height={200} />
       </Link>
-
-      {isMenuOpen ? (
+      <AnimatePresence>
+      {isMenuOpen && (
         <>
-        
-        <div className='fixed top-0 left-0 pt-36 w-full h-full bg-[#1B1918] text-center flex flex-col items-center z-50'>
-          <button className='md:hidden ' onClick={toggleMenu}>
+        <motion.div 
+                      initial={{ x: '100%' }}
+                      animate={{ x: 0 }}
+                      exit={{ x: '100%' }}
+                      transition={{ type: 'tween', duration: 0.5 }}
+        className='fixed top-0 left-0 pt-36 w-full h-full bg-[#1B1918] text-center flex flex-col items-center z-50'>
+          <motion.button
+          className='md:hidden ' onClick={toggleMenu}>
             <X className='w-10 h-10 top-[22px] fixed  right-[17px] active:text-green-300 hover:text-green-300 delay-150 duration-300 '  />
-          </button>
+          </motion.button>
             <Link className='text-3xl font-bold fixed top-[15px] left-[18px]' href="/">
               <Image src={'/logo1.webp'} alt="logo" width={150} height={200} />
             </Link>
@@ -69,9 +75,12 @@ const Header = () => {
               </Link>
             )} */}
           </nav>
-        </div>
+        </motion.div>
+       
         </>
-      ) : (
+      )} 
+ </AnimatePresence>
+      {!isMenuOpen && (
         <>
           <button className='md:hidden' onClick={toggleMenu}>
             <Menu className='w-10 h-10 active:text-green-300 hover:text-green-300 delay-150 duration-300' />
@@ -105,6 +114,7 @@ const Header = () => {
           </div>
         </>
       )}
+      
     </header>
   )
 }
