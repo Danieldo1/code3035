@@ -1,8 +1,6 @@
 # [CODE3035: E-Menu for Hookah Lounge Bar  🔗](https://code3035.vercel.app) 
-<img src="/public/screenshot/l1.png" width="425"/> 
-<img src="/public/screenshot/l2.png" width="425"/> 
-<img src="/public/screenshot/l3.png" width="425"/> 
-<img src="/public/screenshot/l4.png" width="425"/> 
+<img src="/public/screenshot/l1.png" width="425"/> <img src="/public/screenshot/l2.png" width="425"/> 
+<img src="/public/screenshot/l3.png" width="425"/> <img src="/public/screenshot/l4.png" width="425"/> 
 <img src="/public/screenshot/l5.png" width="425"/> 
 
 
