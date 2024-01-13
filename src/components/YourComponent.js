@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { XIcon,MenuSquare } from 'lucide-react'
+import { XIcon,Menu } from 'lucide-react'
 import Link from 'next/link'
 import { motion,AnimatePresence } from "framer-motion";
 
@@ -21,7 +21,7 @@ const YourComponent = ({ categories,handleCategoryClick }) => {
   return (
     <>
     {/* <div className='z-50 w-7 h-6  bg-[#1B1918] sticky top-[90px] cursor-pointer' onClick={togglePopup}> */}
-    <MenuSquare size={28} strokeWidth={2} className='relative top-[60px] bg-[#1B1918] w-7 h-6 cursor-pointer left-0 ' onClick={togglePopup} />
+    <Menu size={28} strokeWidth={2} className='relative top-[60px] bg-[#1B1918] w-7 h-6 cursor-pointer left-0 ' onClick={togglePopup} />
     {/* </div> */}
     <AnimatePresence>
     {isPopupVisible && (
