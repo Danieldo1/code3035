@@ -1,7 +1,11 @@
-# [CODE3035: E-Menu for Hookah Lounge Bar  🔗](https://code3035.vercel.app)  
-![Menu Section](/public/screenshot/l1.png)![Menu Section](/public/screenshot/l2.png)
-![Menu Section](/public/screenshot/l3.png)![Menu Section](/public/screenshot/l4.png)
-![Menu Section](/public/screenshot/l5.png)
+# [CODE3035: E-Menu for Hookah Lounge Bar  🔗](https://code3035.vercel.app) 
+<img src="/public/screenshot/l1.png" width="425"/> 
+<img src="/public/screenshot/l2.png" width="425"/> 
+<img src="/public/screenshot/l3.png" width="425"/> 
+<img src="/public/screenshot/l4.png" width="425"/> 
+<img src="/public/screenshot/l5.png" width="425"/> 
+
+
 ## About CODE3035 
  **CODE3035** is an innovative e-menu web application specifically crafted for a new and vibrant hookah lounge bar. The project prioritizes a seamless mobile user experience, ensuring that customers can effortlessly browse the menu and make selections from their smartphones and tablets. With the rise of mobile internet usage, **CODE3035** recognizes the importance of a mobile-first design and delivers a responsive and intuitive interface that adapts to various screen sizes and orientations. The heart of **CODE3035** lies in its robust admin panel. This secure backend interface is designed for the lounge bar's staff, enabling authorized personnel to manage the e-menu efficiently. The system supports comprehensive CRUD (Create, Read, Update, Delete) operations, which means that the lounge staff can: 
  -  **Create** new menu items, complete with descriptions, pricing, and images, ensuring that customers have access to the latest offerings. 
