@@ -50,7 +50,7 @@ const YourComponent = ({ categories,handleCategoryClick }) => {
                 <h2 
                   className={`text-left uppercase  ${
                     activeCategory === c._id
-                    ? 'underline font-bold text-green-300 decoration-solid decoration-green-300 underline-offset-4 duration-500 transition delay-200'
+                    ? 'underline font-bold  decoration-solid  underline-offset-4 duration-500 transition delay-200'
                     : 'text-white '
                   }`}
                 >

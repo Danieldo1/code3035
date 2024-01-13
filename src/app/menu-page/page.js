@@ -116,7 +116,7 @@ const MenuPageMain = () => {
             <h2 
               className={`${
                 activeCategory === c._id
-                ? 'underline snap-center  font-bold  decoration-solid decoration-4 underline-offset-4 duration-500 transition delay-200'
+                ? 'underline snap-center  font-bold  decoration-solid  underline-offset-4 duration-500 transition delay-200'
                 : ''
               }`}
             >
