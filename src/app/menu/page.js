@@ -50,7 +50,7 @@ const MenuPage = () => {
               </div>
             </div>
             <div>
-              <p className='text-xl font-semibold italic text-black'>${item.price}</p>
+              <p className='text-xl font-semibold italic text-black'>€{item.price}</p>
             </div>
           </Link>
         ))}

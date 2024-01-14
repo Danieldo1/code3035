@@ -6,12 +6,15 @@ import { toast } from 'react-hot-toast'
 import { useProfile } from '../../components/useProfile'
 import { Loader2,Pencil,Trash2  } from 'lucide-react'
 import DeleteButton from '@/components/DeleteButton'
+import { ReactSortable } from 'react-sortablejs'
 
 
 const CategoriesPage = () => {
 const [categories, setCategories] = useState('')
 const [createdCategories, setCreatedCategories] = useState([])
 const [editedCategories, setEditedCategories] = useState(null)
+const [categoryOrder, setCategoryOrder] = useState([])
+
 
 useEffect(() => {
     fetchCategories()
@@ -28,6 +31,32 @@ const {loading,isAdmin} = useProfile()
 if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
 if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
 
+const saveOrder = async () => {
+    // Map the categories to their ids and new order index
+    const orderedCategories = createdCategories.map((c, index) => ({ _id: c._id, order: index }));
+  
+    // Send this ordered list to the server
+    try {
+      const response = await fetch('/api/categories', {
+        method: 'PUT', // Use PUT for updating data
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ orderedCategories }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to save order');
+      }
+  
+      // Handle successful save here, if necessary
+      toast.success('Order saved successfully');
+      console.log('Order saved successfully');
+    } catch (error) {
+      console.error('Error saving order:', error);
+      toast.error('Failed to save order');
+    }
+  };
 
 const handleSubmit = async (e) => {
     e.preventDefault()
@@ -61,6 +90,7 @@ const handleSubmit = async (e) => {
    })
     
 }
+
 const handleDelete = async (_id) => {
     const deletePromise = new Promise( async(resolve, reject) => {
      const response=   await fetch('/api/categories?_id='+_id, {
@@ -86,6 +116,8 @@ const handleDelete = async (_id) => {
     })
     fetchCategories()
 }
+
+
 
   return (
     <section className='mt-20 max-w-lg mx-auto'>
@@ -117,11 +149,14 @@ const handleDelete = async (_id) => {
 
             <div>
                 <h2 className='text-2xl mb-5 font-bold'>Existing Categories:</h2>
+                <button onClick={saveOrder} className='bg-red-500 text-white px-4 py-2 rounded-full mb-5'>Save</button>
+
+                <ReactSortable list={createdCategories} setList={setCreatedCategories}  >
                 {createdCategories?.length >0 && createdCategories?.map(c => (
-                    <div key={c._id}  className='bg-gray-200 text-black border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 ' > 
+                    <div key={c._id} id='items'  className='bg-gray-200 text-black border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 ' > 
                         <p className='font-bold'>{c.name}</p>
                         <div className='flex gap-4 justify-center items-center'>
-                            <span onClick={() => {setEditedCategories(c);setCategories(c.name)}}>
+                            <span onClick={() => {setEditedCategories(c);setCategories(c.name); }}>
                                 <Pencil className='cursor-pointer hover:text-blue-500' />
                             </span>
                             <span className=''>
@@ -131,6 +166,7 @@ const handleDelete = async (_id) => {
                         </div>
                     </div>
                 ))}
+                </ReactSortable>
             </div>
 
     </section>
