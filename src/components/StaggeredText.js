@@ -14,21 +14,28 @@ const StaggeredText = ({ text }) => {
     }),
   };
 
+  const lines = text.split('\n');
+
   return (
-    <p className='text-lg text-gray-300 text-center px-5 mt-2'>
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={index}
-          variants={letterVariants}
-          initial="initial"
-          animate="animate"
-          custom={index} // Pass the index to use for the delay
-          style={{ display: 'inline-block', whiteSpace: 'pre' }} // Use 'pre' to maintain whitespace integrity
-        >
-          {char}
-        </motion.span>
+    <div className='text-lg text-gray-300 text-center px-5 mt-2'>
+      {lines.map((line, lineIndex) => (
+        <p key={lineIndex}>
+          {line.split("").map((char, charIndex) => (
+            <motion.span
+              key={charIndex}
+              variants={letterVariants}
+              initial="initial"
+              animate="animate"
+              custom={charIndex + lineIndex * line.length} // Adjust the delay based on line and char index
+              style={{ display: 'inline-block', whiteSpace: 'pre' }}
+            >
+              {char}
+            </motion.span>
+          ))}
+          {lineIndex !== lines.length - 1 && <br />} {/* Only insert <br /> if it's not the last line */}
+        </p>
       ))}
-    </p>
+    </div>
   );
 };
 

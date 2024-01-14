@@ -2,11 +2,11 @@ import React from 'react'
 
 const About = () => {
   return (
-    <section className='mt-16'>
+    <section className='sm:mt-24 md:mt-16'>
     <div class="container">
-        <p className='text-lg -mb-2 text-gray-500'>Let us introduce you to the CODE3035</p>
+        <p className='text-lg -mb-2 text-gray-500'>Let us introduce you to the <b>3035</b></p>
         <h2 className='text-3xl font-bold'>About Us</h2>
-        <p className='text-lg text-gray-100'>Welcome to <strong>CODE3035</strong>, the ultimate destination for shisha enthusiasts and those looking to relax and unwind. Our lounge bar offers a unique and exotic experience, providing a sophisticated ambiance and an extensive selection of the finest flavored shisha.</p>
+        <p className='text-lg text-gray-100'>Welcome to <strong>3035</strong>, the ultimate destination for shisha enthusiasts and those looking to relax and unwind. Our lounge bar offers a unique and exotic experience, providing a sophisticated ambiance and an extensive selection of the finest flavored shisha.</p>
         <br />
         <p className='text-lg text-gray-100'>Since our opening, we&apos;ve been dedicated to bringing you an unparalleled shisha experience. Our expertly crafted blends, top-notch service, and luxurious setting make every visit a memorable one. Whether it&apos;s a casual outing with friends or a special celebration, CODE3035 is the perfect retreat from the bustle of everyday life.</p>
         <br />

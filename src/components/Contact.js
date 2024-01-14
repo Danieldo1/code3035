@@ -31,7 +31,7 @@ const Contact = () => {
 
         <div className='mt-5 text-center'>
             <h3 className='text-xl font-bold'>We are open daily from 9am to sunrise</h3>
-            <p className='text-lg text-gray-100'>Book a table by calling us today <a href='tel:+35797866197'>+357-97-866-197</a> </p>
+            <p className='text-lg text-gray-100'>Book a table by calling us today <br/><a href='tel:+35797866197'>+357-97-866-197</a> </p>
 
         </div>
             <div style={mapContainerStyle} className='mt-5'>

@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
+import Link from 'next/link'
 
 
 const Hero = () => {
@@ -20,15 +20,19 @@ const Hero = () => {
 
 
   return (
-    <section className='mt-20'>
+    <section className='mt-24'>
  <div className="relative h-[300px] px-10">
      
-      <div className='flex flex-col justify-center pt-12 md:pt-20 items-center '>
-        <h1 className='text-3xl md:text-5xl font-bold '>Experience new level of <br />Lounge Bar</h1>
+      <div className='flex flex-col justify-center pt-4 md:pt-20 items-center '>
+        <h1 className='text-3xl md:text-5xl font-bold text-center '>Experience new level of <br />Lounge Bar</h1>
         <p className='text-xl md:text-2xl my-4 text-gray-100'>Start your journey with us</p>
         <div className='flex gap-4'>
-          <button className='bg-green-300 text-gray-900 font-bold px-4 py-2 rounded-full'>Get Started</button>
-          <button className='bg-green-300 text-gray-900 font-bold px-4 py-2 rounded-full'>Learn More</button>
+          <button className='bg-green-700 text-white  font-bold px-4 py-2 rounded-full'>
+            <Link href="/menu-page">Explore bar</Link>
+          </button>
+          <button className='bg-green-700 text-white font-bold px-4 py-2 rounded-full'>
+            <Link href="/shisha-page">Explore hookah</Link>
+          </button>
         </div>
       </div>
 

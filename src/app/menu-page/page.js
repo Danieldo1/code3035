@@ -55,7 +55,7 @@ const MenuPageMain = () => {
     };
 
     const text = "Beverages Menu";
-    const textSmall = "Elevate your taste buds with our eclectic mix of classic and contemporary drinks. Each sip promises a blend of quality and creativity, perfect for any occasion.";
+    const textSmall = "Elevate your taste buds with our eclectic mix of classic and contemporary drinks.\nEach sip promises a blend of quality and \ncreativity, perfect for any occasion.";
     
     const letters = Array.from(text);
   
@@ -137,7 +137,7 @@ const MenuPageMain = () => {
         {categories.length > 0 && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
-          <div id={c.name}  key={c._id} className='pt-10 mx-4'>
+          <div id={c.name}  key={c._id} className='pt-10 '>
          <button className='items-center justify-center text-center pb-5 w-full '>
               <h2   className='text-center  font-bold text-xl'>{c.name}</h2>
             </button>
