@@ -5,7 +5,7 @@ const CategorySchema = new Schema({
         type: String,
         required: true
     },
-    order: { type: Number, required: true }
+    order: { type: Number, default: 0 }
 }, { timestamps: true });
 
 export const Category = models?.Category || model("Category", CategorySchema)

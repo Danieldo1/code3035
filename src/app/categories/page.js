@@ -32,13 +32,11 @@ if(loading) return <div className='text-3xl font-bold text-center flex justify-c
 if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
 
 const saveOrder = async () => {
-    // Map the categories to their ids and new order index
     const orderedCategories = createdCategories.map((c, index) => ({ _id: c._id, order: index }));
   
-    // Send this ordered list to the server
     try {
-      const response = await fetch('/api/categories', {
-        method: 'PUT', // Use PUT for updating data
+      const response = await fetch('/api/categories/updateOrder', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -49,14 +47,13 @@ const saveOrder = async () => {
         throw new Error('Failed to save order');
       }
   
-      // Handle successful save here, if necessary
-      toast.success('Order saved successfully');
       console.log('Order saved successfully');
+      toast.success('Order saved successfully');
     } catch (error) {
       console.error('Error saving order:', error);
-      toast.error('Failed to save order');
+      toast.error('Error saving order');
     }
-  };
+};
 
 const handleSubmit = async (e) => {
     e.preventDefault()
@@ -153,7 +150,7 @@ const handleDelete = async (_id) => {
 
                 <ReactSortable list={createdCategories} setList={setCreatedCategories}  >
                 {createdCategories?.length >0 && createdCategories?.map(c => (
-                    <div key={c._id} id='items'  className='bg-gray-200 text-black border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 ' > 
+                    <div key={c._id} id='items'  className='bg-gray-200 text-black border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 cursor-move' > 
                         <p className='font-bold'>{c.name}</p>
                         <div className='flex gap-4 justify-center items-center'>
                             <span onClick={() => {setEditedCategories(c);setCategories(c.name); }}>
