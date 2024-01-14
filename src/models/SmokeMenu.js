@@ -24,7 +24,7 @@ const SmokeMenuSchema = new Schema({
         type: mongoose.Types.ObjectId,
     },
     price: {
-        type: Number,
+        type: String,
         required: true
     },
     sizes: {
