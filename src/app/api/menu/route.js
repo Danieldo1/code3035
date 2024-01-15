@@ -9,7 +9,7 @@ export async function POST(req) {
 }
 export async function PUT(req) {
     mongoose.connect(process.env.MONGODB_URL)
-    const {_id, ...data} = await req.json()
+    const {_id, ...data} = await req.json()  
      await Menu.findByIdAndUpdate(_id, data)
     return Response.json(true)
 
@@ -17,7 +17,7 @@ export async function PUT(req) {
 
 export async function GET() {
     mongoose.connect(process.env.MONGODB_URL)
-    const menus = await Menu.find()
+    const menus = await Menu.find().sort('order');
     return Response.json(menus)
 }
 

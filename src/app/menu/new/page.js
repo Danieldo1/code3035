@@ -20,6 +20,7 @@ const NewMenuItem = () => {
 
     const handleFormSubmit = async (e,data) => {
         e.preventDefault()
+        console.log(data)
         const savingPromise= new Promise( async(resolve, reject) => {
             const response= await fetch('/api/menu', {
                  method: 'POST',
@@ -58,7 +59,7 @@ const NewMenuItem = () => {
         <h2 className='text-3xl ml-32 font-bold text-center'>Add New Menu Item</h2>
 </div>
 
-<MenuForm handleFormSubmit={handleFormSubmit}menuItem={null} />
+<MenuForm handleFormSubmit={handleFormSubmit} menuItem={null} />
 
     </section>
   )

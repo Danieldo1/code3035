@@ -15,6 +15,7 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
     const [extras, setExtras] = useState(menuItem?.extras || [])
     const [selectedCategory, setSelectedCategory] = useState(menuItem?.category || '')
     const [available, setAvailable] = useState(menuItem?.available || null)
+    const [order, setOrder] = useState(menuItem?.order || 0)
     const [category, setCategory] = useState([])
     const path = usePathname()
 
@@ -85,8 +86,18 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
                   value={available}
                   checked={available}
                   />
-
                   </div>
+
+                  <label >Order</label>
+                <input type="number"
+                value={order}
+                onChange={e =>setOrder(e.target.value) }
+                defaultValue={0}
+                className='mb-5 w-full p-2 border border-gray-300 text-black rounded-md ' placeholder='Order' />
+
+
+
+
                 <MenuItemsProp props={sizes} setProps={setSizes} name={'Sizes'} buttonLabel={'Add Size'} />
 
                 <MenuItemsProp props={extras} setProps={setExtras} name={'Extras'} buttonLabel={'Add Extra'} />
