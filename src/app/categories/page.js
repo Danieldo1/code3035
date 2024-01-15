@@ -154,8 +154,10 @@ const handleDelete = async (_id) => {
                 <ReactSortable list={createdCategories} setList={setCreatedCategories}  >
                 {createdCategories?.length >0 && createdCategories?.map(c => (
                     <div key={c._id} id='items'  className='bg-gray-200 text-black border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 cursor-move' > 
+                    <div className='flex flex-col'>
                         <p className='font-bold'>{c.name}</p>
-                        <p>{c.description}</p>
+                        <p className='text-sm'>{c.description}</p>
+                    </div>
                         <div className='flex gap-4 justify-center items-center'>
                             <span onClick={() => {setEditedCategories(c);setCategories(c.name);setCategoryDescription(c.description) }}>
                                 <Pencil className='cursor-pointer hover:text-blue-500' />

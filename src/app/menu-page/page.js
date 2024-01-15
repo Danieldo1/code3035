@@ -107,7 +107,7 @@ const MenuPageMain = () => {
       <YourComponent categories={categories} handleCategoryClick={handleCategoryClick} />
     </div>
 
-     <div className='flex pl-5 overflow-hidden flex-row snap-x flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
+     <div className='flex pl-5 overflow-hidden flex-row snap-x snap-proximity scroll-smooth flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
     {categories.map((c) => (
       <>
       <div key={c._id} className='pt-10 mx-4 ml-5   whitespace-nowrap '>
@@ -138,14 +138,14 @@ const MenuPageMain = () => {
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
           <div id={c.name}  key={c._id} className='pt-10 '>
-         <button className='items-center justify-center text-center flex pb-5 w-full '>
-              <h2   className='text-center  font-bold text-xl'>{c.name}</h2>
+         <button className='items-center snap-center justify-center text-center flex  w-full '>
+              <h2   className='text-center pb-5 font-bold text-xl'>{c.name}</h2>
             </button>
               <p className='text-sm text-gray-400 text-right'>{c.description}</p>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                     {menu.filter(item => item.category === c._id && item.available===true).map((item) => (
                       <>
-                        <div key={item._id} className='flex snap-center justify-between w-full  items-center gap-2   bg-[#1B1918]'>
+                        <div key={item._id} className='flex  justify-between w-full  items-center gap-2   bg-[#1B1918]'>
                             <div className='flex justify-between items-center gap-5'>
                                 <div className=''>
                                     {/* <p>{item.available === true ? "Available" : "Not Available"}</p> */}

@@ -4,13 +4,15 @@ import Tabs from '@/components/Tabs'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useProfile } from '../../components/useProfile'
-import { Loader2,Pencil,Trash2  } from 'lucide-react'
+import { Loader2,Pencil  } from 'lucide-react'
 import DeleteButton from '@/components/DeleteButton'
+import { ReactSortable } from 'react-sortablejs'
 
 const SmokeCategories = () => {
     const [categories, setCategories] = useState('')
 const [createdCategories, setCreatedCategories] = useState([])
 const [editedCategories, setEditedCategories] = useState(null)
+const [categoryDescription, setCategoryDescription] = useState('')
 
 useEffect(() => {
     fetchCategories()
@@ -30,7 +32,7 @@ if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not 
 const handleSubmit = async (e) => {
     e.preventDefault()
    const createPromise = new Promise( async(resolve, reject) => {
-    const data = {name:categories }
+    const data = {name:categories, description:categoryDescription }
     if(editedCategories) {
         data._id = editedCategories._id
     }
@@ -42,6 +44,7 @@ const handleSubmit = async (e) => {
             }
         })
         setCategories('')
+        setCategoryDescription('')
         fetchCategories()
         setEditedCategories(null)
        if(response.ok){
@@ -57,8 +60,33 @@ const handleSubmit = async (e) => {
        success: editedCategories ? 'Category Updated': 'Category Added',
        error: editedCategories ? 'Error Updating Category': 'Error Adding Category'
    })
-    
+
 }
+
+const saveOrderSmoke = async () => {
+ const orderedCategories = createdCategories.map((c, index) => ({ _id: c._id, order: index }));
+
+ try {
+   const response = await fetch('/api/smoke-categories/updateOrder', {
+     method: 'PUT',
+     headers: {
+       'Content-Type': 'application/json',
+     },
+     body: JSON.stringify({ orderedCategories }),
+   });
+
+   if (!response.ok) {
+     throw new Error('Failed to save order');
+   }
+
+   console.log('Order saved successfully');
+   toast.success('Order saved successfully');
+ } catch (error) {
+   console.error('Error saving order:', error);
+   toast.error('Error saving order');
+ }
+};
+
 const handleDelete = async (_id) => {
     const deletePromise = new Promise( async(resolve, reject) => {
      const response=   await fetch('/api/smoke-categories?_id='+_id, {
@@ -100,35 +128,43 @@ const handleDelete = async (_id) => {
                         )}
                     </label>
                     <input type="text" value={categories} autoComplete='off' name="category" onChange={(e) => setCategories(e.target.value)} className='w-full p-2 border border-gray-300 text-black bg-gray-200 rounded-md' placeholder='Category Name' />
+                    <input type="text" value={categoryDescription} autoComplete='off' name="description" onChange={(e) => setCategoryDescription(e.target.value)} className='w-full p-2 border border-gray-300 text-black mt-2 bg-gray-200 rounded-md' placeholder='Category Description' />
                 </div>
 
-                <div className='flex gap-2'>
+                <div className='flex flex-col gap-2'>
                     <button type='submit' className='bg-red-500 text-white px-4 py-2 rounded-full'> 
                      {editedCategories ? 'Update': 'Create'}
                     </button>
                     <button type='button' 
                     className='px-4 py-2 rounded-full bg-gray-200 text-black' 
-                    onClick={() => {setEditedCategories(null);setCategories('')}}>Cancel</button>
+                    onClick={() => {setEditedCategories(null);setCategories('');setCategoryDescription('')}}>Cancel</button>
                 </div>
             </div>
         </form>
 
             <div>
                 <h2 className='text-2xl mb-5 font-bold'>Existing Categories:</h2>
-                {createdCategories?.length >0 && createdCategories?.map(c => (
-                    <div key={c._id}  className='bg-gray-200 text-black border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 ' > 
-                        <p className='font-bold'>{c.name}</p>
-                        <div className='flex gap-4 justify-center items-center'>
-                            <span onClick={() => {setEditedCategories(c);setCategories(c.name)}}>
-                                <Pencil className='cursor-pointer hover:text-blue-500' />
-                            </span>
-                            <span className=''>
-                                <DeleteButton label={''} onDelete={() => handleDelete(c._id)} />
+                <button onClick={saveOrderSmoke} className='bg-red-500 text-white px-4 py-2 rounded-full mb-5'>Save</button>
 
-                            </span>
-                        </div>
+                <ReactSortable  list={createdCategories} setList={setCreatedCategories} >
+                {createdCategories?.length >0 && createdCategories?.map(c => (
+                <div key={c._id} id='items'  className='bg-gray-200 text-black border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 cursor-move' > 
+                   <div className='flex flex-col'>
+                        <p className='font-bold'>{c.name}</p>
+                        <p className='text-sm'>{c.description}</p>
                     </div>
+                <div className='flex gap-4 justify-center items-center'>
+                    <span onClick={() => {setEditedCategories(c);setCategories(c.name);setCategoryDescription(c.description) }}>
+                        <Pencil className='cursor-pointer hover:text-blue-500' />
+                    </span>
+                    <span className=''>
+                        <DeleteButton label={''} onDelete={() => handleDelete(c._id)} />
+
+                    </span>
+                </div>
+            </div>
                 ))}
+                 </ReactSortable>
             </div>
 
     </section>

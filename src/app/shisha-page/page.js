@@ -134,6 +134,7 @@ const ShishaMainPage = () => {
           <div id={c.name}  key={c._id} className='pt-10 '>
          <button className='items-center justify-center text-center pb-5 w-full '>
               <h2   className='text-center  font-bold text-xl'>{c.name}</h2>
+              <p className='text-start text-sm text-gray-400'>{c.description}</p>
             </button>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                     {menu.filter(item => item.category === c._id && item.available===true).map((item) => (
