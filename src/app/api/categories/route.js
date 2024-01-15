@@ -2,10 +2,10 @@ import { Category } from "../../../models/Category"
 import mongoose from "mongoose"
 
 export async function POST(req) {
-    console.group(req)
+
     mongoose.connect(process.env.MONGODB_URL)
-    const {name}= await req.json()
-   const category = await Category.create({name})
+    const {name,description}= await req.json()
+   const category = await Category.create({name,description})
     return Response.json(category)
 }
 
@@ -17,10 +17,9 @@ export async function GET() {
 
 
 export async function PUT(req) {
-    
     mongoose.connect(process.env.MONGODB_URL)
-    const {name,_id} = await req.json()
-    await Category.updateOne({_id},{name})
+    const {name,_id,description} = await req.json()
+    await Category.updateOne({_id},{name,description})
     return Response.json(true)
     
 }

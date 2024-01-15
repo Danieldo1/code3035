@@ -138,9 +138,10 @@ const MenuPageMain = () => {
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
           <div id={c.name}  key={c._id} className='pt-10 '>
-         <button className='items-center justify-center text-center pb-5 w-full '>
+         <button className='items-center justify-center text-center flex pb-5 w-full '>
               <h2   className='text-center  font-bold text-xl'>{c.name}</h2>
             </button>
+              <p className='text-sm text-gray-400 text-right'>{c.description}</p>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                     {menu.filter(item => item.category === c._id && item.available===true).map((item) => (
                       <>

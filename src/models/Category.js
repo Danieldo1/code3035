@@ -5,7 +5,11 @@ const CategorySchema = new Schema({
         type: String,
         required: true
     },
-    order: { type: Number, default: 0 }
+    order: { type: Number, default: 0 },
+    description: {
+        type: String,
+        default: ''
+    }
 }, { timestamps: true });
 
 export const Category = models?.Category || model("Category", CategorySchema)

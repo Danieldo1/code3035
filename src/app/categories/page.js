@@ -13,7 +13,7 @@ const CategoriesPage = () => {
 const [categories, setCategories] = useState('')
 const [createdCategories, setCreatedCategories] = useState([])
 const [editedCategories, setEditedCategories] = useState(null)
-const [categoryOrder, setCategoryOrder] = useState([])
+const [categoryDescription, setCategoryDescription] = useState('')
 
 
 useEffect(() => {
@@ -22,6 +22,7 @@ useEffect(() => {
 const fetchCategories = async () => {
     fetch('/api/categories').then(response=>{response.json().then(data=>{
         setCreatedCategories(data)
+        
     })
 })
 }
@@ -58,7 +59,7 @@ const saveOrder = async () => {
 const handleSubmit = async (e) => {
     e.preventDefault()
    const createPromise = new Promise( async(resolve, reject) => {
-    const data = {name:categories }
+    const data = {name:categories, description:categoryDescription }
     if(editedCategories) {
         data._id = editedCategories._id
     }
@@ -70,6 +71,7 @@ const handleSubmit = async (e) => {
             }
         })
         setCategories('')
+        setCategoryDescription('')
         fetchCategories()
         setEditedCategories(null)
        if(response.ok){
@@ -131,15 +133,16 @@ const handleDelete = async (_id) => {
                         )}
                     </label>
                     <input type="text" value={categories} autoComplete='off' name="category" onChange={(e) => setCategories(e.target.value)} className='w-full p-2 border border-gray-300 text-black bg-gray-200 rounded-md' placeholder='Category Name' />
+                    <input type="text" value={categoryDescription} autoComplete='off' name="description" onChange={(e) => setCategoryDescription(e.target.value)} className='w-full p-2 border border-gray-300 text-black mt-2 bg-gray-200 rounded-md' placeholder='Category Description' />
                 </div>
 
-                <div className='flex gap-2'>
+                <div className='flex flex-col gap-2'>
                     <button type='submit' className='bg-red-500 text-white px-4 py-2 rounded-full'> 
                      {editedCategories ? 'Update': 'Create'}
                     </button>
                     <button type='button' 
                     className='px-4 py-2 rounded-full bg-gray-200 text-black' 
-                    onClick={() => {setEditedCategories(null);setCategories('')}}>Cancel</button>
+                    onClick={() => {setEditedCategories(null);setCategories('');setCategoryDescription('')}}>Cancel</button>
                 </div>
             </div>
         </form>
@@ -152,8 +155,9 @@ const handleDelete = async (_id) => {
                 {createdCategories?.length >0 && createdCategories?.map(c => (
                     <div key={c._id} id='items'  className='bg-gray-200 text-black border items-center shadow-md justify-between w-full p-6 mb-4 rounded-lg flex gap-2 cursor-move' > 
                         <p className='font-bold'>{c.name}</p>
+                        <p>{c.description}</p>
                         <div className='flex gap-4 justify-center items-center'>
-                            <span onClick={() => {setEditedCategories(c);setCategories(c.name); }}>
+                            <span onClick={() => {setEditedCategories(c);setCategories(c.name);setCategoryDescription(c.description) }}>
                                 <Pencil className='cursor-pointer hover:text-blue-500' />
                             </span>
                             <span className=''>
