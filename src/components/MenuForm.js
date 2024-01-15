@@ -66,11 +66,11 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
             
                 <label>Category</label>
                 <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} className='mb-5 w-full p-2 border border-gray-300 text-black rounded-md '>
-                  {category?.length >0 && category.map((c,i)=>(
-                    <option key={i} value={c._id} >{c.name}</option>
-                  )
-                  )}
-                </select>
+                <option value="">Select a category</option>
+                {category?.length > 0 && category.map((c, i) => (
+                  <option key={i} value={c._id}>{c.name}</option>
+                ))}
+              </select>
 
                 <label >Price</label>
                 <input type="text" 

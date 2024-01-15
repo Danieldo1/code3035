@@ -37,7 +37,8 @@ const SmokeMenuSchema = new Schema({
     available: {
         type: Boolean,
         default: true
-    }
+    }, 
+    order: { type: Number, default: 0 }
 },{timestamps: true})
 
 export const SmokeMenu = models?.SmokeMenu || model("SmokeMenu", SmokeMenuSchema)

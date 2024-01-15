@@ -6,7 +6,6 @@ import {useProfile} from '@/components/useProfile'
 import Link from 'next/link'
 import { PlusCircle,Loader2 } from 'lucide-react'
 import { ReactSortable } from 'react-sortablejs'
-import YourComponent from '@/components/YourComponent'
 import {toast} from 'react-hot-toast'
 
 const MenuPage = () => {
@@ -30,9 +29,9 @@ const MenuPage = () => {
     if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
     if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
 
-    const handleCategoryClick = (categoryId) => {
-      setActiveCategory(categoryId);
-    };
+    // const handleCategoryClick = (categoryId) => {
+    //   setActiveCategory(categoryId);
+    // };
 
 
     const saveOrder = async () => {
