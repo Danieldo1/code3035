@@ -48,16 +48,16 @@ const MenuPageMain = () => {
   
 
     
-
+   
 
     const handleCategoryClick = (categoryId) => {
       setActiveCategory(categoryId);
     };
 
+ 
+
     const text = "Beverages Menu";
     const textSmall = "Elevate your taste buds with our eclectic mix of classic and contemporary drinks.\nEach sip promises a blend of quality and \ncreativity, perfect for any occasion.";
-    
-    const letters = Array.from(text);
   
     // Define the initial and animate properties for each letter
     const letterVariants = {
@@ -111,7 +111,7 @@ const MenuPageMain = () => {
     {categories.map((c) => (
       <>
       <div key={c._id} className='pt-10 mx-4 ml-5   whitespace-nowrap '>
-        <Link href={`#${c.name}`} scroll={true}>
+        <Link href={`#${c.name}`} scroll={true} >
           <button onClick={() => {setActiveCategory(c._id); handleCategoryClick(c._id)}}>
             <h2 
               className={`${
@@ -137,7 +137,7 @@ const MenuPageMain = () => {
         {categories.length > 0 && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
-          <div id={c.name}  key={c._id} className='pt-10 '>
+          <div id={c.name}  key={c._id} className='pt-10 scroll-target max-w-sm mx-auto'>
          <button className='items-center snap-center justify-center text-center flex  w-full '>
               <h2   className='text-center pb-5 font-bold text-xl'>{c.name}</h2>
             </button>
@@ -145,8 +145,8 @@ const MenuPageMain = () => {
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                     {menu.filter(item => item.category === c._id && item.available===true).map((item) => (
                       <>
-                        <div key={item._id} className='flex  justify-between w-full  items-center gap-2   bg-[#1B1918]'>
-                            <div className='flex justify-between items-center gap-5'>
+                        <div key={item._id} className='flex  justify-between w-full  items-center gap-2 md:px-5 lg:px-10 bg-[#1B1918]'>
+                            <div className='flex justify-between items-center gap-5 '>
                                 <div className=''>
                                     {/* <p>{item.available === true ? "Available" : "Not Available"}</p> */}
                                     <h3 className='text-md font-bold'>{item.name}</h3>
@@ -170,7 +170,7 @@ const MenuPageMain = () => {
                                         ))}
                             </div>
                         </div>
-                                            <div className='border border-white   mx-auto  my-2 w-full' />
+                                            <div className='border border-white  md:mx-5 lg:mx-10 mx-auto  my-2 w-full' />
                         </>
                     ))}
                 </div>    

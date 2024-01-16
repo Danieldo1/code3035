@@ -24,3 +24,12 @@ html, body {
   .react-slideshow-container button {
     display: none !important;
   }
+
+  .section-header {
+    padding-top: 111x; /* Height of your fixed header */
+    margin-top: -111px; /* Negative margin to counteract the padding */
+  }
+
+  .scroll-target {
+    scroll-margin-top: 111px; /* Adjust this value to the height of your fixed header */
+  }
