@@ -45,7 +45,7 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
 
   return (
     <form className='max-w-xl mx-auto mt-10' 
-    onSubmit={e=> handleFormSubmit(e, {image, name, description, price, _id:menuItem?._id, sizes, extras, category:selectedCategory, available})}
+    onSubmit={e=> handleFormSubmit(e, {image, name, description, price, _id:menuItem?._id, sizes, extras, category:selectedCategory, available, order})}
     >
     <div className='flex gap-2 items-start'>
             <div className='w-1/2 text-center'>

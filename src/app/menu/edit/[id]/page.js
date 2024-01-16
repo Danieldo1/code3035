@@ -19,6 +19,8 @@ const EditMenuPage = () => {
     const {id} = useParams();
     const [menuItem, setMenuItem] = useState(null)
     const router= useRouter()
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
     
     useEffect(() => {
     fetch('/api/menu').then(response=>{response.json().then(data=>{
@@ -27,8 +29,7 @@ const EditMenuPage = () => {
         })
      })
     }, [id])
-    
-    
+
     const {loading,isAdmin} = useProfile()
 
     if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
