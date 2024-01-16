@@ -82,6 +82,9 @@ const MenuPage = () => {
         toast.error('Error saving order');
       }
   };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <section className='mt-20 mb-5 max-w-xl mx-auto'>
         <Tabs isAdmin={true}/>
@@ -91,25 +94,21 @@ const MenuPage = () => {
              </Link>
         </div>
 
-        {isLoading ? (
-          <div className='flex justify-center items-center mt-10'>
-            <Loader2 className='animate-spin ' /> 
-          </div>
-) :(
       <div className='mt-5 '>
         <h2 className='text-2xl font-bold text-center'>Edit Menu</h2>
 <button onClick={saveOrder} className='bg-red-500 text-white px-4 py-2 m-5 rounded-full sticky top-[70px] left-0 z-20'>Save</button>
-        {categories.length > 0 && !isLoading ? (
+        {categories.length > 0 &&  (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
-      { categories.map(c => (
+      {categories.map(c => (
           <div id={c.name}  key={c._id} className='pt-10 '>
          <div className='items-center justify-center text-center pb-5 w-full '>
               <h2   className='text-center  font-bold text-xl'>{c.name}</h2>
             </div>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
-                
+                   
+                     
                     <ReactSortable list={menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle"  >
-                    { !isLoading && menuItems.filter(item => item.category === c._id ).map((item) => (
+                    {menuItems.filter(item => item.category === c._id ).map((item) => (
                       <>
                         <Link href={`/menu/edit/${item._id}`} key={item._id} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
                             <div className='flex justify-between items-center gap-5'>
@@ -134,13 +133,8 @@ const MenuPage = () => {
             </div>
         ))}
          </div> 
-  ):(
-    <div className='text-3xl font-bold text-center'>No categories found</div>
   )}
       </div>
-
-
-)}
 
     </section>
   )

@@ -31,6 +31,7 @@ const ShishaMenu = () => {
         } catch (error) {
           console.error('Failed to fetch categories:', error);
           toast.error('Failed to load categories.');
+          setCategories([]);
         }
       };
     
@@ -45,6 +46,7 @@ const ShishaMenu = () => {
         } catch (error) {
           console.error('Failed to fetch menu items:', error);
           toast.error('Failed to load menu items.');
+          setMenuItems([]);
         }
       };
     
@@ -55,7 +57,7 @@ const ShishaMenu = () => {
       };
     
       loadData();
-    }, []);
+    },[]);
 
  
   
@@ -90,6 +92,12 @@ const ShishaMenu = () => {
         }
     };
 
+    const categorizedMenuItems = (categoryID, menuItems) =>
+    menuItems.filter(item => item.category === categoryID);
+
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
    
   return (
     <section className='mt-20 mb-5 max-w-md mx-auto'>
@@ -99,11 +107,7 @@ const ShishaMenu = () => {
         <PlusCircle />
          </Link>
     </div>
-{isLoading ? (
-        <div className='flex justify-center items-center mt-10'>
-         <Loader2 className='animate-spin ' />
-        </div>
-):(
+
 
   <div className='mt-5 '>
     <h2 className='text-2xl font-bold text-center'>Edit Menu</h2>
@@ -119,11 +123,12 @@ const ShishaMenu = () => {
               <h2   className='text-center  font-bold text-xl'>{c.name}</h2>
             </div>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
-                   
-                    <ReactSortable list={menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle" >
+
+                  
+                  <ReactSortable list={ menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle" >
                     {menuItems.filter(item => item.category === c._id ).map((item) => (
-                      <>
-                        <Link href={`/shisha/edit/${item._id}`} key={item._id} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
+                       <div key={item._id}>
+                        <Link href={`/shisha/edit/${item._id}`} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
                             <div className='flex justify-between items-center gap-5'>
                             <GripHorizontal className='handle cursor-move' />
                                 <div className=''>
@@ -139,7 +144,7 @@ const ShishaMenu = () => {
                                    
                             </div>
                         </Link>              
-                        </>
+                        </div>
                     ))}
                     </ReactSortable>
                 </div>    
@@ -148,8 +153,6 @@ const ShishaMenu = () => {
          </div> 
   )}
   </div>
-)}
-
 </section>
   )
 }
