@@ -145,9 +145,9 @@ const MenuPageMain = () => {
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                     {menu.filter(item => item.category === c._id && item.available===true).map((item) => (
                       <>
-                        <div key={item._id} className='flex  justify-between w-full  items-center gap-1 md:px-5 lg:px-10 bg-[#1B1918]'>
+                        <div key={item._id} className='flex  justify-between w-full  items-center md:px-5 lg:px-10 bg-[#1B1918]'>
                             <div className='flex justify-between items-center gap-5 '>
-                                <div className=''>
+                                <div className='w-[100%]'>
                                     {/* <p>{item.available === true ? "Available" : "Not Available"}</p> */}
                                     <h3 className='text-md font-bold'>{item.name}</h3>
     
@@ -160,8 +160,8 @@ const MenuPageMain = () => {
                                         ))}
                                 </div>
                             </div>
-                            <div className='text-center'>
-                                <p className='text-sm font-bold'>{item.price}</p>
+                            <div className='text-center w-[20%]'>
+                                <p className='text-md font-bold'>{item.price}</p>
                                     {item.sizes.map((size) => (
                                         <p className='text-xs mt-4 text-gray-500 ' key={size._id}>{size.price + item.price}€</p>
                                         ))}
