@@ -138,14 +138,14 @@ const MenuPageMain = () => {
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
           <div id={c.name}  key={c._id} className='pt-10 scroll-target max-w-sm md:max-w-6xl mx-auto'>
-         <button className='items-center snap-center justify-center text-center flex  w-full '>
-              <h2   className='text-center pb-5 font-bold text-xl'>{c.name}</h2>
-            </button>
-              <p className='text-sm text-gray-400 text-right'>{c.description}</p>
+         <button className='items-center snap-center justify-center text-center flex w-full'>
+  <h2 className={`text-center ${c.description.length === 0 ? 'pb-5' : ''} font-bold text-xl`}>{c.name}</h2>
+</button>
+<p className={`text-sm text-gray-400 text-right lg:mr-10 ${c.description.length > 0 ? 'pb-5' : ''}`}>{c.description}</p>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                     {menu.filter(item => item.category === c._id && item.available===true).map((item) => (
                       <>
-                        <div key={item._id} className='flex  justify-between w-full  items-center gap-2 md:px-5 lg:px-10 bg-[#1B1918]'>
+                        <div key={item._id} className='flex  justify-between w-full  items-center gap-1 md:px-5 lg:px-10 bg-[#1B1918]'>
                             <div className='flex justify-between items-center gap-5 '>
                                 <div className=''>
                                     {/* <p>{item.available === true ? "Available" : "Not Available"}</p> */}
@@ -161,7 +161,7 @@ const MenuPageMain = () => {
                                 </div>
                             </div>
                             <div className='text-center'>
-                                <p className='text-lg font-bold '>{item.price}</p>
+                                <p className='text-sm font-bold'>{item.price}</p>
                                     {item.sizes.map((size) => (
                                         <p className='text-xs mt-4 text-gray-500 ' key={size._id}>{size.price + item.price}€</p>
                                         ))}
