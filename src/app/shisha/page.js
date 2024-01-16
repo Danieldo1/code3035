@@ -12,7 +12,6 @@ import {toast} from 'react-hot-toast'
 const ShishaMenu = () => {
     const [menuItems, setMenuItems] = useState([])
     const [categories, setCategories] = useState([])
-    const [isLoading, setIsLoading] = useState(true);
 
     const router = useRouter()
 
@@ -20,21 +19,6 @@ const ShishaMenu = () => {
 
 
     useEffect(() => {
-      const fetchCategories = async () => {
-        try {
-          const response = await fetch('/api/smoke-categories');
-          if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-          }
-          const data = await response.json();
-          setCategories(data);
-        } catch (error) {
-          console.error('Failed to fetch categories:', error);
-          toast.error('Failed to load categories.');
-          setCategories([]);
-        }
-      };
-    
       const fetchMenuItems = async () => {
         try {
           const response = await fetch('/api/smoke-menu');
@@ -46,18 +30,26 @@ const ShishaMenu = () => {
         } catch (error) {
           console.error('Failed to fetch menu items:', error);
           toast.error('Failed to load menu items.');
-          setMenuItems([]);
+        }
+      };
+      
+      const fetchCategories = async () => {
+        try {
+          const response = await fetch('/api/smoke-categories');
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+          }
+          const data = await response.json();
+          setCategories(data);
+        } catch (error) {
+          console.error('Failed to fetch categories:', error);
+          toast.error('Failed to load categories.');
         }
       };
     
-      const loadData = async () => {
-        setIsLoading(true);  // Set loading to true before starting the fetch
-        await Promise.all([fetchMenuItems(), fetchCategories()]);
-        setIsLoading(false); // Set loading to false after fetches are done
-      };
-    
-      loadData();
-    },[]);
+      fetchMenuItems();
+      fetchCategories();
+    }, []);
 
  
   
@@ -92,13 +84,6 @@ const ShishaMenu = () => {
         }
     };
 
-    const categorizedMenuItems = (categoryID, menuItems) =>
-    menuItems.filter(item => item.category === categoryID);
-
-    if (isLoading) {
-      return <div>Loading...</div>;
-    }
-   
   return (
     <section className='mt-20 mb-5 max-w-md mx-auto'>
     <Tabs isAdmin={true}/>
@@ -115,7 +100,7 @@ const ShishaMenu = () => {
       Save
     </button>
 
-        {categories.length > 0 && !isLoading && (
+        {categories.length > 0 && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
           <div id={c.name}  key={c._id} className='pt-10 '>

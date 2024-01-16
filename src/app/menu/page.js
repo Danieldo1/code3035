@@ -11,13 +11,27 @@ import {toast} from 'react-hot-toast'
 const MenuPage = () => {
     const [menuItems, setMenuItems] = useState([])
     const [categories, setCategories] = useState([])
-    const [isLoading, setIsLoading] = useState(true);
+
 
 
     const {loading,isAdmin} = useProfile()
 
 
     useEffect(() => {
+      const fetchMenuItems = async () => {
+        try {
+          const response = await fetch('/api/menu');
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+          }
+          const data = await response.json();
+          setMenuItems(data);
+        } catch (error) {
+          console.error('Failed to fetch menu items:', error);
+          toast.error('Failed to load menu items.');
+        }
+      };
+      
       const fetchCategories = async () => {
         try {
           const response = await fetch('/api/categories');
@@ -32,27 +46,8 @@ const MenuPage = () => {
         }
       };
     
-      const fetchMenuItems = async () => {
-        try {
-          const response = await fetch('/api/menu');
-          if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-          }
-          const data = await response.json();
-          setMenuItems(data);
-        } catch (error) {
-          console.error('Failed to fetch menu items:', error);
-          toast.error('Failed to load menu items.');
-        }
-      };
-    
-      const loadData = async () => {
-        setIsLoading(true);  // Set loading to true before starting the fetch
-        await Promise.all([fetchMenuItems(), fetchCategories()]);
-        setIsLoading(false); // Set loading to false after fetches are done
-      };
-    
-      loadData();
+      fetchMenuItems();
+      fetchCategories();
     }, []);
 
     if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
@@ -82,9 +77,7 @@ const MenuPage = () => {
         toast.error('Error saving order');
       }
   };
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+
   return (
     <section className='mt-20 mb-5 max-w-xl mx-auto'>
         <Tabs isAdmin={true}/>
