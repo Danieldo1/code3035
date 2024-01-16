@@ -31,10 +31,11 @@ const MenuPageMain = () => {
       const handleScroll = () => {
         let currentCategory = null;
         categories.forEach((c) => {
-          // Assuming you have a ref for your section
           const section = document.getElementById(c.name);
           const sectionTop = section.getBoundingClientRect().top;
-          if (sectionTop + 330 < window.scrollY) {
+          // Adjust the "330" to a smaller value that matches the expected trigger point
+          const triggerOffset = 550; // Example: change to a value that works for your layout
+          if (sectionTop + triggerOffset < window.innerHeight) {
             currentCategory = c._id;
           }
         });
