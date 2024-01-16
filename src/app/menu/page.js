@@ -104,7 +104,7 @@ const MenuPage = () => {
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                    
                      
-                    <ReactSortable list={menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle"  >
+                    <ReactSortable list={menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle"  key={c._id}>
                     {menuItems.filter(item => item.category === c._id ).map((item) => (
                       <>
                         <Link href={`/menu/edit/${item._id}`} key={item._id} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
