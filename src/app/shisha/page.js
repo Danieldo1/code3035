@@ -33,6 +33,11 @@ const ShishaMenu = () => {
         }
       };
       
+      fetchMenuItems();
+    }, []);
+    
+    // Hook for fetching categories
+    useEffect(() => {
       const fetchCategories = async () => {
         try {
           const response = await fetch('/api/smoke-categories');
@@ -46,8 +51,7 @@ const ShishaMenu = () => {
           toast.error('Failed to load categories.');
         }
       };
-    
-      fetchMenuItems();
+      
       fetchCategories();
     }, []);
 

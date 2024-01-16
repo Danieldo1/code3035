@@ -20,7 +20,7 @@ const MenuPage = () => {
     useEffect(() => {
       const fetchMenuItems = async () => {
         try {
-          const response = await fetch('/api/menu');
+          const response = await fetch('/api/smoke-menu');
           if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
           }
@@ -32,9 +32,14 @@ const MenuPage = () => {
         }
       };
       
+      fetchMenuItems();
+    }, []);
+    
+    // Hook for fetching categories
+    useEffect(() => {
       const fetchCategories = async () => {
         try {
-          const response = await fetch('/api/categories');
+          const response = await fetch('/api/smoke-categories');
           if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
           }
@@ -45,8 +50,7 @@ const MenuPage = () => {
           toast.error('Failed to load categories.');
         }
       };
-    
-      fetchMenuItems();
+      
       fetchCategories();
     }, []);
 
