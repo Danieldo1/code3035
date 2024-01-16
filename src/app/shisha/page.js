@@ -28,6 +28,7 @@ const ShishaMenu = () => {
             throw new Error(`Error: ${response.status}`);
           }
           const data = await response.json();
+          console.log(data)
           setMenuItems(data);
         } catch (error) {
           console.error('Failed to fetch menu items:', error);
@@ -113,7 +114,7 @@ const ShishaMenu = () => {
             </div>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
 
-                  
+                  <p className='hidden'>{JSON.stringify( menuItems.filter(item => item.category === c._id))}</p>
                   <ReactSortable list={ menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle" key={c._id}>
                     {menuItems.filter(item => item.category === c._id ).map((item) => (
                        <div key={item._id}>
