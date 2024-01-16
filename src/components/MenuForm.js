@@ -18,7 +18,20 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
     const [order, setOrder] = useState(menuItem?.order || 0)
     const [category, setCategory] = useState([])
     const path = usePathname()
-
+    
+    useEffect(() => {
+      if (menuItem) {
+        setImage(menuItem.image || '');
+        setName(menuItem.name || '');
+        setDescription(menuItem.description || '');
+        setPrice(menuItem.price || '');
+        setSizes(menuItem.sizes || []);
+        setExtras(menuItem.extras || []);
+        setSelectedCategory(menuItem.category || '');
+        setAvailable(menuItem.available || null);
+        setOrder(menuItem.order || 0);
+      }
+    }, [menuItem]);
    useEffect(() => {
    
     let url = ''

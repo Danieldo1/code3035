@@ -23,7 +23,7 @@ const EditMenuPage = () => {
     const [error, setError] = useState(null);
     
     useEffect(() => {
-    fetch('/api/menu').then(response=>{response.json().then(data=>{
+    fetch('/api/menu/updateOrder').then(response=>{response.json().then(data=>{
         const items = data.find(item => item._id === id)
         setMenuItem(items)
         })
@@ -85,14 +85,15 @@ const handleDeleteItem = async () => {
     <section className='mt-20 '>
     <Tabs isAdmin={true}/>
 
-<div className='flex gap-32  items-center mt-5 text-center max-w-xl mx-auto'>
-        <Link href='/menu' className='bg-gray-500 hover:bg-red-600 text-white p-2 rounded-lg flex justify-start gap-2 text-center'>
-            <ChevronLeftCircle />
-            Back
-        </Link>
-    <h2 className='text-3xl font-bold text-center justify-center'>Menu Item</h2>
-</div>
-<MenuForm menuItem={menuItem} handleFormSubmit={handleFormSubmit} />
+        <div className='flex gap-32  items-center mt-5 text-center max-w-xl mx-auto'>
+                <Link href='/menu' className='bg-gray-500 hover:bg-red-600 text-white p-2 rounded-lg flex justify-start gap-2 text-center'>
+                    <ChevronLeftCircle />
+                    Back
+                </Link>
+            <h2 className='text-3xl font-bold text-center justify-center'>Menu Item</h2>
+        </div>
+        <MenuForm menuItem={menuItem} handleFormSubmit={handleFormSubmit} />
+       
    <div className='max-w-xl text-center mx-auto mt-5'>
         <DeleteButton label={'Delete Menu Item'} onDelete={handleDeleteItem} />
    </div>

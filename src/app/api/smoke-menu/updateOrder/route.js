@@ -18,3 +18,9 @@ export async function PUT(req) {
     
     return Response.json({ success: true });
 }
+
+export async function GET() {
+    mongoose.connect(process.env.MONGODB_URL)
+    const menus = await SmokeMenu.find()
+    return Response.json(menus)
+}

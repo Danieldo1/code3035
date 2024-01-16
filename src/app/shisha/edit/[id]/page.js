@@ -19,7 +19,7 @@ const ShishaEditId = () => {
     const router= useRouter()
     
     useEffect(() => {
-    fetch('/api/smoke-menu').then(response=>{response.json().then(data=>{
+    fetch('/api/smoke-menu/updateOrder').then(response=>{response.json().then(data=>{
         const items = data.find(item => item._id === id)
         setMenuItem(items)
         })
