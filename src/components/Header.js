@@ -28,10 +28,10 @@ const Header = () => {
       {isMenuOpen && (
         <>
         <motion.div 
-                      initial={{ x: '100%' }}
-                      animate={{ x: 0 }}
-                      exit={{ x: '100%' }}
-                      transition={{ type: 'tween', duration: 0.5 }}
+                      initial={{ y: '-100%' }}
+                      animate={{ y: 0 }}
+                      exit={{ y: '-100%' }}
+                      transition={{ type: 'spring', duration: 0.5 }}
         className='fixed top-0 left-0 pt-36 w-full h-full bg-[#1B1918] text-center flex flex-col items-center z-50'>
           <motion.button
           className='md:hidden ' onClick={toggleMenu}>
