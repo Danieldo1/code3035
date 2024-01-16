@@ -160,7 +160,7 @@ const MenuPageMain = () => {
                                         ))}
                                 </div>
                             </div>
-                            <div className='text-center w-[20%]'>
+                            <div className='text-end w-[20%]'>
                                 <p className='text-md font-bold'>{item.price}</p>
                                     {item.sizes.map((size) => (
                                         <p className='text-xs mt-4 text-gray-500 ' key={size._id}>{size.price + item.price}€</p>
