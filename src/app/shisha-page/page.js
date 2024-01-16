@@ -30,10 +30,11 @@ const ShishaMainPage = () => {
       const handleScroll = () => {
         let currentCategory = null;
         categories.forEach((c) => {
-          // Assuming you have a ref for your section
           const section = document.getElementById(c.name);
           const sectionTop = section.getBoundingClientRect().top;
-          if (sectionTop + 330 < window.scrollY) {
+          // Adjust the "330" to a smaller value that matches the expected trigger point
+          const triggerOffset = 550; // Example: change to a value that works for your layout
+          if (sectionTop + triggerOffset < window.innerHeight) {
             currentCategory = c._id;
           }
         });
@@ -44,7 +45,6 @@ const ShishaMainPage = () => {
           window.removeEventListener('scroll', handleScroll);
         };
       }, [categories]);
-    
   
    
       const handleCategoryClick = (categoryId) => {
@@ -52,9 +52,8 @@ const ShishaMainPage = () => {
       };
   
       const text = "Hookah Menu";
-      const textSmall = "Dive into an aromatic journey with our \ndiverse hookah selections. From timeless classics to exotic blends, each puff is an \ninvitation to relax and socialize in style.";
+      const textSmall = "Dive into an aromatic journey with our diverse hookah selections.\n From timeless classics to exotic blends, each puff is an invitation to relax and socialize in style.";
       
-      const letters = Array.from(text);
     
       // Define the initial and animate properties for each letter
       const letterVariants = {
@@ -101,12 +100,11 @@ const ShishaMainPage = () => {
     <div className='sticky top-[30px]  z-30'>
       <YourComponent categories={categories} handleCategoryClick={handleCategoryClick} />
     </div>
-
-     <div className='flex pl-5 overflow-hidden flex-row snap-x flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
+    <div className='flex pl-5 overflow-hidden flex-row snap-x snap-proximity scroll-smooth flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
     {categories.map((c) => (
       <>
       <div key={c._id} className='pt-10 mx-4 ml-5   whitespace-nowrap '>
-        <Link href={`#${c.name}`} scroll={true}>
+        <Link href={`#${c.name}`} scroll={true} >
           <button onClick={() => {setActiveCategory(c._id); handleCategoryClick(c._id)}}>
             <h2 
               className={`${
@@ -131,19 +129,19 @@ const ShishaMainPage = () => {
             {categories.length > 0 && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
-          <div id={c.name}  key={c._id} className='pt-10 '>
-         <button className='items-center justify-center text-center pb-5 w-full '>
-              <h2   className='text-center  font-bold text-xl'>{c.name}</h2>
-              <p className='text-start text-sm text-gray-400'>{c.description}</p>
-            </button>
+          <div id={c.name}  key={c._id} className='pt-10 scroll-target max-w-sm md:max-w-6xl mx-auto'>
+         <button className='items-center snap-center justify-center text-center flex w-full'>
+  <h2 className={`text-center ${c.description.length === 0 ? 'pb-5' : ''} font-bold text-xl`}>{c.name}</h2>
+<p className={`text-sm text-gray-400  ${c.description.length > 0 ? 'pb-5' : ''}`}>{c.description}</p>
+</button>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                     {menu.filter(item => item.category === c._id && item.available===true).map((item) => (
                       <>
-                        <div key={item._id} className='flex snap-center justify-between w-full  items-center gap-2   bg-[#1B1918]'>
-                            <div className='flex justify-between items-center gap-5'>
-                                <div className=''>
+                        <div key={item._id} className='flex  justify-between w-full  items-center md:px-5 lg:px-10 bg-[#1B1918]'>
+                            <div className='flex justify-between items-center gap-5 '>
+                                <div className='w-[100%]'>
                                     {/* <p>{item.available === true ? "Available" : "Not Available"}</p> */}
-                                    <h3 className='text-lg font-bold'>{item.name}</h3>
+                                    <h3 className='text-md font-bold'>{item.name}</h3>
     
                                     <p className='text-sm text-gray-400'>{item.description}</p>
                                     { item.sizes.map((size) => (
@@ -154,8 +152,8 @@ const ShishaMainPage = () => {
                                         ))}
                                 </div>
                             </div>
-                            <div className='text-center'>
-                                <p className='text-lg font-bold '>{item.price}</p>
+                            <div className='text-end w-[20%]'>
+                                <p className='text-md font-bold'>{item.price}</p>
                                     {item.sizes.map((size) => (
                                         <p className='text-xs mt-4 text-gray-500 ' key={size._id}>{size.price + item.price}€</p>
                                         ))}
@@ -164,7 +162,7 @@ const ShishaMainPage = () => {
                                         ))}
                             </div>
                         </div>
-                                            <div className='border border-white   mx-auto  my-2 w-full' />
+                                            <div className='border border-white  md:mx-5 lg:mx-10 mx-auto  my-2 w-full' />
                         </>
                     ))}
                 </div>    

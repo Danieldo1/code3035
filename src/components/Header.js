@@ -21,7 +21,7 @@ const Header = () => {
     <header
      className='flex justify-between items-center pt-4 px-4  fixed top-0 bg-[#1B1918] w-full z-40'
     >
-      <Link className='text-3xl font-bold' href="/">
+      <Link className='text-3xl font-bold' href="/choose-menu">
         <Image src={'/logo1.webp'} alt="logo" width={150} height={200} />
       </Link>
       <AnimatePresence>
@@ -37,15 +37,15 @@ const Header = () => {
           className='md:hidden ' onClick={toggleMenu}>
             <X className='w-10 h-10 top-[22px] fixed  right-[17px] active:text-slate-300 hover:text-slate-300 delay-150 duration-300 '  />
           </motion.button>
-            <Link className='text-3xl font-bold fixed top-[15px] left-[18px]' href="/">
+            <Link className='text-3xl font-bold fixed top-[15px] left-[18px]' href="/choose-menu">
               <Image src={'/logo1.webp'} alt="logo" width={150} height={200} />
             </Link>
 
 
           <nav className='flex flex-col  items-center' onClick={toggleMenu}>
-            <Link href={'/'} className='font-bold text-3xl mb-4 active:text-slate-300 hover:text-slate-300 delay-150 duration-300 '>
+            {/* <Link href={'/'} className='font-bold text-3xl mb-4 active:text-slate-300 hover:text-slate-300 delay-150 duration-300 '>
               Home
-            </Link>
+            </Link> */}
             <Link href={'/choose-menu'} className='font-bold text-3xl mb-4 active:text-slate-300 hover:text-slate-300 delay-150 duration-300'>
              Menu
             </Link>
@@ -88,7 +88,7 @@ const Header = () => {
 
           <div className='hidden md:flex flex-col'>
             <nav className='flex gap-4 md:gap-12 font-semibold items-center'>
-              <Link href={'/'} className='font-bold text-xl  active:text-slate-300 hover:text-slate-300 delay-150 duration-300 '>Home</Link>
+              {/* <Link href={'/'} className='font-bold text-xl  active:text-slate-300 hover:text-slate-300 delay-150 duration-300 '>Home</Link> */}
               <Link href={'/menu-page'} className='font-bold text-xl  active:text-slate-300 hover:text-slate-300 delay-150 duration-300'>Beverages Menu</Link>
               <Link href={'/shisha-page'} className='font-bold text-xl  active:text-slate-300 hover:text-slate-300 delay-150 duration-300'> Hookah  Menu</Link>
               <Link href={'/contact'} className='font-bold text-xl active:text-slate-300 hover:text-slate-300 delay-150 duration-300'>Contact</Link>
