@@ -70,7 +70,7 @@ const ShishaMenu = () => {
 
 
 
-      const debouncedSetMenuItems = useCallback(debounce(setMenuItems, 300), []);
+      const debouncedSetMenuItems = useCallback(debounce(setMenuItems, 1), []);
     
     if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
     if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
