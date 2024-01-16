@@ -11,7 +11,7 @@ import {toast} from 'react-hot-toast'
 const MenuPage = () => {
     const [menuItems, setMenuItems] = useState([])
     const [categories, setCategories] = useState([])
-    const [activeCategory, setActiveCategory] = useState(null);
+
 
     const {loading,isAdmin} = useProfile()
 
@@ -51,10 +51,6 @@ const MenuPage = () => {
 
     if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
     if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
-
-    // const handleCategoryClick = (categoryId) => {
-    //   setActiveCategory(categoryId);
-    // };
 
 
     const saveOrder = async () => {
@@ -103,7 +99,7 @@ const MenuPage = () => {
             </div>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                    
-                    <ReactSortable list={menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle" >
+                    <ReactSortable list={menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle"  >
                     {menuItems.filter(item => item.category === c._id ).map((item) => (
                       <>
                         <Link href={`/menu/edit/${item._id}`} key={item._id} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>

@@ -12,44 +12,50 @@ import {toast} from 'react-hot-toast'
 const ShishaMenu = () => {
     const [menuItems, setMenuItems] = useState([])
     const [categories, setCategories] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
 
     const router = useRouter()
 
     const {loading,isAdmin} = useProfile()
 
 
-      useEffect(() => {
-        const fetchMenuItems = async () => {
-          try {
-            const response = await fetch('/api/smoke-menu');
-            if (!response.ok) {
-              throw new Error(`Error: ${response.status}`);
-            }
-            const data = await response.json();
-            setMenuItems(data);
-          } catch (error) {
-            console.error('Failed to fetch menu items:', error);
-            toast.error('Failed to load menu items.');
+    useEffect(() => {
+      const fetchCategories = async () => {
+        try {
+          const response = await fetch('/api/smoke-categories');
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
           }
-        };
-        
-        const fetchCategories = async () => {
-          try {
-            const response = await fetch('/api/smoke-categories');
-            if (!response.ok) {
-              throw new Error(`Error: ${response.status}`);
-            }
-            const data = await response.json();
-            setCategories(data);
-          } catch (error) {
-            console.error('Failed to fetch categories:', error);
-            toast.error('Failed to load categories.');
+          const data = await response.json();
+          setCategories(data);
+        } catch (error) {
+          console.error('Failed to fetch categories:', error);
+          toast.error('Failed to load categories.');
+        }
+      };
+    
+      const fetchMenuItems = async () => {
+        try {
+          const response = await fetch('/api/smoke-menu');
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
           }
-        };
-      
-        fetchMenuItems();
-        fetchCategories();
-      }, []);
+          const data = await response.json();
+          setMenuItems(data);
+        } catch (error) {
+          console.error('Failed to fetch menu items:', error);
+          toast.error('Failed to load menu items.');
+        }
+      };
+    
+      const loadData = async () => {
+        setIsLoading(true);  // Set loading to true before starting the fetch
+        await Promise.all([fetchMenuItems(), fetchCategories()]);
+        setIsLoading(false); // Set loading to false after fetches are done
+      };
+    
+      loadData();
+    }, []);
 
       if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
       if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
@@ -78,7 +84,9 @@ const ShishaMenu = () => {
           toast.error('Error saving order');
         }
     };
-
+    if (isLoading) {
+      <div>Loading...</div>;
+    }
   return (
     <section className='mt-20 mb-5 max-w-md mx-auto'>
     <Tabs isAdmin={true}/>
