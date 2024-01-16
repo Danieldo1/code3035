@@ -9,17 +9,6 @@ import { useRouter } from 'next/navigation'
 import { ReactSortable } from 'react-sortablejs'
 import {toast} from 'react-hot-toast'
 
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
 
 
 const ShishaMenu = () => {
@@ -68,9 +57,6 @@ const ShishaMenu = () => {
       fetchCategories();
     }, []);
 
-
-
-      const debouncedSetMenuItems = useCallback(debounce(setMenuItems, 1), []);
     
     if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
     if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
@@ -128,7 +114,7 @@ const ShishaMenu = () => {
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
 
                   
-                  <ReactSortable list={ menuItems.filter(item => item.category === c._id)} setList={debouncedSetMenuItems} className='w-full' handle=".handle" key={c._id}>
+                  <ReactSortable list={ menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle" key={c._id}>
                     {menuItems.filter(item => item.category === c._id ).map((item) => (
                        <div key={item._id}>
                         <Link href={`/shisha/edit/${item._id}`} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
