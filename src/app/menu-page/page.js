@@ -137,7 +137,7 @@ const MenuPageMain = () => {
         {categories.length > 0 && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
-          <div id={c.name}  key={c._id} className='pt-10 scroll-target max-w-sm mx-auto'>
+          <div id={c.name}  key={c._id} className='pt-10 scroll-target max-w-sm md:max-w-6xl mx-auto'>
          <button className='items-center snap-center justify-center text-center flex  w-full '>
               <h2   className='text-center pb-5 font-bold text-xl'>{c.name}</h2>
             </button>
