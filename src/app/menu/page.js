@@ -17,14 +17,37 @@ const MenuPage = () => {
 
 
     useEffect(() => {
-      fetch('/api/menu').then(response=>{response.json().then(data=>{
-        setMenuItems(data)
-      })})
-      fetch('/api/categories').then(response=>{response.json().then(data=>{
-        setCategories(data)
-    })
-})
-    },[])
+      const fetchMenuItems = async () => {
+        try {
+          const response = await fetch('/api/menu');
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+          }
+          const data = await response.json();
+          setMenuItems(data);
+        } catch (error) {
+          console.error('Failed to fetch menu items:', error);
+          toast.error('Failed to load menu items.');
+        }
+      };
+      
+      const fetchCategories = async () => {
+        try {
+          const response = await fetch('/api/categories');
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+          }
+          const data = await response.json();
+          setCategories(data);
+        } catch (error) {
+          console.error('Failed to fetch categories:', error);
+          toast.error('Failed to load categories.');
+        }
+      };
+    
+      fetchMenuItems();
+      fetchCategories();
+    }, []);
 
     if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
     if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>

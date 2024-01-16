@@ -149,7 +149,7 @@ const MenuPageMain = () => {
                             <div className='flex justify-between items-center gap-5'>
                                 <div className=''>
                                     {/* <p>{item.available === true ? "Available" : "Not Available"}</p> */}
-                                    <h3 className='text-lg font-bold'>{item.name}</h3>
+                                    <h3 className='text-md font-bold'>{item.name}</h3>
     
                                     <p className='text-sm text-gray-400'>{item.description}</p>
                                     { item.sizes.map((size) => (
