@@ -57,11 +57,16 @@ const ShishaMenu = () => {
       loadData();
     }, []);
 
-      if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
-      if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
+ 
+  
+    
+    if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
+    if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
+    
+  
 
-      const saveOrder = async () => {
-        const orderedMenu = menuItems.map((c, index) => ({ _id: c._id, order: index }));
+    const saveOrder = async () => {
+      const orderedMenu = menuItems.map((c, index) => ({ _id: c._id, order: index }));
       
         try {
           const response = await fetch('/api/smoke-menu/updateOrder', {
@@ -84,7 +89,8 @@ const ShishaMenu = () => {
           toast.error('Error saving order');
         }
     };
- 
+
+   
   return (
     <section className='mt-20 mb-5 max-w-md mx-auto'>
     <Tabs isAdmin={true}/>
