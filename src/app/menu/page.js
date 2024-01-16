@@ -11,26 +11,13 @@ import {toast} from 'react-hot-toast'
 const MenuPage = () => {
     const [menuItems, setMenuItems] = useState([])
     const [categories, setCategories] = useState([])
+    const [isLoading, setIsLoading] = useState(true);
 
 
     const {loading,isAdmin} = useProfile()
 
 
     useEffect(() => {
-      const fetchMenuItems = async () => {
-        try {
-          const response = await fetch('/api/menu');
-          if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-          }
-          const data = await response.json();
-          setMenuItems(data);
-        } catch (error) {
-          console.error('Failed to fetch menu items:', error);
-          toast.error('Failed to load menu items.');
-        }
-      };
-      
       const fetchCategories = async () => {
         try {
           const response = await fetch('/api/categories');
@@ -45,8 +32,27 @@ const MenuPage = () => {
         }
       };
     
-      fetchMenuItems();
-      fetchCategories();
+      const fetchMenuItems = async () => {
+        try {
+          const response = await fetch('/api/menu');
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+          }
+          const data = await response.json();
+          setMenuItems(data);
+        } catch (error) {
+          console.error('Failed to fetch menu items:', error);
+          toast.error('Failed to load menu items.');
+        }
+      };
+    
+      const loadData = async () => {
+        setIsLoading(true);  // Set loading to true before starting the fetch
+        await Promise.all([fetchMenuItems(), fetchCategories()]);
+        setIsLoading(false); // Set loading to false after fetches are done
+      };
+    
+      loadData();
     }, []);
 
     if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
@@ -84,13 +90,16 @@ const MenuPage = () => {
             <PlusCircle />
              </Link>
         </div>
+
+        {isLoading ? (
+          <div className='flex justify-center items-center mt-10'>
+            <Loader2 className='animate-spin ' /> 
+          </div>
+) :(
       <div className='mt-5 '>
         <h2 className='text-2xl font-bold text-center'>Edit Menu</h2>
-
- 
-
 <button onClick={saveOrder} className='bg-red-500 text-white px-4 py-2 m-5 rounded-full sticky top-[70px] left-0 z-20'>Save</button>
-        {categories.length > 0 && (
+        {categories.length > 0 && !isLoading && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
           <div id={c.name}  key={c._id} className='pt-10 '>
@@ -127,6 +136,10 @@ const MenuPage = () => {
          </div> 
   )}
       </div>
+
+
+)}
+
     </section>
   )
 }

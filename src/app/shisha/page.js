@@ -84,9 +84,7 @@ const ShishaMenu = () => {
           toast.error('Error saving order');
         }
     };
-    if (isLoading) {
-      <div>Loading...</div>;
-    }
+ 
   return (
     <section className='mt-20 mb-5 max-w-md mx-auto'>
     <Tabs isAdmin={true}/>
@@ -95,7 +93,11 @@ const ShishaMenu = () => {
         <PlusCircle />
          </Link>
     </div>
-
+{isLoading ? (
+        <div className='flex justify-center items-center mt-10'>
+         <Loader2 className='animate-spin ' />
+        </div>
+):(
 
   <div className='mt-5 '>
     <h2 className='text-2xl font-bold text-center'>Edit Menu</h2>
@@ -103,7 +105,7 @@ const ShishaMenu = () => {
       Save
     </button>
 
-        {categories.length > 0 && (
+        {categories.length > 0 && !isLoading && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
           <div id={c.name}  key={c._id} className='pt-10 '>
@@ -140,6 +142,8 @@ const ShishaMenu = () => {
          </div> 
   )}
   </div>
+)}
+
 </section>
   )
 }
