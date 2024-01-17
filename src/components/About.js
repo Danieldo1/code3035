@@ -6,7 +6,7 @@ const About = () => {
     <section className='sm:mt-24 md:mt-16'>
     <div class="max-w-7xl mx-auto">
         <p className='text-lg -mb-2 text-gray-500'>Let us introduce you to the <b>3035</b></p>
-        <h2 className='text-3xl font-bold'>About Us</h2>
+        <h2 className='text-3xl font-black'>About Us</h2>
         <div className='mt-4'>
         <p className='text-lg text-gray-100'>Welcome to <strong>3035</strong>, the ultimate destination for shisha enthusiasts and those looking to relax and unwind. Our lounge bar offers a unique and exotic experience, providing a sophisticated ambiance and an extensive selection of the finest flavored shisha.</p>
         <br />

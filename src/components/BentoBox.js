@@ -20,7 +20,7 @@ const BentoBox = () => {
         <img
           src={bentoData[0].imageSrc}
           alt={`Item 1`}
-          className="w-full h-64 object-cover mb-4 shadow-md rounded-md"
+          className="w-full h-64 grayscale-[60%]  object-cover mb-4 shadow-md rounded-md"
         />
         <p className="text-center text-[#1E1E1E] font-bold text-lg tracking-wide">{bentoData[0].textH}</p>
         <div>
@@ -52,7 +52,7 @@ const BentoBox = () => {
         <img
           src={bentoData[4].imageSrc}
           alt={`Item 1`}
-          className="w-full h-64 object-cover mb-4 shadow-md rounded-md"
+          className="w-full h-64 grayscale-[60%]  object-cover mb-4 shadow-md rounded-md"
         />
           <p className="text-center text-[#1E1E1E] font-bold text-lg tracking-wide mb-4">{bentoData[4].textH}</p>
         <div>
