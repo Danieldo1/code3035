@@ -27,10 +27,10 @@ const Hero = () => {
         <h1 className='text-3xl md:text-5xl font-bold text-center '>Experience new level of <br />Lounge Bar</h1>
         <p className='text-xl md:text-2xl my-4 text-gray-100'>Start your journey with us</p>
         <div className='flex gap-4'>
-          <button className='bg-green-700 text-white  font-bold px-4 py-2 rounded-full'>
+          <button className='bg-green-700 text-white  font-bold px-2 py-2 rounded-full'>
             <Link href="/menu-page">Explore bar</Link>
           </button>
-          <button className='bg-green-700 text-white font-bold px-4 py-2 rounded-full'>
+          <button className='bg-green-700 text-white text-sm font-bold px-2 py-2 rounded-full'>
             <Link href="/shisha-page">Explore hookah</Link>
           </button>
         </div>
