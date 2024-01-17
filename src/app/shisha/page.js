@@ -6,31 +6,35 @@ import {useProfile} from '@/components/useProfile'
 import Link from 'next/link'
 import { PlusCircle,Loader2,GripHorizontal } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { ReactSortable } from 'react-sortablejs'
+import { ReactSortable, Sortable } from 'react-sortablejs'
 import {toast} from 'react-hot-toast'
 
 
 
+
+
+
 const ShishaMenu = () => {
-    const [menuItems, setMenuItems] = useState([])
-    const [categories, setCategories] = useState([])
+  const [menuItems, setMenuItems] = useState([])
+  const [categories, setCategories] = useState([])
+  
+  const router = useRouter()
+  
+  const {loading,isAdmin} = useProfile()
 
-    const router = useRouter()
+ 
 
-    const {loading,isAdmin} = useProfile()
-
-
-    useEffect(() => {
-      const fetchMenuItems = async () => {
-        try {
-          const response = await fetch('/api/smoke-menu');
-          if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-          }
-          const data = await response.json();
-          console.log(data)
-          setMenuItems(data);
-        } catch (error) {
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      try {
+        const response = await fetch('/api/smoke-menu');
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data)
+        setMenuItems(data);
+      } catch (error) {
           console.error('Failed to fetch menu items:', error);
           toast.error('Failed to load menu items.');
         }
@@ -89,6 +93,8 @@ const ShishaMenu = () => {
         }
     };
 
+
+
   return (
     <section className='mt-20 mb-5 max-w-md mx-auto'>
     <Tabs isAdmin={true}/>
@@ -100,7 +106,8 @@ const ShishaMenu = () => {
 
 
   <div className='mt-5 '>
-    <h2 className='text-2xl font-bold text-center'>Edit Menu</h2>
+    <h2 className='text-2xl font
+    -bold text-center'>Edit Menu</h2>
     <button onClick={saveOrder} className='bg-red-500 text-white px-4 py-2 m-5 rounded-full sticky top-[70px] left-0 z-20'>
       Save
     </button>
@@ -108,29 +115,32 @@ const ShishaMenu = () => {
         {categories.length > 0 && (
             <div className=' flex-1 gap-5 justify-stretch w-full items-center'> 
       {categories.map(c => (
-          <div id={c.name}  key={c._id} className='pt-10 '>
-         <div className='items-center justify-center text-center pb-5 w-full '>
+        <div id={c.name}  key={c._id} className='pt-10 ' >
+
+         <div className='items-center justify-center text-center pb-5 w-full ' >
               <h2   className='text-center  font-bold text-xl'>{c.name}</h2>
             </div>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
 
-                  <p className='hidden'>{JSON.stringify( menuItems.filter(item => item.category === c._id))}</p>
-                  <ReactSortable list={ menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle" key={c._id}>
-                    {menuItems.filter(item => item.category === c._id ).map((item) => (
-                       <div key={item._id}>
-                        <Link href={`/shisha/edit/${item._id}`} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
-                            <div className='flex justify-between items-center gap-5'>
+   
+                <ReactSortable list={ menuItems.filter(item => item.category === c._id )} setList={setMenuItems} className='w-full' handle=".handle" direction="vertical"  >
+                    
+                    {menuItems.filter(item => item.category === c._id ).map((i) => (
+                      <div key={i._id}>
+                         {/* {JSON.stringify(menuItems.filter(item => item.category === c._id ))} */}
                             <GripHorizontal className='handle cursor-move' />
+                        <Link href={`/shisha/edit/${i._id}`} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
+                            <div className='flex justify-between items-center gap-5'>
                                 <div className=''>
-                                    <p className={`text-sm ${item.available === true ? "text-green-500" : "text-red-500"}`}>{item.available === true ? "Available" : "Not Available"}</p>
-                                    <h3 className='text-lg font-bold'>{item.name}</h3>
+                                    <p className={`text-sm ${i.available === true ? "text-green-500" : "text-red-500"}`}>{i.available === true ? "Available" : "Not Available"}</p>
+                                    <h3 className='text-lg font-bold'>{i.name}</h3>
     
-                                    <p className='text-sm text-gray-400'>{item.description}</p>
+                                    <p className='text-sm text-gray-400'>{i.description}</p>
                                    
                                 </div>
                             </div>
                             <div className='text-center'>
-                                <p className='text-lg font-bold '>{item.price}</p>
+                                <p className='text-lg font-bold '>{i.price}</p>
                                    
                             </div>
                         </Link>              
@@ -142,9 +152,11 @@ const ShishaMenu = () => {
         ))}
          </div> 
   )}
+
   </div>
 </section>
   )
 }
+ 
 
 export default ShishaMenu
