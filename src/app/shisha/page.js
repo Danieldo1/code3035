@@ -119,27 +119,12 @@ const ShishaMenu = () => {
             </div>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                    
-                     
-                <ReactSortable
-  list={menuItems.filter(item => item.category === c._id)}
-  setList={(newState) => setMenuItems(newState)}
-  onEnd={({ oldIndex, newIndex }) => {
-    // Update menu items state to reflect the new order
-    const updatedItems = Array.from(menuItems);
-    const [removedItem] = updatedItems.splice(oldIndex, 1);
-    updatedItems.splice(newIndex, 0, removedItem);
-    setMenuItems(updatedItems);
-  }}
-  className='w-full'
-  handle=".handle"
-  key={c._id}
->
                     {menuItems.filter(item => item.category === c._id ).map((item) => (
                       <>
-                        <Link href={`/menu/edit/${item._id}`} key={item._id} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
+                        <Link href={`/shisha/edit/${item._id}`} key={item._id} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
                             <div className='flex justify-between items-center gap-5'>
-                            <GripHorizontal className='handle cursor-move' />
-                                <div className=''>
+                            <p>{item.order}</p>
+                                <div className='border-l-2 pl-2'>
                                     <p className={`text-sm ${item.available === true ? "text-green-500" : "text-red-500"}`}>{item.available === true ? "Available" : "Not Available"}</p>
                                     <h3 className='text-lg font-bold'>{item.name}</h3>
     
@@ -154,7 +139,7 @@ const ShishaMenu = () => {
                         </Link>              
                         </>
                     ))}
-                    </ReactSortable>
+                   
                 </div>    
             </div>
         ))}
