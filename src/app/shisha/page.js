@@ -34,6 +34,7 @@ const ShishaMenu = () => {
         const data = await response.json();
         console.log(data)
         setMenuItems(data);
+ 
       } catch (error) {
           console.error('Failed to fetch menu items:', error);
           toast.error('Failed to load menu items.');
@@ -53,6 +54,7 @@ const ShishaMenu = () => {
           }
           const data = await response.json();
           setCategories(data);
+         
         } catch (error) {
           console.error('Failed to fetch categories:', error);
           toast.error('Failed to load categories.');
@@ -118,7 +120,20 @@ const ShishaMenu = () => {
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                    
                      
-                    <ReactSortable list={menuItems.filter(item => item.category === c._id)} setList={setMenuItems} className='w-full' handle=".handle"  key={c._id}>
+                <ReactSortable
+  list={menuItems.filter(item => item.category === c._id)}
+  setList={(newState) => setMenuItems(newState)}
+  onEnd={({ oldIndex, newIndex }) => {
+    // Update menu items state to reflect the new order
+    const updatedItems = Array.from(menuItems);
+    const [removedItem] = updatedItems.splice(oldIndex, 1);
+    updatedItems.splice(newIndex, 0, removedItem);
+    setMenuItems(updatedItems);
+  }}
+  className='w-full'
+  handle=".handle"
+  key={c._id}
+>
                     {menuItems.filter(item => item.category === c._id ).map((item) => (
                       <>
                         <Link href={`/menu/edit/${item._id}`} key={item._id} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
