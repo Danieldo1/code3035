@@ -5,7 +5,7 @@ const BentoBox = () => {
   const bentoData = [
     { id: 1, imageSrc: '/bar.webp', textH: 'Dive into the 3035', text: 'Experience a new level of Lounge Bar with premium beverages and specialty cocktails crafted by our expert bartenders' },
     { id: 2, imageSrc: '/cocktail.jpeg', textH: 'Sip Artisanal Elixirs', text: 'Savor the art of mixology with our handcrafted teas, infused with exotic flavors and aromatic bliss' },
-    { id: 3, imageSrc: '/shisha.webp', textH: 'Savor Exquisite Shisha', text: 'Indulge in top-tier shisha selections, featuring premium tobacco blends and a refined smoking experience' },
+    { id: 3, imageSrc: '/shisha.webp', textH: 'Exquisite Shisha', text: 'Indulge in top-tier shisha selections, featuring premium tobacco blends and a refined smoking experience' },
     { id: 4, imageSrc: '/smoke1.jpeg', textH: 'Chill in Style', text: 'Unwind in our urbane Lounge Bar, where chic décor meets relaxed vibes for your perfect escape' },
     { id: 5, imageSrc: '/logo1.webp', textH: 'Play & Revel', text: 'Engage in lively entertainment with our latest PS5 games and classic board games, perfect for groups' }
     // { id: 6, imageSrc: '/logo2.webp', text: 'Item 6' },
@@ -32,13 +32,13 @@ const BentoBox = () => {
     <div className="w-full  lg:w-[65%] grid grid-cols-2 gap-4 lg:gap-8 flex-nowrap">
       {bentoData.slice(1).map((item, index) => (
         <div key={index} className="w-full ">
-          <div className="bg-slate-100 p-4  h-full rounded-md shadow-md flex flex-col justify-evenly">
+          <div className="bg-slate-100 p-4  h-full rounded-md shadow-md flex flex-col justify-between">
             <img
               src={item.imageSrc}
               alt={`Item ${index + 2}`}
-              className="w-full h-32 object-cover mb-4 rounded-md"
+              className="w-full h-32 object-cover items-center justify-center mb-4 rounded-md"
             />
-            <p className="text-center text-[#1E1E1E] font-bold text-lg tracking-wide">{item.textH}</p>
+            <p className="text-center text-[#1E1E1E] font-bold text-lg mb-4 tracking-wide">{item.textH}</p>
             <div>
               <p className="text-center text-[#1E1E1E] font-normal text-md">{item.text}</p>
             </div>
