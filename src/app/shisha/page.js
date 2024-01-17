@@ -17,6 +17,7 @@ import {toast} from 'react-hot-toast'
 const ShishaMenu = () => {
   const [menuItems, setMenuItems] = useState([])
   const [categories, setCategories] = useState([])
+  const [clickedItem, setClickedItem] = useState(null);
   
   const router = useRouter()
   
@@ -95,7 +96,36 @@ const ShishaMenu = () => {
         }
     };
 
+    const handleMoveOrder = (item, direction) => {
+      // Find the index of the item in the menuItems array
+      const index = menuItems.findIndex((i) => i._id === item._id);
+      setClickedItem(item);
+      // Ensure the item is found in the array
+      if (index !== -1) {
+        // Clone the menuItems array to avoid mutating the original array
+        const updatedMenuItems = [...menuItems];
+        // Swap the order based on the direction
+        if (direction === 'up' && index > 0) {
+          [updatedMenuItems[index - 1], updatedMenuItems[index]] = [
+            updatedMenuItems[index],
+            updatedMenuItems[index - 1],
+          ];
+        } else if (direction === 'down' && index < updatedMenuItems.length - 1) {
+          [updatedMenuItems[index], updatedMenuItems[index + 1]] = [
+            updatedMenuItems[index + 1],
+            updatedMenuItems[index],
+          ];
+        }
+    
+        // Update the state or perform any action with the updated array
+        setMenuItems(updatedMenuItems);
 
+      }
+      setTimeout(() => {
+        setClickedItem(null);
+      }, 300);
+    };
+    
 
   return (
     <section className='mt-20 mb-5 max-w-md mx-auto'>
@@ -119,25 +149,55 @@ const ShishaMenu = () => {
             </div>
                 <div className='flex flex-row flex-wrap flex-1 snap-mandatory snap-x  justify-stretch w-full '>
                    
-                    {menuItems.filter(item => item.category === c._id ).map((item) => (
-                      <>
-                        <Link href={`/shisha/edit/${item._id}`} key={item._id} className='flex snap-center justify-between w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 '>
-                            <div className='flex justify-between items-center gap-5'>
-                            <p>{item.order}</p>
-                                <div className='border-l-2 pl-2'>
-                                    <p className={`text-sm ${item.available === true ? "text-green-500" : "text-red-500"}`}>{item.available === true ? "Available" : "Not Available"}</p>
-                                    <h3 className='text-lg font-bold'>{item.name}</h3>
-    
-                                    <p className='text-sm text-gray-400'>{item.description}</p>
-                                   
-                                </div>
-                            </div>
-                            <div className='text-center'>
-                                <p className='text-lg font-bold '>{item.price}</p>
-                                   
-                            </div>
-                        </Link>              
-                        </>
+                {menuItems
+  .filter((item) => item.category === c._id)
+  .map((item) => (
+    <div key={item._id}  
+    className={`flex  w-full bg-blue-900 px-5 py-3 rounded-lg my-2 items-center gap-2 transition-opacity ${
+      clickedItem && clickedItem._id === item._id
+        ? 'opacity-50'
+        : 'opacity-100'
+    }`}>
+          <div className='flex items-center justify-center'>
+            <button
+              onClick={() => handleMoveOrder(item, 'up')}
+              className='bg-green-500 px-2 py-1 rounded-lg  text-black'
+            >
+            ⬆︎           
+         </button>
+            <button
+              onClick={() => handleMoveOrder(item, 'down')}
+              className='bg-red-500 px-2 py-1 rounded-lg text-white ml-2'
+            >
+              ⬇︎
+
+            </button>
+          </div>
+      <Link
+        href={`/shisha/edit/${item._id}`}
+        className='flex flex-1 justify-between'
+      >
+        <div className='flex justify-between items-center gap-5'>
+          <div className='border-l-2 pl-2'>
+            <p
+              className={`text-sm ${
+                item.available === true ? 'text-green-500' : 'text-red-500'
+              }`}
+            >
+              {item.available === true ? 'Available' : 'Not Available'}
+            </p>
+
+            <h3 className='text-lg font-bold'>{item.name}</h3>
+
+            <p className='text-sm text-gray-400'>{item.description}</p>
+          </div>
+        </div>
+
+        <div className='text-right justify-end'>
+          <p className='text-lg font-bold '>{item.price}</p>
+        </div>
+      </Link>
+    </div>
                     ))}
                    
                 </div>    
