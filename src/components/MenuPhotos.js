@@ -1,18 +1,39 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion';
+import LoadingOverlay from './Overlay';
+import { useRouter } from 'next/navigation';
 
 const MenuPhotos = () => {
+  const [clicked, setClicked] = useState(false);
+  const router = useRouter();
+
   const variants = {
     hidden: { opacity: 0, x: -100 },
     visible: { opacity: 1, x: 0 }
   };
+
+  const navigateToMenuPage = () => {
+    setClicked(true); // Show the loading overlay
+      // Delay the navigation
+      setTimeout(() => {
+        router.push('/menu-page');
+      }, 1000); // 2 second delay
+    };
+
+    const navigateToHookah = () => {
+      setClicked(true); // Show the loading overlay
+        // Delay the navigation
+        setTimeout(() => {
+          router.push('/shisha-page');
+        }, 1000); // 2 second delay
+      };
   return (
     <div>
-    <Link href='/menu-page' className=''>
+    <button className='w-full' onClick={navigateToMenuPage}>
     <motion.div
           className='mx-auto relative'
           initial="hidden"
@@ -32,10 +53,12 @@ const MenuPhotos = () => {
         />
       </div>
     </motion.div>
-  </Link>
+  </button>
+
     
-    
-          <Link href='/shisha-page' className=''>
+  {clicked && <LoadingOverlay />}
+  
+          <button className='w-full' onClick={navigateToHookah}>
           <motion.div
           className='mx-auto mt-5 relative'
           initial="hidden"
@@ -57,7 +80,7 @@ const MenuPhotos = () => {
         />
       </div>
       </motion.div>
-  </Link>
+  </button>
     
     </div>
   )

@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main className='flex-1 w-full max-w-6xl mx-auto px-4'>
           <Providers>
+          
           {children}     
           </Providers>
         </main>

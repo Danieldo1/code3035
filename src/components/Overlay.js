@@ -32,7 +32,7 @@ export default function LoadingOverlay() {
             animate="visible"
             exit="hidden"
             variants={overlayVariants}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 0.5 }}
             style={{
               position: 'fixed',
               top: 0,
