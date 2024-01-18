@@ -19,7 +19,7 @@ const BentoBox = () => {
   return (
     <div className="flex flex-wrap  justify-center lg:justify-evenly lg:items-stretch">
     <div className="w-full lg:w-[30%]  mb-4 lg:mb-0 lg:mr-4">
-      <div className="bg-slate-300 p-4 rounded-md lg:h-full shadow-md">
+      <div className="bg-stone-300 p-4 rounded-md lg:h-full shadow-md">
       <ParallaxBanner 
       layers={[
         {image: bentoData[0].imageSrc, speed: -15},
@@ -41,7 +41,7 @@ const BentoBox = () => {
     <div className="w-full  lg:w-[65%] grid grid-cols-2 gap-4 lg:gap-8 flex-nowrap">
       {bentoData.slice(1).map((item, index) => (
         <div key={index} className="w-full ">
-          <div className="bg-slate-300 p-4  h-full rounded-md shadow-md flex flex-col justify-start">
+          <div className="bg-stone-300 p-4  h-full rounded-md shadow-md flex flex-col justify-start">
           <ParallaxBanner 
           layers={[
             {image: item.imageSrc, speed: -5},
@@ -63,7 +63,7 @@ const BentoBox = () => {
     </div>
 
     <div className="w-full lg:w-full mt-4 ">
-      <div className="bg-slate-300 p-4 rounded-md shadow-md">
+      <div className="bg-stone-300 p-4 rounded-md shadow-md">
       <ParallaxBanner 
       layers={[
         {image: bentoData[2].imageSrc, speed: -15},

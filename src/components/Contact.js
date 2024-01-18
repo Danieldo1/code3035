@@ -31,8 +31,8 @@ const Contact = () => {
 
         <div className='mt-5 text-center justify-center items-center'>
             <h3 className='text-xl font-bold mb-2'>Join us daily</h3>
-            <p className='text-lg text-gray-100'>Monday - Friday: from 14:00-00:00</p>
-            <p className='text-lg text-gray-100'>Saturday - Sunday: from 14:00-02:00</p>
+            <p className='text-lg text-gray-100'>Monday - Friday <br />14:00-00:00</p>
+            <p className='text-lg text-gray-100'>Saturday - Sunday <br />14:00-02:00</p>
             <br />
             <p className='text-md text-gray-100 italic'>Reservations: <a href='tel:+35797866197'>+357 97-866-197</a> </p>
 

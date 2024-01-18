@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 
 export default function LoadingOverlay() {
@@ -11,7 +12,7 @@ export default function LoadingOverlay() {
     // Simulate a loading process, you should replace this with your actual loading logic
     const timer = setTimeout(() => {
       setShow(false);
-    },2000); // Replace 3000 with the actual time it takes to load your resources
+    },1000); // Replace 3000 with the actual time it takes to load your resources
 
     // Clear the timeout if the component is unmounted before the loading is done
     return () => clearTimeout(timer)
@@ -19,6 +20,7 @@ export default function LoadingOverlay() {
 
   const overlayVariants = {
     hidden: { opacity: 0 },
+
     visible: { opacity: 1 },
   };
 
@@ -32,7 +34,7 @@ export default function LoadingOverlay() {
             animate="visible"
             exit="hidden"
             variants={overlayVariants}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 500 }}
             style={{
               position: 'fixed',
               top: 0,
@@ -46,7 +48,7 @@ export default function LoadingOverlay() {
               zIndex: 10000,
             }}
           >
-            <img src={'/smoke2.gif'} alt="Loading" className='object-cover object-center w-full h-full' />
+            <img src='/smoke2.gif' alt="Loading" fill className='object-cover object-center w-full h-full' />
           </motion.div>
         )}
     </AnimatePresence>
