@@ -6,7 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const Carusel = () => {
   return (
-    <section className='md:mt-10 md:mb-10 min-h-[200px] mx-auto'>
+    <section className='md:mt-10 md:mb-10 min-h-[200px] mb-5 flex justify-center items-center mx-auto '>
          <Carousel autoPlay={true} 
          emulateTouch={true}
          infiniteLoop={true}
@@ -24,14 +24,14 @@ const Carusel = () => {
          dynamicHeight={true}
             className='my-auto'
          >
-                <div  className='mx-2 md:mx-5'>
-                    <img src="bar.webp" />  
+                <div  className='mx-2 md:mx-5 '>
+                    <img src="bar.webp" className='aspect-[24/16]' />  
                 </div>
                 <div  className='mx-2 md:mx-5'>
-                    <img src="cocktail.jpeg" />
+                    <img src="cocktail.jpeg" className='aspect-[24/16]' />
                 </div>
                 <div  className='mx-2 md:mx-5'>
-                    <img src="shisha.webp" />
+                    <img src="shisha.webp" className='aspect-[24/16]' />
                 </div>
             </Carousel>
     </section>

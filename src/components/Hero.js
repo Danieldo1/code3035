@@ -20,45 +20,41 @@ const Hero = () => {
 
 
   return (
-    <section className='mt-24'>
- <div className="relative h-[300px] px-10">
+    <section className='mt-24 -mx-4'>
+ <div className="relative h-[350px] flex justify-center px-10 bg-gradient-to-t from-[#1B1918] ">
      
-      <div className='flex flex-col justify-center pt-4 md:pt-20 items-center '>
-        <h1 className='text-3xl md:text-5xl font-bold text-center '>Experience new level of <br />Lounge Bar</h1>
-        <p className='text-xl md:text-2xl my-4 text-gray-100'>Start your journey with us</p>
+      <div className='flex flex-col justify-evenly pt-4 md:pt-20 items-center '>
+        <h1 className='text-3xl md:text-5xl font-bold text-center -mt-5 '>Experience the new level of <br />Lounge Bar</h1>
+        {/* <p className='text-xl md:text-2xl my-4 text-gray-100'>Start your journey with us</p> */}
         <div className='flex gap-4'>
-          <button className='bg-green-700 text-white  font-bold px-2 py-2 rounded-full'>
-            <Link href="/menu-page">Explore bar</Link>
+            <Link href="/menu-page">
+          <button className="relative  inline-flex items-center justify-center px-4 py-2 font-medium text-black transition duration-200 ease-out bg-white border-2 border-black group">
+            <span className="absolute  inset-0 w-full h-full transition duration-200 ease-out transform bg-white translate-x-1.5 translate-y-1 group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+            <span className="absolute  inset-0 w-full h-full transition duration-200 ease-out bg-white border-2 border-black group-hover:bg-black"></span>
+            <span className="relative z-10 transition duration-200 ease-out group-hover:text-white">
+              Explore Bar
+            </span>
           </button>
-          <button className='bg-green-700 text-white text-sm font-bold px-2 py-2 rounded-full'>
-            <Link href="/shisha-page">Explore hookah</Link>
+        </Link>
+        <Link href="/shisha-page">
+          <button className="relative  inline-flex items-center justify-center px-4 py-2 font-medium text-black transition duration-200 ease-out bg-white border-2 border-black group">
+            <span className="absolute  inset-0 w-full h-full transition duration-200 ease-out transform bg-white translate-x-1.5 translate-y-1 group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+            <span className="absolute  inset-0 w-full h-full transition duration-200 ease-out bg-white border-2 border-black group-hover:bg-black"></span>
+            <span className="relative z-10 transition duration-200 ease-out group-hover:text-white">
+              Explore Hookah
+            </span>
           </button>
+        </Link>
         </div>
       </div>
 
-      <div className="absolute inset-0 z-[-1] h-[350px] opacity-30 rounded-lg overflow-hidden">
+      <div className="absolute inset-0 z-[-1] h-[350px] opacity-30  overflow-hidden ">
       <Fade autoplay>
         {fadeImages.map((fadeImage, index) => (
-            <img  key={index} alt='Background Hero' style={{ borderRadius: '0.5rem', objectFit: 'cover', objectPosition: 'center',}}  src={fadeImage.url}  />
+            <img  key={index} alt='Background Hero' style={{ objectFit: 'cover', objectPosition: 'center',}}  src={fadeImage.url} className='aspect-[16/13] w-full h-full '  />
         ))}
       </Fade>
          </div>
-        {/* <div className="absolute inset-0 z-[-1] h-[350px] opacity-50 rounded-lg">
-          <Image
-            src="/shisha.webp" 
-            fill  
-            layout="fill"
-             objectFit="cover"
-              objectPosition="center"          
-            alt="Lounge Bar"
-            priority 
-            className='rounded-lg '
-          />
-        </div> */}
-     
-
-
-
     </div>
     </section>
   )

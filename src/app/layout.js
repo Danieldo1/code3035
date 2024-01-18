@@ -4,6 +4,8 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {AppProvider} from '../components/AppContext'
 import {Toaster} from 'react-hot-toast'
+import { Providers } from './providers'
+import LoadingOverlay from '@/components/Overlay'
 // import Overlay from '../components/Overlay';
 
 const rubik = Rubik({ subsets: ['latin'],weight: ['900','800','300','400','500','600','700'] })
@@ -22,7 +24,9 @@ export default function RootLayout({ children }) {
         <Toaster />
         <Header />
         <main className='flex-1 w-full max-w-6xl mx-auto px-4'>
-          {children}
+          <Providers>
+          {children}     
+          </Providers>
         </main>
         <Footer />
       </AppProvider>
