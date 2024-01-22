@@ -1,22 +1,18 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion';
 
 const MenuPhotos = () => {
-
-
   const variants = {
     hidden: { opacity: 0, x: -100 },
     visible: { opacity: 1, x: 0 }
   };
-
-
   return (
     <div>
-    <Link href={'/menu-page'} className='w-full' >
+    <Link href='/menu-page' className=''>
     <motion.div
           className='mx-auto relative'
           initial="hidden"
@@ -37,11 +33,9 @@ const MenuPhotos = () => {
       </div>
     </motion.div>
   </Link>
-
     
-
-  
-          <Link href={'/shisha-page'} className='w-full' >
+    
+          <Link href='/shisha-page' className=''>
           <motion.div
           className='mx-auto mt-5 relative'
           initial="hidden"
