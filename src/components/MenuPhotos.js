@@ -11,8 +11,8 @@ const MenuPhotos = () => {
     visible: { opacity: 1, x: 0 }
   };
   return (
-    <div>
-    <Link href='/menu-page' className=''>
+    <div className='flex flex-col  items-center justify-center md:grid md:grid-cols-2 md:gap-5 md:items-center md:justify-center '>
+    <Link href='/menu-page' className='mt-24 md:mt-0 '>
     <motion.div
           className='mx-auto relative'
           initial="hidden"
@@ -21,14 +21,14 @@ const MenuPhotos = () => {
           transition={{ duration: 1 }}
         >
       <h2 className='absolute inset-0 flex justify-center items-center rounded-lg bg-[#1B1918] bg-opacity-50 hover:bg-opacity-75 text-white text-3xl font-bold z-10 transition duration-700' >Bar Menu</h2>
-      <div className='flex justify-center items-center w-full h-full  '>
+      <div className='flex justify-center items-center w-full h-full aspect-square overflow-hidden rounded-lg'>
         <Image 
-          src='/cocktail.jpeg'
+          src='/bar1.webp'
           alt="hero image"
-          layout='responsive'
+          layout=''
           width={400}
           height={400}
-          className=' rounded-lg'
+          className=' '
         />
       </div>
     </motion.div>
@@ -37,7 +37,7 @@ const MenuPhotos = () => {
     
           <Link href='/shisha-page' className=''>
           <motion.div
-          className='mx-auto mt-5 relative'
+          className='mx-auto mt-5 md:mt-0 relative rounded-lg'
           initial="hidden"
           animate="visible"
           variants={variants}
@@ -46,14 +46,14 @@ const MenuPhotos = () => {
       <h2 className='absolute inset-0 flex justify-center items-center rounded-lg bg-[#1B1918] bg-opacity-50 hover:bg-opacity-75 text-white text-3xl font-bold z-10 transition duration-700' >
           Shisha Menu
       </h2>
-      <div className='flex justify-center items-center w-full h-full '>
+      <div className='flex justify-center items-center w-full h-full aspect-square overflow-hidden rounded-lg ' >
         <Image 
-          src='/smoke1.jpeg'
+          src='/shisha1.webp'
           alt="hero image"
-          layout='responsive'
+          layout=''
           width={400}
           height={400}
-          className=' rounded-lg'
+          className='  '
         />
       </div>
       </motion.div>
