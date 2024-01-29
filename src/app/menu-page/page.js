@@ -98,7 +98,7 @@ const MenuPageMain = () => {
     
     {loading ? (
     
-    <div className='text-3xl font-bold text-center flex justify-center mt-20 items-center '><Loader2 className='animate-spin ' /></div>
+    <div className='text-3xl font-bold text-center flex justify-center mt-40 items-center '><Loader2 className='animate-spin ' /></div>
     
     ):(
         <>
