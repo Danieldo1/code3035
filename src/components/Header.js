@@ -28,16 +28,16 @@ const Header = () => {
       {isMenuOpen && (
         <>
         <motion.div 
-                      initial={{ y: '-100%' }}
-                      animate={{ y: 0 }}
-                      exit={{ y: '-100%' }}
-                      transition={{ type: 'spring', duration: 0.5 }}
+                       initial={{ opacity: 0 }}
+                       animate={{ opacity: 1 }}
+                       exit={{ opacity: 0 }}
+                       transition={{ duration: 0.3 }}
         className='fixed top-0 left-0 pt-36 w-full h-full bg-[#1B1918] text-center flex flex-col items-center z-50'>
           <motion.button
           className='md:hidden ' onClick={toggleMenu}>
-            <X className='w-10 h-10 top-[22px] fixed  right-[17px] active:text-slate-300 hover:text-slate-300 delay-150 duration-300 '  />
+            <X className='w-10 h-10 top-[22px] fixed  right-[16px] active:text-slate-300 hover:text-slate-300 delay-150 duration-300 '  />
           </motion.button>
-            <Link className='text-3xl font-bold fixed top-[15px] left-[18px]' href="/choose-menu">
+            <Link className='text-3xl font-bold fixed top-[15px] left-[17px]' href="/choose-menu">
               <Image src={'/logo1.webp'} alt="logo" width={150} height={200} />
             </Link>
 

@@ -33,8 +33,7 @@ const MenuPageMain = () => {
         categories.forEach((c) => {
           const section = document.getElementById(c.name);
           const sectionTop = section.getBoundingClientRect().top;
-          // Adjust the "330" to a smaller value that matches the expected trigger point
-          const triggerOffset = 550; // Example: change to a value that works for your layout
+          const triggerOffset = 410; // Example: change to a value that works for your layout
           if (sectionTop + triggerOffset < window.innerHeight) {
             currentCategory = c._id;
           }
@@ -90,7 +89,7 @@ const MenuPageMain = () => {
         </motion.span>
       ))}
     </h1>
-    <StaggeredText text={textSmall} />
+    {/* <StaggeredText text={textSmall} /> */}
     
     
     

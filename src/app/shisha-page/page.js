@@ -84,7 +84,7 @@ const ShishaMainPage = () => {
           </motion.span>
         ))}
       </h1>
-      <StaggeredText text={textSmall} />
+      {/* <StaggeredText text={textSmall} /> */}
       
       
       
