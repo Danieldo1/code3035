@@ -19,7 +19,7 @@ const Footer = () => {
 
         </div>
       </div>
-        <h1>&copy; {year} CODE3035</h1>
+        <h1>&copy; {year} 3035 Lounge Bar</h1>
         <p>All Rights Reserved</p>
     </div>
   )

@@ -11,8 +11,8 @@ import LoadingOverlay from '@/components/Overlay'
 const rubik = Rubik({ subsets: ['latin'],weight: ['900','800','300','400','500','600','700'] })
 
 export const metadata = {
-  title: 'CODE3035',
-  description: 'CODE3035 - Your new lounge bar experience.',
+  title: '3035 Lounge Bar',
+  description: '3035 Lounge Bar - Your new lounge bar experience.',
 }
 
 export default function RootLayout({ children }) {

@@ -28,7 +28,7 @@ const ParallaxComponent = () => {
           children: (
             <div className="absolute inset-0 flex items-center max-w-sm md:max-w-3xl mx-auto justify-center ">
               {/* <h1 className="text-3xl text-white font-thin">Hello World!</h1> */}
-              <p className='text-lg text-center md:text-xl text-gray-100 backdrop-blur-sm bg-white/10  rounded-lg p-5 md:p-16'>At 3035, we&apos;re more than just a lounge bar. We&apos;re a community. Join us and become part of the CODE3035 family. We look forward to serving you and creating exceptional experiences that you&apos;ll cherish.</p>
+              <p className='text-lg text-center md:text-xl text-gray-100 backdrop-blur-sm bg-white/10  rounded-lg p-5 md:p-16'>At 3035, we&apos;re more than just a lounge bar. We&apos;re a community. Join us and become part of the 3035 family. We look forward to serving you and creating exceptional experiences that you&apos;ll cherish.</p>
             </div>
           ),
         },
