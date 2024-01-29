@@ -12,7 +12,7 @@ const MenuPhotos = () => {
   };
   return (
     <div className='flex flex-col  items-center justify-center md:grid md:grid-cols-2 md:gap-5 md:items-center md:justify-center '>
-    <Link href='/menu-page' className='mt-24 md:mt-0 h-[85%] w-[85%] '>
+    <Link href='/menu-page' className='mt-24 md:mt-0 h-[85%] w-[85%] md:w-full md:h-full'>
     <motion.div
           className='mx-auto relative'
           initial="hidden"
@@ -33,7 +33,7 @@ const MenuPhotos = () => {
       </div>
     </motion.div>
   </Link>
-          <Link href='/shisha-page' className='h-[85%] w-[85%] '>
+          <Link href='/shisha-page' className='h-[85%] w-[85%] md:w-full md:h-full '>
           <motion.div
           className='mx-auto mt-5 md:mt-0 relative rounded-lg'
           initial="hidden"

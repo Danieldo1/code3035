@@ -33,7 +33,7 @@ const MenuPageMain = () => {
         categories.forEach((c) => {
           const section = document.getElementById(c.name);
           const sectionTop = section.getBoundingClientRect().top;
-          const triggerOffset = 410; // Example: change to a value that works for your layout
+          const triggerOffset = 550; // Example: change to a value that works for your layout
           if (sectionTop + triggerOffset < window.innerHeight) {
             currentCategory = c._id;
           }
