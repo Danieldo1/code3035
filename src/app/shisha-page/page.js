@@ -70,20 +70,22 @@ const ShishaMainPage = () => {
   
   return (
     <section className='mt-20' >
-    <h1 className='text-4xl font-black tracking-wider text-center'>
-        {text.split("").map((letter, index) => (
-          <motion.span
-            key={index}
-            variants={letterVariants}
-            initial="initial"
-            animate="animate"
-            custom={index}
-            style={{ display: 'inline-block' }} 
-          >
-            {letter === " " ? "\u00A0" : letter}
-          </motion.span>
-        ))}
-      </h1>
+    <div className='relative flex justify-center'>
+      <h1 className='text-4xl font-black tracking-wider text-center absolute top-0 z-30'>
+          {text.split("").map((letter, index) => (
+            <motion.span
+              key={index}
+              variants={letterVariants}
+              initial="initial"
+              animate="animate"
+              custom={index}
+              style={{ display: 'inline-block' }} 
+            >
+              {letter === " " ? "\u00A0" : letter}
+            </motion.span>
+          ))}
+        </h1>
+  </div>
       {/* <StaggeredText text={textSmall} /> */}
       
       
