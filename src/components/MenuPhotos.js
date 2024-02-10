@@ -61,7 +61,7 @@ const MenuPhotos = () => {
       </div>
       </motion.div>
   </Link>
-          <Link href='/food-page' className='h-full w-full md:w-full md:h-full '>
+          <Link href='/food-page' className='h-full w-full md:w-full md:h-full hidden'>
           <motion.div
           className='mx-auto  md:mt-0 relative rounded-lg'
           initial="hidden"
@@ -84,7 +84,7 @@ const MenuPhotos = () => {
       </div>
       </motion.div>
   </Link>
-          <Link href='/tea-page' className='h-full w-full md:w-full md:h-full '>
+          <Link href='/tea-page' className='h-full w-full md:w-full md:h-full hidden'>
           <motion.div
           className='mx-auto  md:mt-0 relative rounded-lg'
           initial="hidden"
