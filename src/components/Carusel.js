@@ -24,18 +24,33 @@ const Carusel = () => {
          dynamicHeight={true}
             className='my-auto '
          >
-              <div className='mx-2 md:-mx-56'>
-  <img src="wine.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
-</div>
-<div className='mx-2 md:-mx-56'>
-  <img src="bar1.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
-</div>
-<div className='mx-2 md:-mx-56'>
-  <img src="barlounge.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
-</div>
-<div className='mx-2 md:-mx-56'>
-  <img src="table.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
-</div>
+          <div className='mx-2 md:-mx-56'>
+            <img src="bar1.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+          </div>
+          <div className='mx-2 md:-mx-56'>
+            <img src="table.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+          </div>
+          <div className='mx-2 md:-mx-56'>
+            <img src="barlounge.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+          </div>
+          <div className='mx-2 md:-mx-56'>
+            <img src="bartable.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+          </div>
+          <div className='mx-2 md:-mx-56'>
+            <img src="drink.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+          </div>
+          <div className='mx-2 md:-mx-56'>
+            <img src="drink2.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+          </div>
+          <div className='mx-2 md:-mx-56'>
+            <img src="wine.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+          </div>
+          <div className='mx-2 md:-mx-56'>
+            <img src="tea.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+          </div>
+          <div className='mx-2 md:-mx-56'>
+            <img src="shisha1.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+          </div>
             </Carousel>
     </section>
   )

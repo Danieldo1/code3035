@@ -19,7 +19,7 @@ const BentoBox = () => {
   return (
     <div className="flex flex-wrap  justify-center lg:justify-evenly lg:items-stretch">
     <div className="w-full lg:w-[30%]  mb-4 lg:mb-0 lg:mr-4">
-      <div className="bg-stone-300 p-4 rounded-md lg:h-full shadow-md">
+      <div className="border-stone-300 border-2 p-4 rounded-md lg:h-full shadow-md">
       <ParallaxBanner 
       layers={[
         {image: bentoData[0].imageSrc, speed: -15},
@@ -31,9 +31,9 @@ const BentoBox = () => {
           alt={`Item 1`}
          
         /> */}
-        <p className="text-center text-[#1E1E1E] font-bold text-lg tracking-wide">{bentoData[0].textH}</p>
+        <p className="text-center text-stone-300 font-bold text-lg tracking-wide">{bentoData[0].textH}</p>
         <div>
-          <p className="text-center text-[#1E1E1E] font-normal text-md">{bentoData[0].text}</p>
+          <p className="text-center text-stone-300 font-normal text-md">{bentoData[0].text}</p>
         </div>
       </div>
     </div>
@@ -41,21 +41,21 @@ const BentoBox = () => {
     <div className="w-full  lg:w-[65%] grid grid-cols-2 gap-4 lg:gap-8 flex-nowrap">
       {bentoData.slice(1,5).map((item, index) => (
         <div key={index} className="w-full ">
-          <div className="bg-stone-300 p-4  h-full rounded-md shadow-md flex flex-col justify-start">
+          <div className="border-stone-300 border-2 p-4  h-full rounded-md shadow-md flex flex-col justify-start">
           <ParallaxBanner 
           layers={[
             {image: item.imageSrc, speed: -5},
           ]}
-          className="w-full h-72 grayscale-[60%] object-cover items-center justify-center mb-4 rounded-md shadow-md"
+          className="w-full h-36 grayscale-[60%] object-cover items-center justify-center mb-4 rounded-md shadow-md"
           />
             {/* <img
               src={item.imageSrc}
               alt={`Item ${index + 2}`}
           
             />    */}
-            <p className="text-center text-[#1E1E1E] font-bold text-lg mb-4 tracking-wide">{item.textH}</p>
+            <p className="text-center text-stone-300 font-bold text-lg mb-4 tracking-wide">{item.textH}</p>
             <div>
-              <p className="text-center text-[#1E1E1E] font-normal text-md">{item.text}</p>
+              <p className="text-center text-stone-300 font-normal text-md">{item.text}</p>
             </div>
           </div>
         </div>
@@ -63,16 +63,16 @@ const BentoBox = () => {
     </div>
 
     <div className="w-full lg:w-full mt-4 ">
-      <div className="bg-stone-300 p-4 rounded-md shadow-md">
+      <div className="border-stone-300 border-2 p-4 rounded-md shadow-md">
       <ParallaxBanner 
       layers={[
         {image: bentoData[5].imageSrc, speed: -15},
       ]}
       className="w-full h-64 grayscale-[60%]  object-cover mb-4 shadow-md rounded-md"
       />
-          <p className="text-center text-[#1E1E1E] font-bold text-lg tracking-wide mb-4">{bentoData[5].textH}</p>
+          <p className="text-center text-stone-300 font-bold text-lg tracking-wide mb-4">{bentoData[5].textH}</p>
         <div>
-          <p className="text-center text-[#1E1E1E] font-normal text-md">{bentoData[5].text}</p>
+          <p className="text-center text-stone-300 font-normal text-md">{bentoData[5].text}</p>
         </div>
       </div>
     </div>
