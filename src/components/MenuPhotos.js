@@ -14,7 +14,7 @@ const MenuPhotos = () => {
 
   return (
     <>
-     <h1 className='flex justify-center text1 font-extrabold text-4xl mb-24 md:mt-10 md:mb-5 '>Menu</h1>
+    
     <div className='grid grid-cols-2 gap-5 items-center justify-center '>
      
     <Link href='/menu-page' className=' h-full w-full md:w-full md:h-full'>
