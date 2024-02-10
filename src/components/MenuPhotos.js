@@ -56,6 +56,52 @@ const MenuPhotos = () => {
       </div>
       </motion.div>
   </Link>
+          <Link href='/food-page' className='h-[85%] w-[85%] md:w-full md:h-full '>
+          <motion.div
+          className='mx-auto mt-5 md:mt-0 relative rounded-lg'
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+          transition={{ duration: 1, delay: 0.5 }} // You can add delay for staggered animation
+        >
+      <h2 className='absolute inset-0 flex justify-center items-center rounded-lg bg-[#1B1918] bg-opacity-50 hover:bg-opacity-75 text-white text-3xl font-bold z-10 transition duration-700' >
+          Snacks Menu
+      </h2>
+      <div className='flex justify-center items-center w-full h-full aspect-square overflow-hidden rounded-lg ' >
+        <Image 
+          src='/snacks.webp'
+          alt="hero image"
+          layout=''
+          width={400}
+          height={400}
+          className='  '
+        />
+      </div>
+      </motion.div>
+  </Link>
+          <Link href='/tea-page' className='h-[85%] w-[85%] md:w-full md:h-full '>
+          <motion.div
+          className='mx-auto mt-5 md:mt-0 relative rounded-lg'
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+          transition={{ duration: 1, delay: 0.5 }} // You can add delay for staggered animation
+        >
+      <h2 className='absolute inset-0 flex justify-center items-center rounded-lg bg-[#1B1918] bg-opacity-50 hover:bg-opacity-75 text-white text-3xl font-bold z-10 transition duration-700' >
+          Tea Menu
+      </h2>
+      <div className='flex justify-center items-center w-full h-full aspect-square overflow-hidden rounded-lg ' >
+        <Image 
+          src='/tea.webp'
+          alt="hero image"
+          layout=''
+          width={400}
+          height={400}
+          className='  '
+        />
+      </div>
+      </motion.div>
+  </Link>
     
     </div>
   )
