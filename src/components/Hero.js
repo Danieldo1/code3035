@@ -31,10 +31,13 @@ const Hero = () => {
 
   const fadeImages = [
     {
-      url: '/shisha.webp',
+      url: '/bar1.webp',
     },
     {
-      url: '/bar.webp'
+      url: '/barlounge.webp'
+    },
+    {
+      url: '/drink.webp'
     },
   
   ];

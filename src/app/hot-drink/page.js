@@ -10,7 +10,7 @@ import { ReactSortable, Sortable } from 'react-sortablejs'
 import {toast} from 'react-hot-toast'
 
 
-const ShishaMenu = () => {
+const TeaAdmin = () => {
   const [menuItems, setMenuItems] = useState([])
   const [categories, setCategories] = useState([])
   const [clickedItem, setClickedItem] = useState(null);
@@ -19,12 +19,10 @@ const ShishaMenu = () => {
   
   const {loading,isAdmin} = useProfile()
 
- 
-
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await fetch('/api/smoke-menu');
+        const response = await fetch('/api/tea-menu');
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
         }
@@ -40,12 +38,11 @@ const ShishaMenu = () => {
       
       fetchMenuItems();
     }, []);
-    
-    // Hook for fetching categories
+
     useEffect(() => {
       const fetchCategories = async () => {
         try {
-          const response = await fetch('/api/smoke-categories');
+          const response = await fetch('/api/tea-categories');
           if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
           }
@@ -65,13 +62,11 @@ const ShishaMenu = () => {
     if(loading) return <div className='text-3xl font-bold text-center flex justify-center mt-10 items-center '><Loader2 className='animate-spin ' /></div>
     if(!isAdmin) return <div className='text-3xl font-bold text-center'>You are not an admin</div>
     
-  
-
     const saveOrder = async () => {
       const orderedMenu = menuItems.map((c, index) => ({ _id: c._id, order: index }));
       
         try {
-          const response = await fetch('/api/smoke-menu/updateOrder', {
+          const response = await fetch('/api/tea-menu/updateOrder', {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -121,13 +116,13 @@ const ShishaMenu = () => {
         setClickedItem(null);
       }, 300);
     };
-    
+
 
   return (
-    <section className='mt-20 mb-5 max-w-md mx-auto'>
+   <section className='mt-20 mb-5 max-w-md mx-auto'>
     <Tabs isAdmin={true}/>
     <div className='flex gap-4 justify-center items-center mt-5'>
-        <Link href='/shisha/new' className='bg-red-500 text-white flex gap-2 px-4 py-2 rounded-full'>Add Menu Item 
+        <Link href='/hot-drink/new' className='bg-red-500 text-white flex gap-2 px-4 py-2 rounded-full'>Add Menu Item 
         <PlusCircle />
          </Link>
     </div>
@@ -170,7 +165,7 @@ const ShishaMenu = () => {
             </button>
           </div>
       <Link
-        href={`/shisha/edit/${item._id}`}
+        href={`/hot-drink/edit/${item._id}`}
         className='flex flex-1 justify-between'
       >
         <div className='flex justify-between items-center gap-5'>
@@ -205,6 +200,5 @@ const ShishaMenu = () => {
 </section>
   )
 }
- 
 
-export default ShishaMenu
+export default TeaAdmin

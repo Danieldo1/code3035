@@ -5,27 +5,25 @@ import { Loader2,BetweenHorizontalStart } from 'lucide-react'
 import Link from 'next/link'
 import YourComponent from '@/components/YourComponent'
 import { motion } from 'framer-motion';
-import StaggeredText from '@/components/StaggeredText'
 
-const ShishaMainPage = () => {
+const FoodPage = () => {
   const [categories, setCategories] = useState([])
   const [menu, setMenu] = useState([])
   const [loading, setLoading] = useState(true)
   const [activeCategory, setActiveCategory] = useState(null);
 
     useEffect(() => {
-        fetch('/api/smoke-categories').then(response=>{response.json().then(data=>{
+        fetch('/api/snack-categories').then(response=>{response.json().then(data=>{
             setCategories(data)
         })
     })
-        fetch('/api/smoke-menu').then(response=>{response.json().then(data=>{
+        fetch('/api/snack-menu').then(response=>{response.json().then(data=>{
             setMenu(data)
         })
         setLoading(false)
     })
     },[loading])
 
-    
     useEffect(() => {
       const handleScroll = () => {
         let currentCategory = null;
@@ -45,17 +43,13 @@ const ShishaMainPage = () => {
           window.removeEventListener('scroll', handleScroll);
         };
       }, [categories]);
-  
-   
+
       const handleCategoryClick = (categoryId) => {
         setActiveCategory(categoryId);
       };
   
-      const text = "Hookah Menu";
-     
-      
-    
-      // Define the initial and animate properties for each letter
+      const text = "Snack Menu";
+
       const letterVariants = {
         initial: { y: 20, opacity: 0 },
         animate: i => ({
@@ -67,9 +61,10 @@ const ShishaMainPage = () => {
           },
         }),
       };
-  
+
+
   return (
-    <section className='mt-20' >
+     <section className='mt-20' >
     <div className='relative flex justify-center'>
       <h1 className='text-4xl font-black tracking-wider text-center absolute top-0 z-30'>
           {text.split("").map((letter, index) => (
@@ -96,13 +91,14 @@ const ShishaMainPage = () => {
       
     ):(
         <>
-        {categories.length > 0 && (
+         {categories.length > 0 && (
     <>
 
     <div className='sticky top-[30px]  z-30'>
       <YourComponent categories={categories} handleCategoryClick={handleCategoryClick} />
     </div>
-    <div className='flex pl-5 overflow-hidden flex-row snap-x snap-proximity scroll-smooth flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
+
+     <div className='flex pl-5 overflow-hidden flex-row snap-x snap-proximity scroll-smooth flex-nowrap scrollbar-hide sticky top-[50px] z-20 bg-[#1B1918] overflow-x-auto'>
     {categories.map((c) => (
       <>
       <div key={c._id} className='pt-10 mx-4 ml-5   whitespace-nowrap '>
@@ -180,4 +176,4 @@ const ShishaMainPage = () => {
   )
 }
 
-export default ShishaMainPage
+export default FoodPage

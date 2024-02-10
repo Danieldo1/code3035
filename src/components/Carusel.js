@@ -22,17 +22,20 @@ const Carusel = () => {
          width="100%"
          useKeyboardArrows={false}
          dynamicHeight={true}
-            className='my-auto'
+            className='my-auto '
          >
-                <div  className='mx-2 md:mx-5 '>
-                    <img src="bar.webp" className='aspect-[24/16]' />  
-                </div>
-                <div  className='mx-2 md:mx-5'>
-                    <img src="cocktail.jpeg" className='aspect-[24/16]' />
-                </div>
-                <div  className='mx-2 md:mx-5'>
-                    <img src="shisha.webp" className='aspect-[24/16]' />
-                </div>
+              <div className='mx-2 md:-mx-56'>
+  <img src="wine.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+</div>
+<div className='mx-2 md:-mx-56'>
+  <img src="bar1.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+</div>
+<div className='mx-2 md:-mx-56'>
+  <img src="barlounge.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+</div>
+<div className='mx-2 md:-mx-56'>
+  <img src="table.webp" className='w-full md:max-w-[50%] aspect-[16/24] md:aspect-auto' />
+</div>
             </Carousel>
     </section>
   )
