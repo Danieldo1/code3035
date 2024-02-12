@@ -44,6 +44,8 @@ const MenuForm = ({handleFormSubmit,menuItem}) => {
       url = '/api/snack-categories';
     }else if (/hot-drink/.test(path)) {
       url = '/api/tea-categories';
+    }else if (/specials/.test(path)) {
+      url = '/api/offer-categories';
     }
   
     // Only proceed if a URL has been set

@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import {UserRound,Layers2,Wine,Truck,Users,Cigarette,Layers3,Coffee,Beef} from 'lucide-react'
+import {UserRound,Layers2,Wine,Truck,Users,Cigarette,Layers3,Coffee,Beef,Gift} from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
 const Tabs = ({isAdmin}) => {
@@ -41,6 +41,15 @@ const Tabs = ({isAdmin}) => {
             <div className='flex gap-2'>
               <Link   className={path === '/food-categories' ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'}href='/food-categories'><Layers3/></Link>
               <Link   className={/snack/.test(path) ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'}href='/snack'><Beef /></Link>          
+            </div>
+          </div>
+
+
+          <div className='flex-row  bg-gray-200 rounded-lg p-2'>
+            <p className=' text-center text-black'>Offers</p>
+            <div className='flex gap-2'>
+              <Link   className={path === '/offers-categories' ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'}href='/offers-categories'><Layers3/></Link>
+              <Link   className={/specials/.test(path) ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'}href='/specials'><Gift /></Link>          
             </div>
           </div>
           {/* <Link className={path === '/orders' ? 'bg-red-500 text-white px-4 py-4 rounded-full' : 'bg-gray-500 text-black px-4 py-4 rounded-full'}  href='/orders'><Truck/></Link>
