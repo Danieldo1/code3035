@@ -32,6 +32,7 @@ export default function RootLayout({ children }) {
         type="image/<generated>"
         sizes="<generated>"
       />
+      <meta name="google-site-verification" content="D1EvqvDaxe9kD0fPfKEWdhCZDLaS9aVpxnS9NiewqKg" />
       </head>
     <body className={`flex flex-col min-h-screen bg-[#1B1918] text-white ${rubik.className}`}>
       <AppProvider>
