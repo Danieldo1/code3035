@@ -74,7 +74,7 @@ const fetchCategories = async () => {
       </div>
       </motion.div>
   </Link>
-          <Link href='/food-page' className='h-full w-full md:w-full md:h-full hidden'>
+          <Link href='/food-page' className='h-full w-full md:w-full md:h-full '>
           <motion.div
           className='mx-auto  md:mt-0 relative rounded-lg'
           initial="hidden"
@@ -97,7 +97,7 @@ const fetchCategories = async () => {
       </div>
       </motion.div>
   </Link>
-          <Link href='/tea-page' className='h-full w-full md:w-full md:h-full hidden'>
+          <Link href='/tea-page' className='h-full w-full md:w-full md:h-full '>
           <motion.div
           className='mx-auto  md:mt-0 relative rounded-lg'
           initial="hidden"
