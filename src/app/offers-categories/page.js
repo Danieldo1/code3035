@@ -120,7 +120,7 @@ const saveOrderSmoke = async () => {
       <section className='mt-20 max-w-lg mx-auto'>
         <Tabs isAdmin={true}/>
             <OfferName />
-        <h2 className='text-3xl font-bold text-center mt-2'>Categories</h2>
+        <h2 className='text-3xl font-bold text-center mt-10'>Categories</h2>
         <form className='max-w-sm mx-auto my-10' onSubmit={handleSubmit}>
             <div className='flex gap-2 items-end'>
                 <div>

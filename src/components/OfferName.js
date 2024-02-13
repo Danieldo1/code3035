@@ -66,11 +66,11 @@ const OfferName = () => {
     <>
     
     <h2 className='text-3xl font-bold text-center mt-2'>Offer Name</h2>
-    <form className='max-w-sm mx-auto my-10' onSubmit={handleSubmit}>
-            <div className='flex gap-2 items-end'>
-                <div>
+    <form className='max-w-sm mx-auto mt-10' onSubmit={handleSubmit}>
+            <div className='flex gap-2 items-center'>
+                <div className='mb-14'>
                     <label className='text-lg font-bold mb-2 '  > 
-                        {editedCategories ? 'Update Category': 'Create Category'}
+                        {editedCategories ? 'Update Name': 'Create Name'}
                         {editedCategories && (
                             <>: <b>{editedCategories.name}</b></>
                         )}
