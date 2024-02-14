@@ -87,7 +87,7 @@ const fetchCategories = async () => {
       </h2>
       <div className='flex justify-center items-center w-full h-full aspect-square overflow-hidden rounded-lg ' >
         <Image 
-          src='/snacker.webp'
+          src='/snacks.webp'
           alt="hero image"
           layout=''
           width={400}
