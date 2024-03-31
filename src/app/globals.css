@@ -26,10 +26,25 @@ html, body {
   }
 
   .section-header {
-    padding-top: 111x; /* Height of your fixed header */
-    margin-top: -111px; /* Negative margin to counteract the padding */
+    padding-top: 111x;
+    margin-top: -111px; 
   }
 
   .scroll-target {
-    scroll-margin-top: 111px; /* Adjust this value to the height of your fixed header */
+    scroll-margin-top: 111px; 
   }
+
+  .iframeStyle {
+  width: 370px;
+  height: 700px;
+  border-radius: 5px;
+}
+
+
+@media screen and (min-width: 1024px) {
+  .iframeStyle {
+    width: 600px;
+    height: 800px;
+  }
+}
+
