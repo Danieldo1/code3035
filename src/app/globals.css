@@ -40,7 +40,12 @@ html, body {
   border-radius: 5px;
 }
 
-
+@media screen and (max-width: 390px){
+   .iframeStyle {
+    width: 320px;
+  height: 550px;
+  }
+}
 @media screen and (min-width: 1024px) {
   .iframeStyle {
     width: 600px;
