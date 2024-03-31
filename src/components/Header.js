@@ -27,7 +27,7 @@ const Header = () => {
       </Link>
       <button
         onClick={togglePopup}
-        className="bg-white p-2 rounded text-[#1B1918] font-semibold hover:bg-[#1B1918] hover:border-white hover:border-[1px] hover:text-white transition-all duration-300 ease-in-out delay-50 shimmer-effect"
+        className="bg-white p-2 rounded text-[#1B1918] md:ml-[137px] font-semibold hover:bg-[#1B1918] hover:border-white hover:border-[1px] hover:text-white transition-all duration-300 ease-in-out delay-50 text-center"
       >
         Reservations
       </button>
