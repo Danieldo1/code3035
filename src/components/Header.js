@@ -36,15 +36,16 @@ const Header = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0,  }}
+            transition={{ duration: 0.1, ease: "easeInOut" }}
             className="fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center"
           >
             <motion.div
               className="bg-white p-4 pt-8 rounded relative"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
+              exit={{ opacity: 0,  }}
+              transition={{ duration: 0.1, ease: "easeInOut" }}
             >
               <button
                 onClick={togglePopup}
