@@ -12,7 +12,7 @@ const rubik = Rubik({ subsets: ['latin'],weight: ['900','800','300','400','500',
 
 export const metadata = {
   title: '3035 Lounge Bar',
-  description: '3035 Lounge Bar - Your new lounge bar experience.',
+  description: '3035 Lounge Bar - Your new lounge bar experience.In the heart of Limassol, explore the best hookah in town, sip on artisanal drinks and explore authentic Chinese tea ceremony.',
 }
 
 export default function RootLayout({ children }) {

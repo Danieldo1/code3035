@@ -34,7 +34,7 @@ const Contact = () => {
             <p className='text-lg text-gray-100'>Monday - Friday <br />14:00-00:00</p>
             <p className='text-lg text-gray-100'>Saturday - Sunday <br />14:00-02:00</p>
             <br />
-            <p className='text-md text-gray-100 italic'>Reservations: <a href='tel:+35797866197'>+357 97-866-197</a> </p>
+            <p className='text-md text-gray-100 italic'>Reservations: <a href='tel:+35795641588'>+357 95-641-588</a> </p>
 
         </div>
             <div style={mapContainerStyle} className='mt-5'>

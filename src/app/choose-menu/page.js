@@ -1,6 +1,11 @@
 import React from "react";
 import MenuPhotos from "@/components/MenuPhotos";
 
+export const metadata = {
+  title: "3035 | Choose Menu",
+  description: "Delve into the most exquisite menu of Limassol. Choose to indulge into a authentic Chinese tea ceremony in Limassol or to enjoy our artisanal drinks.All while smoking on a steamy shisha. Come and experience it for yourself",
+}
+
 const ChooseMenu = () => {
   return (
     <>

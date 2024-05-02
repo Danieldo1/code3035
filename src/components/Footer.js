@@ -13,7 +13,7 @@ const Footer = () => {
           <Link href='https://www.instagram.com/3035lounge?igsh=MWM5a2R6dTd1M240ZQ==' target='_blank' rel='noreferrer' className='justify-end flex items-center'>
           <Instagram className='w-6 h-6 text-gray-500' />
           </Link>
-          <Link href='https://wa.me/+35797866197' target='_blank' rel='noreferrer' className='justify-end flex items-center'>
+          <Link href='https://wa.me/+35795641588' target='_blank' rel='noreferrer' className='justify-end flex items-center'>
             <Image src='/whats.svg' alt='logo' width={24} height={24} />
           </Link>
 
