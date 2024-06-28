@@ -10,7 +10,8 @@ const SnackCategorySchema = new Schema({
     description: {
         type: String,
         default: ''
-    }
+    },
+    available: { type: Boolean, default: true }
 }, { timestamps: true });
 
 export const SnackCategory = models?.SnackCategory || model("SnackCategory", SnackCategorySchema)

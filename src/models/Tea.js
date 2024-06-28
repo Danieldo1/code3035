@@ -10,7 +10,7 @@ const TeaCategorySchema = new Schema({
     description: {
         type: String,
         default: ''
-    }
+    },
 }, { timestamps: true });
 
 export const TeaCategory = models?.TeaCategory || model("TeaCategory", TeaCategorySchema)

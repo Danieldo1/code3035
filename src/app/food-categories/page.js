@@ -13,6 +13,7 @@ const SnackPageAdmin = () => {
     const [createdCategories, setCreatedCategories] = useState([])
     const [editedCategories, setEditedCategories] = useState(null)
     const [categoryDescription, setCategoryDescription] = useState('')
+    const [available, setAvailable] = useState(null)
 
     useEffect(() => {
         fetchCategories()
@@ -32,7 +33,7 @@ const SnackPageAdmin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
        const createPromise = new Promise( async(resolve, reject) => {
-        const data = {name:categories, description:categoryDescription }
+        const data = {name:categories, description:categoryDescription}
         if(editedCategories) {
             data._id = editedCategories._id
         }
@@ -112,6 +113,8 @@ const SnackPageAdmin = () => {
         })
         fetchCategories()
     }
+
+
   return (
     <section className='mt-20 max-w-lg mx-auto'>
         <Tabs isAdmin={true}/>
@@ -139,6 +142,7 @@ const SnackPageAdmin = () => {
                     onClick={() => {setEditedCategories(null);setCategories('');setCategoryDescription('')}}>Cancel</button>
                 </div>
             </div>
+           
         </form>
 
             <div>

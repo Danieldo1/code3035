@@ -9,6 +9,7 @@ import { toast } from 'react-hot-toast'
 import Tabs from '../../components/Tabs'
 import ImageUpload from '../../components/ImageUpload'
 import { Loader2 } from 'lucide-react'
+import CategoryAvailabilityManager from '@/components/CategoryAvailabilityManager'
 
 const ProfilePage = () => {
     const session = useSession()
@@ -84,6 +85,7 @@ if(status === 'authenticated'){
               </form>
             </div>
         </div>
+        <CategoryAvailabilityManager />  
     </section>
   )
 }

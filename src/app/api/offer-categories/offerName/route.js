@@ -15,13 +15,11 @@ export async function GET() {
     return Response.json(categories)
 }
 
-export async function PUT(req) {
-    
+export async function PUT(req) { 
     mongoose.connect(process.env.MONGODB_URL)
     const {name,_id,available} = await req.json()
     await OfferName.updateOne({_id},{name,available})
     return Response.json(true)
-    
 }
 
 

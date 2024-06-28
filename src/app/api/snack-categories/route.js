@@ -3,8 +3,8 @@ import mongoose from 'mongoose'
 
 export async function POST(req) {
     mongoose.connect(process.env.MONGODB_URL)
-    const {name,description}= await req.json()
-   const category = await SnackCategory.create({name,description})
+    const {name,description,}= await req.json()
+   const category = await SnackCategory.create({name,description,})
     return Response.json(category)
 }
 
